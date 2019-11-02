@@ -41,19 +41,19 @@ public interface VOEps
 	/**
 	 * @return La lista de afiliados
 	 */
-	public List<Object []> getAfiliados();
+	public long getId_afiliados();
 	
-	public List<Object []> getIps();
+	public long getId_ips();
 	
 	/**
 	 * @return El administrador de la eps
 	 */
-	public AdministradorDatos getAdministrador();
+	public long getId_administrador();
 	
 	/**
 	 * @return El gerente de la eps
 	 */
-	public Gerente getGerente();
+	public long getId_gerente();
 	
 	@Override
 	/**

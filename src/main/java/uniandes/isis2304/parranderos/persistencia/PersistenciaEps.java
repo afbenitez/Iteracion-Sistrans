@@ -1,9 +1,14 @@
 package uniandes.isis2304.parranderos.persistencia;
 
+<<<<<<< HEAD
 import java.util.LinkedList;
 import java.util.List;
 
 import javax.jdo.JDOHelper;
+=======
+import java.util.List;
+
+>>>>>>> 964be310fe74eb77c6e0bbc3919e0b3f1e4afac9
 import javax.jdo.PersistenceManagerFactory;
 
 import org.apache.log4j.Logger;
@@ -19,6 +24,7 @@ public class PersistenciaEps {
 	public final static String SQL = "javax.jdo.query.SQL";
 
 	private static PersistenciaEps instance;
+<<<<<<< HEAD
 	
 	private PersistenceManagerFactory pmf;
 	
@@ -255,5 +261,12 @@ public class PersistenciaEps {
 	}
 	
 	
+=======
+>>>>>>> 964be310fe74eb77c6e0bbc3919e0b3f1e4afac9
 	
+	private PersistenceManagerFactory pmf;
+
+	private List <String> tablas;
+
+
 }

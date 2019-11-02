@@ -3,35 +3,36 @@ package uniandes.isis2304.parranderos.negocio;
 import java.util.LinkedList;
 import java.util.List;
 
-public class RecetaMedica implements VORecetaMedica {
+public class RecetaMedica {
 	
 	private long id;
 	
+	private String fecha;
+	
 	private String medicamentos;
 	
-	private Afiliado usuarioAsignado;
+	private long id_usuario;
 	
-	private Medico medicoRemitente;
+	private long id_medico;
 	
-	private List<Object []> ordenes;
+	private long id_servicio;
 	
 	public RecetaMedica()
 	{
 		this.id = 0;
 		this.medicamentos = "";
-		this.medicoRemitente = null;
-		this.ordenes = new LinkedList<>();
-		this.usuarioAsignado = null;
+		this.id_medico = 0;
+		this.id_servicio = 0;
+		this.id_usuario = 0;
 	}
 
-	public RecetaMedica(long id, String medicamentos, Afiliado usuarioAsignado, Medico medicoRemitente,
-			List<Object[]> ordenes) {
+	public RecetaMedica(long id, String medicamentos, long id_afiliado, long id_medico, long id_servicio) {
 		super();
 		this.id = id;
 		this.medicamentos = medicamentos;
-		this.usuarioAsignado = usuarioAsignado;
-		this.medicoRemitente = medicoRemitente;
-		this.ordenes = ordenes;
+		this.id_usuario = id_afiliado;
+		this.id_medico = id_medico;
+		this.id_servicio = id_servicio;
 	}
 
 	public long getId() {
@@ -42,6 +43,14 @@ public class RecetaMedica implements VORecetaMedica {
 		this.id = id;
 	}
 
+	public String getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
+
 	public String getMedicamentos() {
 		return medicamentos;
 	}
@@ -50,29 +59,32 @@ public class RecetaMedica implements VORecetaMedica {
 		this.medicamentos = medicamentos;
 	}
 
-	public Afiliado getUsuarioAsignado() {
-		return usuarioAsignado;
+	public long getId_usuario() {
+		return id_usuario;
 	}
 
-	public void setUsuarioAsignado(Afiliado usuarioAsignado) {
-		this.usuarioAsignado = usuarioAsignado;
+	public void setId_usuario(long id_usuario) {
+		this.id_usuario = id_usuario;
 	}
 
-	public Medico getMedicoRemitente() {
-		return medicoRemitente;
+	public long getId_medico() {
+		return id_medico;
 	}
 
-	public void setMedicoRemitente(Medico medicoRemitente) {
-		this.medicoRemitente = medicoRemitente;
+	public void setId_medico(long id_medico) {
+		this.id_medico = id_medico;
 	}
 
-	public List<Object[]> getOrdenes() {
-		return ordenes;
+	public long getId_servicio() {
+		return id_servicio;
 	}
 
-	public void setOrdenes(List<Object[]> ordenes) {
-		this.ordenes = ordenes;
+	public void setId_servicio(long id_servicio) {
+		this.id_servicio = id_servicio;
 	}
+
+
+	
 	
 	
 }

@@ -45,7 +45,7 @@ public interface VOAdministrador
 	/**
 	 * @return El numero de identificacion del Administrador
 	 */
-	public String getNumeroIdentificacion();
+	public String getNumero_id();
 	
 	/**
 	 * @return El rol de Administrador
@@ -55,12 +55,12 @@ public interface VOAdministrador
 	/**
 	 * @return El  tipo de identificacion del Administrador
 	 */
-	public String getTipoIdentificacion();
+	public String getTipo_identificacion();
 	
 	/**
 	 * @return la eps del Administrador
 	 */
-	public Eps getEps();
+	public long getId_eps();
 
 	/** 
 	 * @return Una cadena con la información básica

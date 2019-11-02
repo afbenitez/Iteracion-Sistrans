@@ -16,7 +16,7 @@ public interface VOCita
 	/**
 	 * @return El estado de la cita
 	 */
-	public String getEstadoCita();
+	public String getEstado_cita();
 	
 	/**
 	 * @return La fecha de la cita
@@ -26,15 +26,15 @@ public interface VOCita
 	/**
 	 * @return La lista servicios de la cita
 	 */
-	public List<Object []> getServicios();
+	public long getId_servicio();
 	
 	/**
 	 * @return el medico de la cita
 	 */
-	public Medico getMedicoAsignado();
+	public long getId_medico();
 	
 	/**
 	 * @return el afiliado de la cita
 	 */
-	public Afiliado getUsuario();
+	public long getId_afiliado();
 }

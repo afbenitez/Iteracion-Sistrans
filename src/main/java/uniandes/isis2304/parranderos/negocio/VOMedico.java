@@ -35,7 +35,7 @@ public interface VOMedico
 	/**
 	 * @return El numero de registro del Medico
 	 */
-	public String getNumeroRegistro();
+	public String getNumero_registro();
 
 	/**
 	 * @return El id del Medico
@@ -55,7 +55,7 @@ public interface VOMedico
 	/**
 	 * @return El numero de identificacion del Medico
 	 */
-	public String getNumeroIdentificacion();
+	public String getNumero_id();
 	
 	/**
 	 * @return El rol de Medico
@@ -65,22 +65,22 @@ public interface VOMedico
 	/**
 	 * @return El  tipo de identificacion del Medico
 	 */
-	public String getTipoIdentificacion();
+	public String getTipo_identificacion();
 	
 	/**
 	 * @return La lista de ips del Medico
 	 */
-	public List<Object []> getIps();
+	public long getId_ips();
 	
 	/**
 	 * @return La lista de citas del Medico
 	 */
-	public List<Object []> getCitas();
+	public long getId_citas();
 	
 	/**
 	 * @return La lista de recetas del Medico
 	 */
-	public List<Object []> getRecetasMedicas();
+	public long getId_recetasmedicas();
 	
 	/**
 	 * @return Una cadena con la información básica del Medico

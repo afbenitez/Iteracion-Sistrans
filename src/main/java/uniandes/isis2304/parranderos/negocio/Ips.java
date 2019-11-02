@@ -1,28 +1,32 @@
 package uniandes.isis2304.parranderos.negocio;
 
-public class Ips implements VOIps {
+public class Ips   {
 	
 	
 	private long id;
 	
 	private String nombre;
 	
-	private String tipoIPS;
+	private String tipo_ips;
 	
 	private String ubicacion;
+	
 
 	public Ips()
 	{
 		this.id = 0;
 		this.nombre = "";
-		this.tipoIPS = "";
+		this.tipo_ips = "";
 		this.ubicacion = "";
+
+		
 	}
 
-	public Ips(long id, String nombre, String tipoIPS, String ubicacion) {
+	public Ips(long id, String nombre, String tipo_ips, String ubicacion, long id_medicos, long id_recepcionistas) {
+		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.tipoIPS = tipoIPS;
+		this.tipo_ips = tipo_ips;
 		this.ubicacion = ubicacion;
 	}
 
@@ -42,12 +46,12 @@ public class Ips implements VOIps {
 		this.nombre = nombre;
 	}
 
-	public String getTipoIPS() {
-		return tipoIPS;
+	public String getTipo_ips() {
+		return tipo_ips;
 	}
 
-	public void setTipoIPS(String tipoIPS) {
-		this.tipoIPS = tipoIPS;
+	public void setTipo_ips(String tipo_ips) {
+		this.tipo_ips = tipo_ips;
 	}
 
 	public String getUbicacion() {
@@ -57,6 +61,9 @@ public class Ips implements VOIps {
 	public void setUbicacion(String ubicacion) {
 		this.ubicacion = ubicacion;
 	}
+
+
+
 	
 	
 	

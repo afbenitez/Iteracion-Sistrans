@@ -45,7 +45,7 @@ public interface VOGerente
 	/**
 	 * @return El numero de identificacion del Gerente
 	 */
-	public String getNumeroIdentificacion();
+	public String getNumero_id();
 	
 	/**
 	 * @return El rol de Gerente
@@ -55,12 +55,12 @@ public interface VOGerente
 	/**
 	 * @return El  tipo de identificacion del Gerente
 	 */
-	public String getTipoIdentificacion();
+	public String getTipo_identificacion();
 	
 	/**
 	 * @return la eps del Gerente
 	 */
-	public Eps getEps();
+	public long getId_eps();
 
 	/** 
 	 * @return Una cadena con la información básica
