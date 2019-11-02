@@ -20,7 +20,7 @@ package uniandes.isis2304.parranderos.negocio;
  *
  * @author Germán Bravo
  */
-public class Bebida implements VOBebida
+public class Bebida implements VORecepcionista
 {
 	/* ****************************************************************
 	 * 			Atributos

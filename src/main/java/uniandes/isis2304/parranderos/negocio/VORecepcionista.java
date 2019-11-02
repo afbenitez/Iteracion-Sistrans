@@ -15,36 +15,58 @@
 
 package uniandes.isis2304.parranderos.negocio;
 
+import java.util.List;
+
 /**
  * Interfaz para los métodos get de BEBIDA.
  * Sirve para proteger la información del negocio de posibles manipulaciones desde la interfaz 
  * 
  * @author Germán Bravo
  */
-public interface VOBebida 
+public interface VORecepcionista 
 {
 	/**
-	 * @return El id de la bebida
+	 * @return El id del Recepcionista
 	 */
 	public long getId();
 
 	/**
-	 * @return El nombre de la bebida
+	 * @return El nombre del Recepcionista
 	 */
-	public String getNombre();
+	public String getEmail();
 
 	/**
-	 * @return El id del Tipo de Bebida
+	 * @return El id del Recepcionista
 	 */
-	public long getIdTipoBebida();
+	public String getIdNombre();
 
 	/**
-	 * @return El gradoAlcohol de la bebida
+	 * @return El numero de identificacion del Recepcionista
 	 */
-	public int getGradoAlcohol();
+	public String getNumeroIdentificacion();
+	
+	/**
+	 * @return El rol de Recepcionista
+	 */
+	public String getRol();
 
 	/**
-	 * @return Una cadena con la información básica de la bebida
+	 * @return El  tipo de identificacion del Recepcionista
+	 */
+	public String getTipoIdentificacion();
+	
+	/**
+	 * @return El  tipo de identificacion del Recepcionista
+	 */
+	public Ips getIps();
+	
+	/**
+	 * @return La lista de citas del Recepcionista
+	 */
+	public List<Object []> getCitas();
+	
+	/**
+	 * @return Una cadena con la información básica del Recepcionista
 	 */
 	@Override
 	public String toString();

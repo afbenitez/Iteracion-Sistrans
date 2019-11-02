@@ -20,43 +20,33 @@ import java.util.List;
 /**
  * Interfaz para los métodos get de BEBEDOR.
  * Sirve para proteger la información del negocio de posibles manipulaciones desde la interfaz 
- * 
- * @author Germán Bravo
  */
-public interface VOBebedor 
+public interface VOIps 
 {
 	/* ****************************************************************
 	 * 			Métodos
 	 *****************************************************************/
 	/**
-	 * @return El id del bebedor
+	 * @return El id de la ips
 	 */
 	public long getId();
 
 	/**
-	 * @return El nombre del bebedor
+	 * @return El nombre de la ips
 	 */
 	public String getNombre();
 
 	/**
-	 * @return La ciudad del bebedor
+	 * @return El tipo de la ips
 	 */
-	public String getCiudad();
+	public String getTipoIps();
 
 	/**
-	 * @return El presupuesto del bebedor
+	 * @return La ubicacion de la ips
 	 */
-	public String getPresupuesto();
+	public String getubicacion();
 
-	/**
-	 * @return La lista de visitasRealizadas por el bebedor 
-	 */
-	public List<Object []> getVisitasRealizadas();
-
-	/**
-	 * @return Las bebidasQueLeGustan al bebedor
-	 */
-	public List<Object[]> getBebidasQueLeGustan();
+	
 
 	/**
 	 * @return Una cadena de caracteres con la información básica del bebedor
@@ -64,11 +54,6 @@ public interface VOBebedor
 	@Override
 	public String toString();
 
-	/**
-	 * @return Una cadena de caracteres con la información COMPLEtA del bebedor.
-	 * Además de la información básica, contiene las visitas realizadas (una por línea) y 
-	 * las bebidas que le gustan al bebedor (una por línea)
-	 */
-	public String toStringCompleto ();
+	
 
 }

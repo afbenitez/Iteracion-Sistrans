@@ -23,7 +23,7 @@ import java.sql.Timestamp;
  * 
  * @author Germán Bravo
  */
-public interface VOVisitan 
+public interface VOGerente 
 {
 	/* ****************************************************************
 	 * 			Métodos

@@ -138,10 +138,10 @@ public class Parranderos
 	 * Adiciona entradas al log de la aplicación
 	 * @return Una lista de objetos VOTipoBebida con todos los tipos de bebida que conoce la aplicación, llenos con su información básica
 	 */
-	public List<VOTipoBebida> darVOTiposBebida ()
+	public List<VOAdministrador> darVOTiposBebida ()
 	{
 		log.info ("Generando los VO de Tipos de bebida");        
-        List<VOTipoBebida> voTipos = new LinkedList<VOTipoBebida> ();
+        List<VOAdministrador> voTipos = new LinkedList<VOAdministrador> ();
         for (TipoBebida tb : pp.darTiposBebida ())
         {
         	voTipos.add (tb);
@@ -229,10 +229,10 @@ public class Parranderos
 	 * Adiciona entradas al log de la aplicación
 	 * @return Una lista de objetos VOBebida con todos las bebidas que conoce la aplicación, llenos con su información básica
 	 */
-	public List<VOBebida> darVOBebidas ()
+	public List<VORecepcionista> darVOBebidas ()
 	{
 		log.info ("Generando los VO de las bebidas");       
-        List<VOBebida> voBebidas = new LinkedList<VOBebida> ();
+        List<VORecepcionista> voBebidas = new LinkedList<VORecepcionista> ();
         for (Bebida beb : pp.darBebidas ())
         {
         	voBebidas.add (beb);
@@ -336,10 +336,10 @@ public class Parranderos
 	 * @return Una lista de Bebedores con su información básica, donde todos tienen el nombre buscado.
 	 * 	La lista vacía indica que no existen bebedores con ese nombre
 	 */
-	public List<VOBebedor> darVOBebedoresPorNombre (String nombre)
+	public List<VOIps> darVOBebedoresPorNombre (String nombre)
 	{
         log.info ("Generando VO de bebedores por nombre: " + nombre);
-        List<VOBebedor> voBebedores = new LinkedList<VOBebedor> ();
+        List<VOIps> voBebedores = new LinkedList<VOIps> ();
        for (Bebedor bdor : pp.darBebedoresPorNombre (nombre))
        {
           	voBebedores.add (bdor);
@@ -382,10 +382,10 @@ public class Parranderos
 	 * Adiciona entradas al log de la aplicación
 	 * @return Una lista de objetos VOBebedor con todos las bebedores que conoce la aplicación, llenos con su información básica
 	 */
-	public List<VOBebedor> darVOBebedores ()
+	public List<VOIps> darVOBebedores ()
 	{
         log.info ("Generando los VO de Bebedores");
-         List<VOBebedor> voBebedores = new LinkedList<VOBebedor> ();
+         List<VOIps> voBebedores = new LinkedList<VOIps> ();
         for (Bebedor bdor : pp.darBebedores ())
         {
         	voBebedores.add (bdor);
@@ -531,10 +531,10 @@ public class Parranderos
 	 * Adiciona entradas al log de la aplicación
 	 * @return Una lista de objetos Bar con todos las bares que conoce la aplicación, llenos con su información básica
 	 */
-	public List<VOBar> darVOBares ()
+	public List<VOEps> darVOBares ()
 	{
 		log.info ("Generando los VO de Bares");
-		List<VOBar> voBares = new LinkedList<VOBar> ();
+		List<VOEps> voBares = new LinkedList<VOEps> ();
 		for (Bar bar: pp.darBares ())
 		{
 			voBares.add (bar);
@@ -623,11 +623,11 @@ public class Parranderos
 	 * Adiciona entradas al log de la aplicación
 	 * @return Una lista de objetos Gustan con todos los GUSTAN que conoce la aplicación, llenos con su información básica
 	 */
-	public List<VOGustan> darVOGustan ()
+	public List<VOMedico> darVOGustan ()
 	{
 		log.info ("Generando los VO de Gustan");
-		List<VOGustan> voGustan = new LinkedList<VOGustan> ();
-		for (VOGustan bar: pp.darGustan ())
+		List<VOMedico> voGustan = new LinkedList<VOMedico> ();
+		for (VOMedico bar: pp.darGustan ())
 		{
 			voGustan.add (bar);
 		}
@@ -688,11 +688,11 @@ public class Parranderos
 	 * Adiciona entradas al log de la aplicación
 	 * @return Una lista de objetos SIRVEN con todos los SIRVEN que conoce la aplicación, llenos con su información básica
 	 */
-	public List<VOSirven> darVOSirven ()
+	public List<VOAfiliado> darVOSirven ()
 	{
 		log.info ("Generando los VO de Sirven");
-		List<VOSirven> voGustan = new LinkedList<VOSirven> ();
-		for (VOSirven sirven: pp.darSirven ())
+		List<VOAfiliado> voGustan = new LinkedList<VOAfiliado> ();
+		for (VOAfiliado sirven: pp.darSirven ())
 		{
 			voGustan.add (sirven);
 		}
@@ -754,11 +754,11 @@ public class Parranderos
 	 * Adiciona entradas al log de la aplicación
 	 * @return Una lista de objetos Visitan con todos los Visitan que conoce la aplicación, llenos con su información básica
 	 */
-	public List<VOVisitan> darVOVisitan ()
+	public List<VOGerente> darVOVisitan ()
 	{
 		log.info ("Generando los VO de Visitan");
-		List<VOVisitan> voGustan = new LinkedList<VOVisitan> ();
-		for (VOVisitan vis: pp.darVisitan ())
+		List<VOGerente> voGustan = new LinkedList<VOGerente> ();
+		for (VOGerente vis: pp.darVisitan ())
 		{
 			voGustan.add (vis);
 		}

@@ -24,7 +24,7 @@ import java.util.List;
  *
  * @author Germán Bravo
  */
-public class Bebedor implements VOBebedor
+public class Bebedor implements VOIps
 {
 	/* ****************************************************************
 	 * 			Atributos

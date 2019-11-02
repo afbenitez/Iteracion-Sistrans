@@ -20,7 +20,7 @@ package uniandes.isis2304.parranderos.negocio;
  *
  * @author Germán Bravo
  */
-public class Bar implements VOBar
+public class Bar implements VOEps
 {
 	/* ****************************************************************
 	 * 			Atributos

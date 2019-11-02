@@ -15,29 +15,77 @@
 
 package uniandes.isis2304.parranderos.negocio;
 
+import java.util.List;
+
 /**
  * Interfaz para los métodos get de GUSTAN.
  * Sirve para proteger la información del negocio de posibles manipulaciones desde la interfaz 
  * 
  * @author Germán Bravo
  */
-public interface VOGustan 
+public interface VOMedico 
 {
 	/* ****************************************************************
 	 * 			Métodos
 	 *****************************************************************/
-	/**
-	 * @return El idBebedor
-	 */
-	public long getIdBebedor();
 
 	/**
-	 * @return El idBebida
+	 * @return La especialidad del medico
 	 */
-	public long getIdBebida();
+	public String getEspecialidad();
+
+	/**
+	 * @return El numero de registro del Medico
+	 */
+	public String getNumeroRegistro();
+
+	/**
+	 * @return El id del Medico
+	 */
+	public long getId();
+
+	/**
+	 * @return El nombre del Medico
+	 */
+	public String getEmail();
+
+	/**
+	 * @return El id del Recepcionista
+	 */
+	public String getIdNombre();
+
+	/**
+	 * @return El numero de identificacion del Medico
+	 */
+	public String getNumeroIdentificacion();
 	
-	/** 
-	 * @return Una cadena con la información básica
+	/**
+	 * @return El rol de Medico
+	 */
+	public String getRol();
+
+	/**
+	 * @return El  tipo de identificacion del Medico
+	 */
+	public String getTipoIdentificacion();
+	
+	/**
+	 * @return La lista de ips del Medico
+	 */
+	public List<Object []> getsIps();
+	
+	/**
+	 * @return La lista de citas del Medico
+	 */
+	public List<Object []> getCitas();
+	
+	/**
+	 * @return La lista de recetas del Medico
+	 */
+	public List<Object []> getRecetas();
+	
+	/**
+	 * @return Una cadena con la información básica del Recepcionista
 	 */
 	@Override
 	public String toString();
