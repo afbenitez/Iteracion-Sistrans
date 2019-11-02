@@ -16,8 +16,10 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import uniandes.isis2304.parranderos.negocio.Afiliado;
+import uniandes.isis2304.parranderos.negocio.Cita;
 import uniandes.isis2304.parranderos.negocio.Ips;
 import uniandes.isis2304.parranderos.negocio.Medico;
+import uniandes.isis2304.parranderos.negocio.Prestan;
 import uniandes.isis2304.parranderos.negocio.RecetaMedica;
 import uniandes.isis2304.parranderos.negocio.Rol;
 import uniandes.isis2304.parranderos.negocio.ServicioDeSalud;
@@ -477,9 +479,9 @@ public class PersistenciaEps {
             long tuplasInsertadas = sqlPrestan.adicionarPrestan(pm, dia, horario, idServicio, idIps, capacidad, capacidadMax, estado);
             tx.commit();
             
-            log.trace ("Inserción de servicio de la ips: " + idServicio + ": " + tuplasInsertadas + " tuplas insertadas");
+            log.trace ("Inserción de adicionar servicio: " + idServicio + ": " + tuplasInsertadas + " tuplas insertadas");
             
-            return new Prestan(dia, horario, idServicio, idIps, capacidad, estado);
+            return new Prestan(dia, horario, idServicio, idIps, capacidad, capacidadMax, estado);
         }
         catch (Exception e)
         {
@@ -508,9 +510,40 @@ public class PersistenciaEps {
             long tuplasInsertadas = sqlRecetaMedica.adicionarRecetaMedica(pm, id, fecha, idMedico, idUsuario, idServicio, medicamentos);
             tx.commit();
             
-            log.trace ("Inserción de servicio de la ips: " + idServicio + ": " + tuplasInsertadas + " tuplas insertadas");
+            log.trace ("Inserción de adicionarReceta: " + idServicio + ": " + tuplasInsertadas + " tuplas insertadas");
             
-            return new RecetaMedica(idUsuario, medicamentos, id_afiliado, id_medico, idServicio);
+            return new RecetaMedica(id, fecha, idMedico, idUsuario, idServicio, medicamentos);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public Cita registrarPrestacion(long idUsuario) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+           
+            long tuplasInsertadas = sqlCita.registrarPrestacion(pm, idUsuario);
+            tx.commit();
+            
+            log.trace ("Inserción registro de prestacion: " + idUsuario + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new Cita(id, id_receta, id_usuario, id_recepcionista, id_servicio, estado_cita, fecha, horario);
         }
         catch (Exception e)
         {

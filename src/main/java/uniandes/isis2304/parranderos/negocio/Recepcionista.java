@@ -25,11 +25,9 @@ public class Recepcionista extends Usuario  {
 	 * @param rol
 	 * @param tipo_identificacion
 	 */
-<<<<<<< HEAD
+
 	public Recepcionista(long id, String email, String nombre, long numero_id, int rol, String tipo_identificacion, String id_ips) {
-=======
-	public Recepcionista(long id, String email, String nombre, int numero_id, int rol, String tipo_identificacion, String id_ips) {
->>>>>>> fe9b9f38092ebecf573bb48ea6daea60d8d0675a
+
 		super(id, email, nombre, numero_id, rol, tipo_identificacion);
 		// TODO Auto-generated constructor stub
 		this.id_ips = id_ips;

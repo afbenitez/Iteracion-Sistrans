@@ -24,11 +24,8 @@ public class Afiliado extends Usuario  {
 	 * @param rol
 	 * @param tipo_identificacion
 	 */
-<<<<<<< HEAD
 	public Afiliado(long id, String email, String nombre, long numero_id, int rol, String tipo_identificacion, String fecha_nacimiento) {
-=======
-	public Afiliado(long id, String email, String nombre, int numero_id, int rol, String tipo_identificacion, String fecha_nacimiento) {
->>>>>>> fe9b9f38092ebecf573bb48ea6daea60d8d0675a
+
 		super(id, email, nombre, numero_id, rol, tipo_identificacion);
 		this.fecha_nacimiento = fecha_nacimiento;
 	}
