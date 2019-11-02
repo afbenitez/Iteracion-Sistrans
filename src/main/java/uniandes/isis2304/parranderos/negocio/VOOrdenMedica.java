@@ -22,12 +22,12 @@ public interface VOOrdenMedica
 	/**
 	 * @return La lista de las recetas de la orden
 	 */
-	public List<Object []> getRecetas();
+	public long getId_recetas();
 	
 	/**
 	 * @return La lista de servicios de la roden
 	 */
-	public List<Object []> getServicios();
+	public long getId_servicio();
 
 	/**
 	 * @return Una cadena con la información básica

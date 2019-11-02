@@ -41,7 +41,7 @@ public interface VORecepcionista
 	/**
 	 * @return El numero de identificacion del Recepcionista
 	 */
-	public String getNumeroIdentificacion();
+	public String getNumero_id();
 	
 	/**
 	 * @return El rol de Recepcionista
@@ -51,17 +51,17 @@ public interface VORecepcionista
 	/**
 	 * @return El  tipo de identificacion del Recepcionista
 	 */
-	public String getTipoIdentificacion();
+	public String getTipo_identificacion();
 	
 	/**
 	 * @return la ips del Recepcionista
 	 */
-	public Ips getIps();
+	public long getId_ips();
 	
 	/**
 	 * @return La lista de citas del Recepcionista
 	 */
-	public List<Object []> getCitas();
+	public long getId_citas();
 	
 	/**
 	 * @return Una cadena con la información básica del Recepcionista

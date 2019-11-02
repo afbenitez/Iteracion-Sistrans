@@ -35,7 +35,7 @@ public interface VOAfiliado
 	/**
 	 * @return La fecha de nacimiento del afiliado
 	 */
-	public String getFechaNacimiento();
+	public String getFecha_nacimiento();
 	
 	/**
 	 * @return El nombre del Afiliado
@@ -50,7 +50,7 @@ public interface VOAfiliado
 	/**
 	 * @return El numero de identificacion del Afiliado
 	 */
-	public String getNumeroIdentificacion();
+	public String getNumero_id();
 	
 	/**
 	 * @return El rol de Afiliado
@@ -60,12 +60,12 @@ public interface VOAfiliado
 	/**
 	 * @return El  tipo de identificacion del Afiliado
 	 */
-	public String getTipoIdentificacion();
+	public String getTipo_identificacion();
 	
 	/**
 	 * @return la eps del Afiliado
 	 */
-	public Eps getEps();
+	public long getId_eps();
 	
 	/**
 	 * @return La lista de citas del Afiliado

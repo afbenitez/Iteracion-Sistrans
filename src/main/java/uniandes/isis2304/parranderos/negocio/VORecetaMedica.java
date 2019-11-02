@@ -22,17 +22,17 @@ public interface VORecetaMedica
 	/**
 	 * @return El afiliado de la receta
 	 */
-	public Afiliado getUsuarioAsignado();
+	public long getId_afiliado();
 	
 	/**
 	 * @return El medico de la receta
 	 */
-	public Medico getMedicoRemitente();
+	public long getId_medico();
 	
 	/**
 	 * @return La orden de la receta
 	 */
-	public List<Object[]> getOrdenes();
+	public long getId_orden();
 
 	/**
 	 * @return Una cadena con la información básica

@@ -39,7 +39,7 @@ public interface VOIps
 	/**
 	 * @return El tipo de la ips
 	 */
-	public String getTipoIPS();
+	public String getTipo_ips();
 
 	/**
 	 * @return La ubicacion de la ips
@@ -47,7 +47,9 @@ public interface VOIps
 	public String getUbicacion();
 
 	
-
+	public long getId_medicos();
+	
+	public long getId_recepcionistas();
 	/**
 	 * @return Una cadena de caracteres con la información básica del bebedor
 	 */
