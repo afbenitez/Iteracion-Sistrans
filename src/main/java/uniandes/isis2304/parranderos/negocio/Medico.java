@@ -24,7 +24,7 @@ public class Medico extends Usuario {
 	 * @param rol
 	 * @param tipo_identificacion
 	 */
-	public Medico(long id, String email, String nombre, String numero_id, int rol, String tipo_identificacion, String especialidad, String numero_registro) {
+	public Medico(long id, String email, String nombre, long numero_id, int rol, String tipo_identificacion, String especialidad, String numero_registro) {
 		super(id, email, nombre, numero_id, rol, tipo_identificacion);
 		this.especialidad = especialidad;
 		this.numero_registro = numero_registro;

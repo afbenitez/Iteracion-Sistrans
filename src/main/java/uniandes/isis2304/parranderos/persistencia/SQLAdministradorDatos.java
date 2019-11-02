@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * Universidad	de	los	Andes	(Bogotá	- Colombia)
  * Departamento	de	Ingeniería	de	Sistemas	y	Computación
@@ -21,7 +21,7 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-import uniandes.isis2304.parranderos.negocio.AdministradorDatos;;
+import uniandes.isis2304.parranderos.negocio.AdministradorDatos;
 
 /**
  * Clase que encapsula los métodos que hacen acceso a la base de datos para el concepto BAR de Parranderos
@@ -59,28 +59,13 @@ class SQLAdministradorDatos
 	public SQLAdministradorDatos (PersistenciaEps pp)
 	{
 		this.pp = pp;
-=======
-package uniandes.isis2304.parranderos.persistencia;
 
-import javax.jdo.PersistenceManager;
-import javax.jdo.Query;
-
-public class SQLAdministradorDatos {
-
-	private final static String SQL = PersistenciaEps.SQL;
-	
-	private PersistenciaEps pe;
-	
-	public SQLAdministradorDatos(PersistenciaEps pe)
-	{
-		this.pe = pe;
->>>>>>> 964be310fe74eb77c6e0bbc3919e0b3f1e4afac9
 	}
+
 	
 	/**
 	 * Crea y ejecuta la sentencia SQL para adicionar un BAR a la base de datos de Parranderos
 	 * @param pm - El manejador de persistencia
-<<<<<<< HEAD
 	 * @param id - El identificador del Adminstrador
 	 * @param email - El email del Adminstrador
 	 * @param nombre - El nombre del Adminstrador
@@ -91,12 +76,12 @@ public class SQLAdministradorDatos {
 	 */
 	public long adicionarAdministrador (PersistenceManager pm, long id, String email, String nombre, long cedula, int rol, String tipoId) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaUsuario() + "( id, email, nombre, numero_id, rol, tipo_identificacion) values (?, ?, ?, ?, ?, ?)");
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaUsuario() + " ( id, email, nombre, numero_id, rol, tipo_identificacion) values (?, ?, ?, ?, ?, ?)");
         q.setParameters(id, email, nombre, cedula, rol, tipoId);
         
         q.executeUnique();
         
-        Query k = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaAdministradorDatos() + "( id, numero_id) values (?, ?, )");
+        Query k = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaAdministradorDatos() + " ( id, numero_id) values (?, ?, )");
         k.setParameters(id, cedula);
         return (long) k.executeUnique();
 	}
@@ -147,7 +132,7 @@ public class SQLAdministradorDatos {
 	}
 
 	
-=======
+	/**
 	 * @param idAdministradorDatos - El identificador del Administrador
 	 * @param nombre - El nombre del administrador
 	 * @param presupuesto - El presupuesto del bar (ALTO, MEDIO, BAJO)
@@ -156,9 +141,9 @@ public class SQLAdministradorDatos {
 	 */
 	public long adicionarBar (PersistenceManager pm, long idBar, String nombre, String ciudad, String presupuesto, int sedes) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaBar () + "(id, nombre, ciudad, presupuesto, cantsedes) values (?, ?, ?, ?, ?)");
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaAdministradorDatos () + "(id, nombre, ciudad, presupuesto, cantsedes) values (?, ?, ?, ?, ?)");
         q.setParameters(idBar, nombre, ciudad, presupuesto, sedes);
         return (long) q.executeUnique();
 	}
->>>>>>> 964be310fe74eb77c6e0bbc3919e0b3f1e4afac9
+
 }

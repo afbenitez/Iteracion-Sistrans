@@ -3,9 +3,8 @@ package uniandes.isis2304.parranderos.persistencia;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-public class SQLTrabajan 
-{
-
+public class SQLPrestan {
+	
 	/* ****************************************************************
 	 * 			Constantes
 	 *****************************************************************/
@@ -31,16 +30,16 @@ public class SQLTrabajan
 	 * Constructor
 	 * @param pp - El Manejador de persistencia de la aplicación
 	 */
-	public SQLTrabajan(PersistenciaEps pp)
+	public SQLPrestan (PersistenciaEps pp)
 	{
 		this.pp = pp;
 	}
 	
 
-	public long adicionarTrabajan(PersistenceManager pm, String nombre, long idMedico) 
+	public long adicionarPrestan (PersistenceManager pm, int dia, int horario, String idServicio, String idIps, long capacidad, long capacidadMax, int estado) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaTrabajan() + " ( nombre_ips, id_medico) values (?, ?)");
-        q.setParameters (nombre, idMedico);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaPrestan() + " ( dia, horario, id_servicio, id_ips, capacidad, capacidad_max,estado) values (?, ?, ?, ?, ?, ?, ?)");
+        q.setParameters(dia, horario, idServicio, idIps, capacidad, capacidadMax ,estado);
         
         return (long) q.executeUnique();
 	}

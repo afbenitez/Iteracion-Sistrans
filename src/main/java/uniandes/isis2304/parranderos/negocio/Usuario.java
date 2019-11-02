@@ -5,7 +5,7 @@ public class Usuario {
 	private long id;
 	private String email;
 	private String nombre;
-	private String numero_id;
+	private long numero_id;
 	private int rol;
 	private String tipo_identificacion;
 	
@@ -13,12 +13,12 @@ public class Usuario {
 		this.id = 0;
 		this.email = "";
 		this.nombre = "";
-		this.numero_id = "";
+		this.numero_id = 0;
 		this.rol = 0;
 		this.tipo_identificacion = "";
 	}
 
-	public Usuario(long id, String email, String nombre, String numero_id, int rol, String tipo_identificacion) {
+	public Usuario(long id, String email, String nombre, long numero_id, int rol, String tipo_identificacion) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -52,11 +52,11 @@ public class Usuario {
 		this.nombre = nombre;
 	}
 
-	public String getNumero_id() {
+	public long getNumero_id() {
 		return numero_id;
 	}
 
-	public void setNumero_id(String numero_id) {
+	public void setNumero_id(long numero_id) {
 		this.numero_id = numero_id;
 	}
 

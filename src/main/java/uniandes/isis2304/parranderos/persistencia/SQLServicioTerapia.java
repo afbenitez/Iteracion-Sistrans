@@ -35,13 +35,13 @@ public class SQLServicioTerapia {
 	}
 	
 
-	public long adicionarServicioDeSalud (PersistenceManager pm, long id, long capacidad, long dias, String fecha, long horario, String tipoServicio, long sesiones, String tipoTerapia) 
+	public long adicionarServicioTerapia (PersistenceManager pm, long id, long capacidad, long dias, String fecha, long horario, String tipoServicio, long sesiones, String tipoTerapia) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaServicioDeSalud() + "( id, capacidad_maxima, dias_semana, fecha_realizacion, horario, tipo_servicio) values (?, ?, ?, ?, ?, ?)");
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaServicioDeSalud() + " ( id, capacidad_maxima, dias_semana, fecha_realizacion, horario, tipo_servicio) values (?, ?, ?, ?, ?, ?)");
         q.setParameters(id, capacidad, dias, fecha, horario, tipoServicio); 
         
         
-        Query k = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaServicioTerapia() + "( id, numero_sesiones, tipo_terapia) values (?, ?, ?)");
+        Query k = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaServicioTerapia() + " ( id, numero_sesiones, tipo_terapia) values (?, ?, ?)");
         k.setParameters(id, sesiones, tipoTerapia);
         
         return (long) q.executeUnique();

@@ -36,9 +36,9 @@ public class SQLRecetaMedica {
 	}
 	
 
-	public long adicionarRecetaMedica (PersistenceManager pm, long id, String  fecha, long idMedico , long idUsuario, long idServicio, String medicamentos) 
+	public long adicionarRecetaMedica (PersistenceManager pm, long id, String  fecha, long idMedico , long idUsuario, String idServicio, String medicamentos) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaRecetaMedica() + "( id, fecha, id_medico, id_usuario, id_servicio, medicamentos) values (?, ?, ?, ?, ?, ?)");
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaRecetaMedica() + " ( id, fecha, id_medico, id_usuario, id_servicio, medicamentos) values (?, ?, ?, ?, ?, ?)");
         q.setParameters(id, fecha, idMedico, idUsuario, idServicio, medicamentos);
         
         return (long) q.executeUnique();

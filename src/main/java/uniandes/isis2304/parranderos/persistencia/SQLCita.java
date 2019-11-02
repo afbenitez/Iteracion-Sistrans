@@ -36,10 +36,18 @@ public class SQLCita {
 	}
 	
 
-	public long adicionarCita (PersistenceManager pm, long id, long idMedico, long idUsuario, long idRecepcionista, long idServicio, String estado, String fecha) 
+	public long adicionarCita (PersistenceManager pm, long id, long idReceta, long idUsuario, long idRecepcionista, String idServicio, String estado, String fecha, int horario) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaCita() + "( id, id_medico, id_usuario, id_recepcionista, id_servicio, estado_cita, fecha) values (?, ?, ?, ?, ?, ?, ?)");
-        q.setParameters(id, idMedico, idUsuario, idRecepcionista, idServicio, estado, fecha);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaCita() + " ( id, id_receta, id_usuario, id_recepcionista, id_servicio, estado_cita, fecha, horario) values (?, ?, ?, ?, ?, ?, ?, ?)");
+        q.setParameters(id, idReceta, idUsuario, idRecepcionista, idServicio, estado, fecha);
+        
+        return (long) q.executeUnique();
+	}
+	
+	public long registrarPrestacion (PersistenceManager pm, long id) 
+	{
+        Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaCita() + "SET estado_cita ='REALIZADA'  WHERE id =?");
+        q.setParameters(id);
         
         return (long) q.executeUnique();
 	}

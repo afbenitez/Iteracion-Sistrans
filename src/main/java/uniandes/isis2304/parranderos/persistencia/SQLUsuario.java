@@ -36,7 +36,7 @@ public class SQLUsuario {
 	}
 	
 
-	public long adicionarGerente (PersistenceManager pm, long id, String  fecha, String email, String nombre, long cedula, int rol, String tipoId) 
+	public long adicionarUsuario (PersistenceManager pm, long id, String email, String nombre, long cedula, int rol, String tipoId) 
 	{
         Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaUsuario () + " ( id, email, nombre, numero_id, rol, tipo_identificacion) values (?, ?, ?, ?, ?, ?)");
         q.setParameters(id, email, nombre, cedula, rol, tipoId);

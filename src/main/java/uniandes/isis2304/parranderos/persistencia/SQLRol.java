@@ -39,7 +39,7 @@ public class SQLRol {
 
 	public long adicionarRol(PersistenceManager pm, long id, String nombre) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaRol() + "( id, nombre2) values (?, ?)");
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaRol() + " ( id, nombre2) values (?, ?)");
         q.setParameters(id, nombre);
         
         return (long) q.executeUnique();

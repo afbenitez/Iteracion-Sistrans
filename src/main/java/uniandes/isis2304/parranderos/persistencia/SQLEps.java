@@ -38,7 +38,7 @@ public class SQLEps {
 
 	public long adicionarEps(PersistenceManager pm, long id, String nombre) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaEps() + "( id, nombre) values (?, ?)");
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaEps() + " ( id, nombre) values (?, ?)");
         q.setParameters(id, nombre);
         
         return (long) q.executeUnique();

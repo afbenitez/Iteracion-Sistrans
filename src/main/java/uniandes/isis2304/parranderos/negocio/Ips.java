@@ -22,7 +22,7 @@ public class Ips   {
 		
 	}
 
-	public Ips(long id, String nombre, String tipo_ips, String ubicacion, long id_medicos, long id_recepcionistas) {
+	public Ips(long id, String nombre, String tipo_ips, String ubicacion) {
 		super();
 		this.id = id;
 		this.nombre = nombre;

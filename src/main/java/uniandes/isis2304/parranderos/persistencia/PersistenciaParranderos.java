@@ -339,7 +339,7 @@ public class PersistenciaParranderos
         {
             tx.begin();
             long idTipoBebida = nextval ();
-            long tuplasInsertadas = sqlRol.adicionar(pm, idTipoBebida, nombre);
+            long tuplasInsertadas = sqlRol.(pm, idTipoBebida, nombre);
             tx.commit();
             
             log.trace ("Inserción de tipo de bebida: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");

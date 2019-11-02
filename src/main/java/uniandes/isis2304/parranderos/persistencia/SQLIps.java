@@ -38,7 +38,7 @@ public class SQLIps {
 
 	public long adicionarIps (PersistenceManager pm, long id, String  nombre, String tipoIps, String ubicacion) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaIps() + "( id, nombre_ips, tipo_ips, ubicacion) values (?, ?, ?, ?)");
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaIps() + " ( id, nombre_ips, tipo_ips, ubicacion) values (?, ?, ?, ?)");
         q.setParameters(id, nombre, tipoIps, ubicacion);
         
         return (long) q.executeUnique();

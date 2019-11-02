@@ -39,11 +39,11 @@ public class SQLAfiliado {
 
 	public long adicionarAfiliado (PersistenceManager pm, long id, String  fecha, String email, String nombre, long cedula, int rol, String tipoId) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaUsuario () + "( id, email, nombre, numero_id, rol, tipo_identificacion) values (?, ?, ?, ?, ?, ?)");
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaUsuario () + " ( id, email, nombre, numero_id, rol, tipo_identificacion) values (?, ?, ?, ?, ?, ?)");
         q.setParameters(id, email, nombre, cedula, rol, tipoId);
         q.executeUnique();
         
-        Query k = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaAfiliado() + "( id, fecha_nacimiento, numero_id) values (?, ?, ?)");
+        Query k = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaAfiliado() + " ( id, fecha_nacimiento, numero_id) values (?, ?, ?)");
         k.setParameters(id, fecha, cedula);
         return (long) k.executeUnique();
 	}

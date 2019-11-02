@@ -36,13 +36,13 @@ public class SQLMedico
 	}
 	
 
-	public long adicionarMedico (PersistenceManager pm, long id, String  fecha, String email, String nombre, long cedula, int rol, String tipoId, String especialidad, String numeroRegistro) 
+	public long adicionarMedico (PersistenceManager pm, long id, String email, String nombre, long cedula, int rol, String tipoId, String especialidad, String numeroRegistro) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaUsuario () + "( id, email, nombre, numero_id, rol, tipo_identificacion) values (?, ?, ?, ?, ?, ?)");
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaUsuario () + " ( id, email, nombre, numero_id, rol, tipo_identificacion) values (?, ?, ?, ?, ?, ?)");
         q.setParameters(id, email, nombre, cedula, rol, tipoId);
         q.executeUnique();
         
-        Query k = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaMedico() + "( id, especialidad, numero_registro, numero_id) values (?, ?)");
+        Query k = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaMedico() + " ( id, especialidad, numero_registro, numero_id) values (?, ?)");
         k.setParameters(id, especialidad, numeroRegistro, cedula);
         return (long) k.executeUnique();
 	}
