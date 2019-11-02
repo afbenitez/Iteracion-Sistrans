@@ -11,7 +11,7 @@ public class Rol {
 		this.nombre2 = "";
 	}
 	
-	public Rol(String nombre2, long id){
+	public Rol(long id, String nombre2){
 		this.nombre2 = nombre2;
 		this.id = id;
 	}

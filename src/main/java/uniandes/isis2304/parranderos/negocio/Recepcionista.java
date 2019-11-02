@@ -16,7 +16,7 @@ public class Recepcionista extends Usuario  {
 		this.id_ips = "";
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	/**
 	 * @param id
 	 * @param email
@@ -25,7 +25,7 @@ public class Recepcionista extends Usuario  {
 	 * @param rol
 	 * @param tipo_identificacion
 	 */
-	public Recepcionista(long id, String email, String nombre, String numero_id, int rol, String tipo_identificacion, String id_ips) {
+	public Recepcionista(long id, String email, String nombre, int numero_id, int rol, String tipo_identificacion, String id_ips) {
 		super(id, email, nombre, numero_id, rol, tipo_identificacion);
 		// TODO Auto-generated constructor stub
 		this.id_ips = id_ips;

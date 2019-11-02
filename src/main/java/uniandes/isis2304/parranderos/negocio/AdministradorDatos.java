@@ -8,7 +8,7 @@ public class AdministradorDatos extends Usuario  {
 		// TODO Auto-generated constructor stub
 	}
 
-	public AdministradorDatos(long id, String email, String nombre, String numero_id, int rol,
+	public AdministradorDatos(long id, String email, String nombre, int numero_id, int rol,
 			String tipo_identificacion) {
 		super(id, email, nombre, numero_id, rol, tipo_identificacion);
 

@@ -17,7 +17,7 @@ public class Eps   {
 		
 	}
 
-	public Eps(long id, String nombre, long id_gerente, long id_administrador, long id_ips, long id_afiliados) {
+	public Eps(long id, String nombre ) {
 		super();
 		this.id = id;
 		this.nombre = nombre;

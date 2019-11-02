@@ -19,7 +19,7 @@ public class ServicioTerapia {
 	 * @param tipo_terapia
 	 * @param numero_sesiones
 	 */
-	public ServicioTerapia(long id, String tipo_terapia, int numero_sesiones) {
+	public ServicioTerapia(long id, int numero_sesiones, String tipo_terapia) {
 		super();
 		this.id = id;
 		this.tipo_terapia = tipo_terapia;
