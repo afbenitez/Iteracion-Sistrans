@@ -41,7 +41,7 @@ class SQLUtil
 	/**
 	 * El manejador de persistencia general de la aplicación
 	 */
-	private PersistenciaParranderos pp;
+	private PersistenciaEps pp;
 
 	/* ****************************************************************
 	 * 			Métodos
@@ -51,7 +51,7 @@ class SQLUtil
 	 * Constructor
 	 * @param pp - El Manejador de persistencia de la aplicación
 	 */
-	public SQLUtil (PersistenciaParranderos pp)
+	public SQLUtil (PersistenciaEps pp)
 	{
 		this.pp = pp;
 	}
@@ -63,7 +63,7 @@ class SQLUtil
 	 */
 	public long nextval (PersistenceManager pm)
 	{
-        Query q = pm.newQuery(SQL, "SELECT "+ pp.darSeqParranderos () + ".nextval FROM DUAL");
+        Query q = pm.newQuery(SQL, "SELECT "+ pp.darSeqEpsAndes () + ".nextval FROM DUAL");
         q.setResultClass(Long.class);
         long resp = (long) q.executeUnique();
         return resp;
@@ -77,23 +77,39 @@ class SQLUtil
 	 */
 	public long [] limpiarParranderos (PersistenceManager pm)
 	{
-        Query qGustan = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaGustan ());          
-        Query qSirven = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaSirven ());
-        Query qVisitan = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaVisitan ());
-        Query qBebida = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaBebida ());
-        Query qTipoBebida = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaTipoBebida ());
-        Query qBebedor = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaBebedor ());
-        Query qBar = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaBar ());
-
-        long gustanEliminados = (long) qGustan.executeUnique ();
-        long sirvenEliminados = (long) qSirven.executeUnique ();
-        long visitanEliminadas = (long) qVisitan.executeUnique ();
-        long bebidasEliminadas = (long) qBebida.executeUnique ();
-        long tiposBebidaEliminados = (long) qTipoBebida.executeUnique ();
-        long bebedoresEliminados = (long) qBebedor.executeUnique ();
-        long baresEliminados = (long) qBar.executeUnique ();
-        return new long[] {gustanEliminados, sirvenEliminados, visitanEliminadas, bebidasEliminadas, 
-        		tiposBebidaEliminados, bebedoresEliminados, baresEliminados};
+        Query qAdministrador = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaAdministradorDatos());          
+        Query qAfliado = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaAfiliado());
+        Query qCita = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaCita());
+        Query qEps = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaEps());
+        Query qGerente = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaGerente());
+        Query qIps = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaIps());
+        Query qMedico = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaMedico());
+        Query qRecepcionista = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaRecepcionista());
+        Query qReceta = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaRecetaMedica());
+        Query qRol = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaRol());
+        Query qServicio = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaServicioDeSalud());
+        Query qTerapia = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaServicioTerapia());
+        Query qTrabajan = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaTrabajan());
+        Query qUsuarios = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaUsuario());
+        
+        
+        long administradoresEliminados = (long) qAdministrador.executeUnique ();
+        long afiliadosEliminados = (long) qAfliado.executeUnique ();
+        long citasEliminadas = (long) qCita.executeUnique ();
+        long epsEliminadas = (long) qEps.executeUnique ();
+        long gerenteEliminados = (long) qGerente.executeUnique ();
+        long ipsEliminados = (long) qIps.executeUnique ();
+        long medicosEliminados = (long) qMedico.executeUnique ();
+        long recepcionistaEliminadas = (long) qRecepcionista.executeUnique ();
+        long recetaEliminadas = (long) qReceta.executeUnique ();
+        long rolesEliminados = (long) qRol.executeUnique ();
+        long serviciosEliminados = (long) qServicio.executeUnique ();
+        long terapiasEliminados = (long) qTerapia.executeUnique ();
+        long trabajanEliminados = (long) qTrabajan.executeUnique ();
+        long usuariosEliminados = (long) qUsuarios.executeUnique ();
+        
+        return new long[] {administradoresEliminados, afiliadosEliminados, citasEliminadas, epsEliminadas,gerenteEliminados, ipsEliminados, medicosEliminados, 
+        		recepcionistaEliminadas, recetaEliminadas, rolesEliminados,serviciosEliminados, terapiasEliminados,trabajanEliminados, usuariosEliminados };
 	}
 
 }
