@@ -15,8 +15,10 @@
 
 package uniandes.isis2304.parranderos.negocio;
 
+import java.util.List;
+
 /**
- * Interfaz para los métodos get de BAR.
+ * Interfaz para los métodos get de EPS.
  * Sirve para proteger la información del negocio de posibles manipulaciones desde la interfaz 
  * 
  * @author af.benitez
@@ -36,7 +38,21 @@ public interface VOEps
 	 */
 	public String getNombre();
 	
-
+	/**
+	 * @return La lista de afiliados
+	 */
+	public List<Object []> getAfiliados();
+	
+	/**
+	 * @return El administrador de la eps
+	 */
+	public Administrador getAdministrador();
+	
+	/**
+	 * @return El gerente de la eps
+	 */
+	public Gerente getGerente();
+	
 	@Override
 	/**
 	 * @return Una cadena de caracteres con todos los atributos del bar

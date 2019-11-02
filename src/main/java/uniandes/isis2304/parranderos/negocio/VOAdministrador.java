@@ -15,38 +15,61 @@
 
 package uniandes.isis2304.parranderos.negocio;
 
+import java.util.List;
+
 /**
- * Interfaz para los métodos get de TIPOBEBIDA.
+ * Interfaz para los métodos get de ADMINITRADOR.
  * Sirve para proteger la información del negocio de posibles manipulaciones desde la interfaz 
- * 
- * @author Germán Bravo
  */
 public interface VOAdministrador 
 {
 	/* ****************************************************************
 	 * 			Métodos
 	 *****************************************************************/
+	
 	/**
-	 * @return El id del tipo de bebida
+	 * @return El id del Administrador
 	 */
 	public long getId();
 
 	/**
-	 * @return El nombre del tipo de bebida
+	 * @return La fecha de nacimiento del Administrador
 	 */
-	public String getNombre();
+	public long getFechaNacimiento();
+	
+	/**
+	 * @return El nombre del Administrador
+	 */
+	public String getEmail();
 
 	/**
-	 * @return Una cadena de caracteres con la información del tipo de bebida
+	 * @return El id del Administrador
 	 */
-	@Override
-	public String toString(); 
+	public String getIdNombre();
 
 	/**
-	 * Define la igualdad dos Tipos de bebida
-	 * @param tb - El tipo de bebida a comparar
-	 * @return true si tienen el mismo identificador y el mismo nombre
+	 * @return El numero de identificacion del Administrador
+	 */
+	public String getNumeroIdentificacion();
+	
+	/**
+	 * @return El rol de Administrador
+	 */
+	public String getRol();
+
+	/**
+	 * @return El  tipo de identificacion del Administrador
+	 */
+	public String getTipoIdentificacion();
+	
+	/**
+	 * @return la eps del Administrador
+	 */
+	public Eps getEps();
+
+	/** 
+	 * @return Una cadena con la información básica
 	 */
 	@Override
-	public boolean equals (Object tb); 
+	public String toString();
 }

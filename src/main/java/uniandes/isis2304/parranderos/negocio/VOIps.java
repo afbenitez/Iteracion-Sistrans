@@ -18,7 +18,7 @@ package uniandes.isis2304.parranderos.negocio;
 import java.util.List;
 
 /**
- * Interfaz para los métodos get de BEBEDOR.
+ * Interfaz para los métodos get de IPS.
  * Sirve para proteger la información del negocio de posibles manipulaciones desde la interfaz 
  */
 public interface VOIps 

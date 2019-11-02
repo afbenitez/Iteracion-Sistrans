@@ -18,10 +18,8 @@ package uniandes.isis2304.parranderos.negocio;
 import java.util.List;
 
 /**
- * Interfaz para los métodos get de BEBIDA.
+ * Interfaz para los métodos get de RECEPCIONISTA.
  * Sirve para proteger la información del negocio de posibles manipulaciones desde la interfaz 
- * 
- * @author Germán Bravo
  */
 public interface VORecepcionista 
 {
@@ -56,7 +54,7 @@ public interface VORecepcionista
 	public String getTipoIdentificacion();
 	
 	/**
-	 * @return El  tipo de identificacion del Recepcionista
+	 * @return la ips del Recepcionista
 	 */
 	public Ips getIps();
 	

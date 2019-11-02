@@ -15,31 +15,67 @@
 
 package uniandes.isis2304.parranderos.negocio;
 
+import java.util.List;
+
 /**
- * Interfaz para los métodos get de SIRVEN.
+ * Interfaz para los métodos get de AFILIADO.
  * Sirve para proteger la información del negocio de posibles manipulaciones desde la interfaz 
- * 
- * @author Germán Bravo
  */
 public interface VOAfiliado 
 {
 	/* ****************************************************************
 	 * 			Métodos
 	 *****************************************************************/
+	
 	/**
-	 * @return El idBar
+	 * @return El id del Afiliado
 	 */
-	public long getIdBar();
+	public long getId();
 
 	/**
-	 * @return El idBebida
+	 * @return La fecha de nacimiento del afiliado
 	 */
-	public long getIdBebida();
+	public long getFechaNacimiento();
+	
+	/**
+	 * @return El nombre del Afiliado
+	 */
+	public String getEmail();
 
 	/**
-	 * @return El horario en que el bar sirve la bebida
+	 * @return El id del Afiliado
 	 */
-	public String getHorario();
+	public String getIdNombre();
+
+	/**
+	 * @return El numero de identificacion del Afiliado
+	 */
+	public String getNumeroIdentificacion();
+	
+	/**
+	 * @return El rol de Afiliado
+	 */
+	public String getRol();
+
+	/**
+	 * @return El  tipo de identificacion del Afiliado
+	 */
+	public String getTipoIdentificacion();
+	
+	/**
+	 * @return la eps del Afiliado
+	 */
+	public Eps getEps();
+	
+	/**
+	 * @return La lista de citas del Afiliado
+	 */
+	public List<Object []> getCitas();
+	
+	/**
+	 * @return La lista de recetas del Afiliado
+	 */
+	public List<Object []> getRecetas();
 
 	/** 
 	 * @return Una cadena con la información básica

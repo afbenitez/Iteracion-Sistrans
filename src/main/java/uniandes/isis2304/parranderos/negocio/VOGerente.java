@@ -18,40 +18,58 @@ package uniandes.isis2304.parranderos.negocio;
 import java.sql.Timestamp;
 
 /**
- * Interfaz para los métodos get de VISITAN.
+ * Interfaz para los métodos get de GERENTE.
  * Sirve para proteger la información del negocio de posibles manipulaciones desde la interfaz 
- * 
- * @author Germán Bravo
  */
 public interface VOGerente 
 {
 	/* ****************************************************************
 	 * 			Métodos
 	 *****************************************************************/
+	
 	/**
-	 * @return El idBebedor
+	 * @return El id del Gerente
 	 */
-	public long getIdBebedor();
+	public long getId();
 
 	/**
-	 * @return El idBar
+	 * @return La fecha de nacimiento del Gerente
 	 */
-	public long getIdBar();
+	public long getFechaNacimiento();
+	
+	/**
+	 * @return El nombre del Gerente
+	 */
+	public String getEmail();
 
 	/**
-	 * @return La fechaVisita
+	 * @return El id del Gerente
 	 */
-	public Timestamp getFechaVisita();
+	public String getIdNombre();
 
 	/**
-	 * @return El horario
+	 * @return El numero de identificacion del Gerente
 	 */
-	public String getHorario();
+	public String getNumeroIdentificacion();
+	
+	/**
+	 * @return El rol de Gerente
+	 */
+	public String getRol();
+
+	/**
+	 * @return El  tipo de identificacion del Gerente
+	 */
+	public String getTipoIdentificacion();
+	
+	/**
+	 * @return la eps del Gerente
+	 */
+	public Eps getEps();
 
 	/** 
 	 * @return Una cadena con la información básica
 	 */
 	@Override
 	public String toString();
-
 }

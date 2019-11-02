@@ -2,7 +2,7 @@ package uniandes.isis2304.parranderos.negocio;
 
 
 /**
- * Interfaz para los métodos get de RECETAMEDICA.
+ * Interfaz para los métodos get de SERVICIODESALUD.
  * Sirve para proteger la información del negocio de posibles manipulaciones desde la interfaz 
  */
 public interface VOServicioDeSalud 

@@ -18,10 +18,8 @@ package uniandes.isis2304.parranderos.negocio;
 import java.util.List;
 
 /**
- * Interfaz para los métodos get de GUSTAN.
+ * Interfaz para los métodos get de MEDICO.
  * Sirve para proteger la información del negocio de posibles manipulaciones desde la interfaz 
- * 
- * @author Germán Bravo
  */
 public interface VOMedico 
 {
@@ -85,7 +83,7 @@ public interface VOMedico
 	public List<Object []> getRecetas();
 	
 	/**
-	 * @return Una cadena con la información básica del Recepcionista
+	 * @return Una cadena con la información básica del Medico
 	 */
 	@Override
 	public String toString();
