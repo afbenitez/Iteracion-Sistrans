@@ -1,13 +1,7 @@
 package uniandes.isis2304.parranderos.negocio;
 
-public class Ips {
+public class Ips implements VOIps {
 	
-	public enum TipoIPS {
-		HOSPITAL,
-		CENTRO_DIAGNOSTICO,
-		LABORATORIO,
-		CENTRO_MEDICO
-	}
 	
 	private long id;
 	

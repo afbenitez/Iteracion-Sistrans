@@ -1,5 +1,6 @@
 package uniandes.isis2304.parranderos.negocio;
 
+import java.util.List;
 
 /**
  * Interfaz para los métodos get de RECETAMEDICA.
@@ -21,17 +22,17 @@ public interface VORecetaMedica
 	/**
 	 * @return El afiliado de la receta
 	 */
-	public Afiliado getAfiliado();
+	public Afiliado getUsuarioAsignado();
 	
 	/**
 	 * @return El medico de la receta
 	 */
-	public Medico getMedico();
+	public Medico getMedicoRemitente();
 	
 	/**
 	 * @return La orden de la receta
 	 */
-	public OrdenMedica getOrdenMedica();
+	public List<Object[]> getOrdenes();
 
 	/**
 	 * @return Una cadena con la información básica

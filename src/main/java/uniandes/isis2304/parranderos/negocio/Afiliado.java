@@ -3,7 +3,7 @@ package uniandes.isis2304.parranderos.negocio;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Afiliado {
+public class Afiliado implements VOAfiliado {
 
 	private long id;
 

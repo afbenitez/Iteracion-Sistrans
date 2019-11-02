@@ -39,12 +39,12 @@ public interface VOIps
 	/**
 	 * @return El tipo de la ips
 	 */
-	public String getTipoIps();
+	public String getTipoIPS();
 
 	/**
 	 * @return La ubicacion de la ips
 	 */
-	public String getubicacion();
+	public String getUbicacion();
 
 	
 

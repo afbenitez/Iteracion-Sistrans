@@ -31,11 +31,6 @@ public interface VOAdministrador
 	 * @return El id del Administrador
 	 */
 	public long getId();
-
-	/**
-	 * @return La fecha de nacimiento del Administrador
-	 */
-	public long getFechaNacimiento();
 	
 	/**
 	 * @return El nombre del Administrador
@@ -45,7 +40,7 @@ public interface VOAdministrador
 	/**
 	 * @return El id del Administrador
 	 */
-	public String getIdNombre();
+	public String getNombre();
 
 	/**
 	 * @return El numero de identificacion del Administrador

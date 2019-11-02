@@ -35,7 +35,7 @@ public interface VOAfiliado
 	/**
 	 * @return La fecha de nacimiento del afiliado
 	 */
-	public long getFechaNacimiento();
+	public String getFechaNacimiento();
 	
 	/**
 	 * @return El nombre del Afiliado
@@ -45,7 +45,7 @@ public interface VOAfiliado
 	/**
 	 * @return El id del Afiliado
 	 */
-	public String getIdNombre();
+	public String getNombre();
 
 	/**
 	 * @return El numero de identificacion del Afiliado

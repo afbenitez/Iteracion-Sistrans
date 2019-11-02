@@ -31,10 +31,10 @@ public interface VOCita
 	/**
 	 * @return el medico de la cita
 	 */
-	public Medico getMedico();
+	public Medico getMedicoAsignado();
 	
 	/**
 	 * @return el afiliado de la cita
 	 */
-	public Afiliado getAfiliado();
+	public Afiliado getUsuario();
 }

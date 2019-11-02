@@ -31,11 +31,6 @@ public interface VOGerente
 	 * @return El id del Gerente
 	 */
 	public long getId();
-
-	/**
-	 * @return La fecha de nacimiento del Gerente
-	 */
-	public long getFechaNacimiento();
 	
 	/**
 	 * @return El nombre del Gerente
@@ -45,7 +40,7 @@ public interface VOGerente
 	/**
 	 * @return El id del Gerente
 	 */
-	public String getIdNombre();
+	public String getNombre();
 
 	/**
 	 * @return El numero de identificacion del Gerente

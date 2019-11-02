@@ -43,10 +43,12 @@ public interface VOEps
 	 */
 	public List<Object []> getAfiliados();
 	
+	public List<Object []> getIps();
+	
 	/**
 	 * @return El administrador de la eps
 	 */
-	public Administrador getAdministrador();
+	public AdministradorDatos getAdministrador();
 	
 	/**
 	 * @return El gerente de la eps

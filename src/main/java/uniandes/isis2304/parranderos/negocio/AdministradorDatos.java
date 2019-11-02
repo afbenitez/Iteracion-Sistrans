@@ -1,6 +1,6 @@
 package uniandes.isis2304.parranderos.negocio;
 
-public class AdministradorDatos {
+public class AdministradorDatos implements VOAdministrador {
 
 	private long id;
 

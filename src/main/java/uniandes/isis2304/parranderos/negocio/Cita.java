@@ -3,7 +3,7 @@ package uniandes.isis2304.parranderos.negocio;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Cita {
+public class Cita implements VOCita {
 	
 	private long id;
 	

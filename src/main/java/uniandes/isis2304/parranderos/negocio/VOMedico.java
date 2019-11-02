@@ -50,7 +50,7 @@ public interface VOMedico
 	/**
 	 * @return El id del Recepcionista
 	 */
-	public String getIdNombre();
+	public String getNombre();
 
 	/**
 	 * @return El numero de identificacion del Medico
@@ -70,7 +70,7 @@ public interface VOMedico
 	/**
 	 * @return La lista de ips del Medico
 	 */
-	public List<Object []> getsIps();
+	public List<Object []> getIps();
 	
 	/**
 	 * @return La lista de citas del Medico
@@ -80,7 +80,7 @@ public interface VOMedico
 	/**
 	 * @return La lista de recetas del Medico
 	 */
-	public List<Object []> getRecetas();
+	public List<Object []> getRecetasMedicas();
 	
 	/**
 	 * @return Una cadena con la información básica del Medico

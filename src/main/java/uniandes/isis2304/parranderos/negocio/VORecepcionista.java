@@ -36,7 +36,7 @@ public interface VORecepcionista
 	/**
 	 * @return El id del Recepcionista
 	 */
-	public String getIdNombre();
+	public String getNombre();
 
 	/**
 	 * @return El numero de identificacion del Recepcionista

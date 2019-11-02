@@ -17,7 +17,7 @@ public interface VOOrdenMedica
 	/**
 	 * @return La fecha de la orden
 	 */
-	public String getfecha();
+	public String getFecha();
 	
 	/**
 	 * @return La lista de las recetas de la orden

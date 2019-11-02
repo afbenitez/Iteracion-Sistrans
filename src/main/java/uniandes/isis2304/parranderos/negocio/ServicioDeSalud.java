@@ -1,6 +1,6 @@
 package uniandes.isis2304.parranderos.negocio;
 
-public class ServicioDeSalud {
+public class ServicioDeSalud implements VOServicioDeSalud {
 	
 	private long id;
 	
