@@ -2,81 +2,94 @@
 	"title": "Aplicación transaccional de Parranderos Uniandes",
 	"frameH": 600,
 	"frameW": 800,
-	"bannerPath": "./src/main/resources/config/logo.png",
+	"bannerPath": "./src/main/resources/config/LOGO.png",
 	"menuBar":
 	[
-		{ "menuTitle": "TipoBebida",
+		{ "menuTitle": "Registrar usuario",
 		  "options":
 			[
 				{
-					"label": "Adicionar",
-					"event": "adicionarTipoBebida"
+					"label": "Administrador",
+					"event": "registarAdministrador"
 				},
 				{
-					"label": "Listar",
-					"event": "listarTipoBebida"
+					"label": "Afiliado",
+					"event": "registrarAfiliado"
 				},
 				{
-					"label": "Borrar por Id",
-					"event": "eliminarTipoBebidaPorId"
+					"label": "Gerente",
+					"event": "registrarGerente"
 				},
 				{
-					"label": "Buscar por Nombre",
-					"event": "buscarTipoBebidaPorNombre"
+					"label": "Recepcionista",
+					"event": "registrarRecepcionista"
+				},
+				{
+					"label": "Ips",
+					"event": "registarIps"
+				},
+				{
+					"label": "Servicio de salud",
+					"event": "registrarServicioSalud"
 				}
 			]
 		},
-		{ "menuTitle": "Mantenimiento",
+		{ "menuTitle": "Consultar",
 		  "options":
 			[
 				{
-					"label": "Mostrar log Parranderos",
-					"event": "mostrarLogParranderos"
+					"label": "Cantidad de servicios mas prestados",
+					"event": "serviciosMasPrestados"
 				},
 				{
-					"label": "Mostrar log datanucleus",
-					"event": "mostrarLogDatanuecleus"
+					"label": "Servivios mas solicitados",
+					"event": "serviciosMasSolicitados"
 				},
 				{
-					"label": "Limpiar log de parranderos",
-					"event": "limpiarLogParranderos"
+					"label": "Mostrar indice de uso",
+					"event": "indiceDeUso"
 				},
 				{
-					"label": "Limpiar log de datanucleus",
-					"event": "limpiarLogDatanucleus"
+					"label": "Servicios en una fecha",
+					"event": "serviciosEnUnaFecha"
 				},
 				{
-					"label": "Limpiar Base de Datos",
-					"event": "limpiarBD"
+					"label": "Servicios de un usuario usuario",
+					"event": "servicioDeUsuario"
 				}
 			]
 		},		
-		{ "menuTitle": "Documentación",
+		{ "menuTitle": "Registrar Servicio",
 		  "options":
 			[
 				{
-					"label": "Presentación general",
+					"label": "Registrar orden",
 					"event": "mostrarPresentacionGeneral"
+				},
+				{
+					"label": "Resgistrar cita",
+					"event": "mostrarModeloConceptual"
+				},
+				{
+					"label": "Resgistrar prestacion",
+					"event": "mostrarEsquemaBD"
+				}
+			]
+		},
+		{ "menuTitle": "Documentacion",
+		  "options":
+			[
+				{
+					"label": "Modelo relacional",
+					"event": "mostrarModeloRelacional"
 				},
 				{
 					"label": "Modelo conceptual",
 					"event": "mostrarModeloConceptual"
 				},
 				{
-					"label": "Esquema de la BD",
-					"event": "mostrarEsquemaBD"
-				},
-				{
-					"label": "Script creación de la BD",
-					"event": "mostrarScriptBD"
-				},
-				{
-					"label": "Arquitectura de referencia",
-					"event": "mostrarArqRef"
-				},
-				{
-					"label": "Javadoc Parranderos",
-					"event": "mostrarJavadoc"
+					"label": "Documento iteracion",
+					"event": "mostrarDocumentoIteracion"
 				}
 			]
 		},		

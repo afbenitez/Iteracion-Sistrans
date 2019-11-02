@@ -15,7 +15,7 @@
 
 package uniandes.isis2304.parranderos.interfazApp;
 
-import java.awt.BorderLayout;
+import java.awt.BorderLayout; 
 import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
@@ -46,7 +46,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
-import uniandes.isis2304.parranderos.negocio.Parranderos;
+import uniandes.isis2304.parranderos.negocio.EpsAndes;
 import uniandes.isis2304.parranderos.negocio.VOAdministrador;
 
 /**
@@ -55,7 +55,7 @@ import uniandes.isis2304.parranderos.negocio.VOAdministrador;
  */
 @SuppressWarnings("serial")
 
-public class InterfazParranderosApp extends JFrame implements ActionListener
+public class InterfazEpsAndesApp extends JFrame implements ActionListener
 {
 	/* ****************************************************************
 	 * 			Constantes
@@ -63,7 +63,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 	/**
 	 * Logger para escribir la traza de la ejecución
 	 */
-	private static Logger log = Logger.getLogger(InterfazParranderosApp.class.getName());
+	private static Logger log = Logger.getLogger(InterfazEpsAndesApp.class.getName());
 	
 	/**
 	 * Ruta al archivo de configuración de la interfaz
@@ -86,7 +86,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     /**
      * Asociación a la clase principal del negocio.
      */
-    private Parranderos parranderos;
+    private EpsAndes eps;
     
 	/* ****************************************************************
 	 * 			Atributos de interfaz
@@ -113,7 +113,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
      * Construye la ventana principal de la aplicación. <br>
      * <b>post:</b> Todos los componentes de la interfaz fueron inicializados.
      */
-    public InterfazParranderosApp( )
+    public InterfazEpsAndesApp( )
     {
         // Carga la configuración de la interfaz desde un archivo JSON
         guiConfig = openConfig ("Interfaz", CONFIG_INTERFAZ);
@@ -126,7 +126,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
         }
         
         tableConfig = openConfig ("Tablas BD", CONFIG_TABLAS);
-        parranderos = new Parranderos (tableConfig);
+        eps = new EpsAndes (tableConfig);
         
     	String path = guiConfig.get("bannerPath").getAsString();
         panelDatos = new PanelDatos ( );
@@ -250,7 +250,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     		String nombreTipo = JOptionPane.showInputDialog (this, "Nombre del tipo de bedida?", "Adicionar tipo de bebida", JOptionPane.QUESTION_MESSAGE);
     		if (nombreTipo != null)
     		{
-        		VOAdministrador tb = parranderos.adicionarTipoBebida (nombreTipo);
+        		VOAdministrador tb = eps.adicionarTipoBebida (nombreTipo);
         		if (tb == null)
         		{
         			throw new Exception ("No se pudo crear un tipo de bebida con nombre: " + nombreTipo);
@@ -280,7 +280,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     {
     	try 
     	{
-			List <VOAdministrador> lista = parranderos.darVOTiposBebida();
+			List <VOAdministrador> lista = eps.darVOTiposBebida();
 
 			String resultado = "En listarTipoBebida";
 			resultado +=  "\n" + listarTiposBebida (lista);
@@ -307,7 +307,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     		if (idTipoStr != null)
     		{
     			long idTipo = Long.valueOf (idTipoStr);
-    			long tbEliminados = parranderos.eliminarTipoBebidaPorId (idTipo);
+    			long tbEliminados = eps.eliminarTipoBebidaPorId (idTipo);
 
     			String resultado = "En eliminar TipoBebida\n\n";
     			resultado += tbEliminados + " Tipos de bebida eliminados\n";
@@ -337,7 +337,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     		String nombreTb = JOptionPane.showInputDialog (this, "Nombre del tipo de bedida?", "Buscar tipo de bebida por nombre", JOptionPane.QUESTION_MESSAGE);
     		if (nombreTb != null)
     		{
-    			VOAdministrador tipoBebida = parranderos.darTipoBebidaPorNombre (nombreTb);
+    			VOAdministrador tipoBebida = eps.darTipoBebidaPorNombre (nombreTb);
     			String resultado = "En buscar Tipo Bebida por nombre\n\n";
     			if (tipoBebida != null)
     			{
@@ -426,7 +426,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 		try 
 		{
     		// Ejecución de la demo y recolección de los resultados
-			long eliminados [] = parranderos.limpiarParranderos();
+			long eliminados [] = eps.limpiarParranderos();
 			
 			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
 			String resultado = "\n\n************ Limpiando la base de datos ************ \n";
@@ -449,53 +449,30 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 		}
 	}
 	
+
 	/**
-	 * Muestra la presentación general del proyecto
-	 */
-	public void mostrarPresentacionGeneral ()
-	{
-		mostrarArchivo ("data/00-ST-ParranderosJDO.pdf");
-	}
-	
-	/**
-	 * Muestra el modelo conceptual de Parranderos
+	 * Muestra el modelo conceptual de EpsAndes
 	 */
 	public void mostrarModeloConceptual ()
 	{
-		mostrarArchivo ("data/Modelo Conceptual Parranderos.pdf");
+		mostrarArchivo ("data/Modelo Conceptual EpsAndes.pdf");
 	}
 	
 	/**
-	 * Muestra el esquema de la base de datos de Parranderos
+	 * Muestra el modelo relacional de EpsAndes
 	 */
-	public void mostrarEsquemaBD ()
+	public void mostrarModeloRelacional ()
 	{
-		mostrarArchivo ("data/Esquema BD Parranderos.pdf");
+		mostrarArchivo ("data/Modelo Relacional EpsAndes.pdf");
+	}
+	/**
+	 * Muestra el documento de la iteracion de EpsAndes
+	 */
+	public void mostrarDocumentoIteracion ()
+	{
+		mostrarArchivo ("data/Documento iteracion.pdf");
 	}
 	
-	/**
-	 * Muestra el script de creación de la base de datos
-	 */
-	public void mostrarScriptBD ()
-	{
-		mostrarArchivo ("data/EsquemaParranderos.sql");
-	}
-	
-	/**
-	 * Muestra la arquitectura de referencia para Parranderos
-	 */
-	public void mostrarArqRef ()
-	{
-		mostrarArchivo ("data/ArquitecturaReferencia.pdf");
-	}
-	
-	/**
-	 * Muestra la documentación Javadoc del proyectp
-	 */
-	public void mostrarJavadoc ()
-	{
-		mostrarArchivo ("doc/index.html");
-	}
 	
 	/**
      * Muestra la información acerca del desarrollo de esta apicación
@@ -508,12 +485,12 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 		resultado += " * Licenciado	bajo	el	esquema	Academic Free License versión 2.1\n";
 		resultado += " * \n";		
 		resultado += " * Curso: isis2304 - Sistemas Transaccionales\n";
-		resultado += " * Proyecto: Parranderos Uniandes\n";
+		resultado += " * Proyecto: EpsAndes Uniandes\n";
 		resultado += " * @version 1.0\n";
-		resultado += " * @author Germán Bravo\n";
-		resultado += " * Julio de 2018\n";
+		resultado += " * @author Andres Benitez y Miguel Ramos\n";
+		resultado += " * Noviembre 2019\n";
 		resultado += " * \n";
-		resultado += " * Revisado por: Claudia Jiménez, Christian Ariza\n";
+		resultado += " * Revisado por: \n";
 		resultado += "\n ************************************\n\n";
 
 		panelDatos.actualizarInterfaz(resultado);		
@@ -621,7 +598,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 		String evento = pEvento.getActionCommand( );		
         try 
         {
-			Method req = InterfazParranderosApp.class.getMethod ( evento );			
+			Method req = InterfazEpsAndesApp.class.getMethod ( evento );			
 			req.invoke ( this );
 		} 
         catch (Exception e) 
@@ -644,7 +621,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
         	
             // Unifica la interfaz para Mac y para Windows.
             UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName( ) );
-            InterfazParranderosApp interfaz = new InterfazParranderosApp( );
+            InterfazEpsAndesApp interfaz = new InterfazEpsAndesApp( );
             interfaz.setVisible( true );
         }
         catch( Exception e )
