@@ -42,7 +42,7 @@ public class SQLCita {
 	public long adicionarCita (PersistenceManager pm, long id, long idReceta, long idUsuario, long idRecepcionista, String idServicio, String estado, String fecha, int horario) 
 	{
         Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaCita() + " ( id, id_receta, id_usuario, id_recepcionista, id_servicio, estado_cita, fecha, horario) values (?, ?, ?, ?, ?, ?, ?, ?)");
-        q.setParameters(id, idReceta, idUsuario, idRecepcionista, idServicio, estado, fecha);
+        q.setParameters(id, idReceta, idUsuario, idRecepcionista, idServicio, estado, fecha, horario);
         
         return (long) q.executeUnique();
 	}
@@ -55,11 +55,11 @@ public class SQLCita {
         return (long) q.executeUnique();
 	}
 	
-	public Cita darCitaPorId (PersistenceManager pm, long cedula) 
+	public Cita darCitaPorId (PersistenceManager pm, long id) 
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaCita() + " WHERE numero_id = ?");
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaCita() + " WHERE id = ?");
 		q.setResultClass(Cita.class);
-		q.setParameters(cedula);
+		q.setParameters(id);
 		return (Cita) q.executeUnique();
 	}
 }

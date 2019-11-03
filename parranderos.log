@@ -269,3 +269,41 @@ ORA-00947: no hay suficientes valores
 04:05:31,171 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
 04:05:31,171 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
 04:05:31,182 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:35:52,030 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+15:35:52,031 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+15:35:52,041 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:37:07,155 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+15:37:07,156 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+15:37:07,166 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:42:08,098 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando servicio a ips: Blogtag
+15:43:55,332 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando servicio a ips: Blogtag
+15:45:34,772 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando servicio a ips: Youfeed
+15:45:35,206 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando servicio a ips: Youfeed
+15:46:38,621 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando servicio a ips: Youfeed
+15:46:39,079 (AWT-EventQueue-0) ERROR [uniandes.isis2304.epsAndes.persistencia.PersistenciaEps] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO PRESTAN ( dia, horario, id_servicio, id_ips, capacidad, capacidad_max, estado) values (?, ?, ?, ?, ?, ?, ?)".
+ORA-02291: restricción de integridad (ISIS2304C161920.FK_SERVICIO_PRESTAN) violada - clave principal no encontrada
+
+15:46:39,093 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando servicio a ips: Youfeed
+15:48:09,679 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando orden medica: Examen Sangre
+15:48:09,734 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando orden medica: uniandes.isis2304.epsAndes.negocio.RecetaMedica@5de8008a
+15:49:31,994 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando cita: Examen Sangre
+15:49:31,997 (AWT-EventQueue-0) ERROR [uniandes.isis2304.epsAndes.persistencia.PersistenciaEps] - Exception : SQL query tiene parametro "8" pero no existe en el query : INSERT INTO CITA ( id, id_receta, id_usuario, id_recepcionista, id_servicio, estado_cita, fecha, horario) values (?, ?, ?, ?, ?, ?, ?, ?)
+
+15:49:31,998 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando cita: null
+15:52:08,454 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+15:52:08,455 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+15:52:08,466 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:56:03,798 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando cita: Examen Sangre
+15:56:03,826 (AWT-EventQueue-0) ERROR [uniandes.isis2304.epsAndes.persistencia.PersistenciaEps] - Exception : SQL query tiene parametro "8" pero no existe en el query : INSERT INTO CITA ( id, id_receta, id_usuario, id_recepcionista, id_servicio, estado_cita, fecha, horario) values (?, ?, ?, ?, ?, ?, ?, ?)
+
+15:56:03,828 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando cita: null
+15:57:20,312 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+15:57:20,313 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+15:57:20,324 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:58:30,945 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando cita: Examen Sangre
+15:58:31,892 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando cita: uniandes.isis2304.epsAndes.negocio.Cita@7d663c99
+16:00:28,958 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+16:00:28,959 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+16:00:28,969 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+16:01:12,081 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Registrando prestacion de servicio: Examen Sangre
+16:01:14,669 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Registrando prestacion de servicio: Examen Sangre
