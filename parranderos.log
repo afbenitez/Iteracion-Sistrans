@@ -4,3 +4,233 @@
 17:49:19,884 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
 17:49:19,884 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
 17:49:19,896 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+21:15:51,228 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+21:15:51,229 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+21:15:51,238 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - NO se encontró un archivo de configuración válido
+21:17:36,464 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+21:17:36,464 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+21:17:36,475 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - NO se encontró un archivo de configuración válido
+21:19:38,388 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+21:19:38,388 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+21:19:38,398 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - NO se encontró un archivo de configuración válido
+21:22:03,219 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+21:22:03,220 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+21:22:03,229 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - NO se encontró un archivo de configuración válido
+21:23:25,732 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+21:23:25,733 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+21:23:25,742 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - NO se encontró un archivo de configuración válido
+21:27:28,591 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+21:27:28,591 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+21:27:28,605 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - NO se encontró un archivo de configuración válido
+21:30:33,389 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+21:30:33,390 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+21:30:33,399 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - NO se encontró un archivo de configuración válido
+21:30:51,037 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+21:30:51,038 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+21:30:51,049 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - NO se encontró un archivo de configuración válido
+21:32:33,092 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+21:32:33,092 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+21:32:33,102 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - NO se encontró un archivo de configuración válido
+21:35:25,703 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+21:35:25,704 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+21:35:25,713 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - NO se encontró un archivo de configuración válido
+21:39:18,033 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+21:39:18,033 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+21:39:18,042 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - NO se encontró un archivo de configuración válido
+21:39:42,717 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+21:39:42,717 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+21:39:42,726 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - NO se encontró un archivo de configuración válido
+21:42:49,343 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+21:42:49,343 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+21:42:49,355 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+21:42:52,573 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+21:42:52,573 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+21:42:52,583 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+21:46:15,244 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+21:46:15,245 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+21:46:15,254 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+21:48:20,433 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+21:48:20,433 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+21:48:20,442 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+21:49:35,359 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+21:49:35,360 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+21:49:35,369 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+21:56:28,883 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+21:56:28,884 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+21:56:28,893 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+21:58:42,394 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+21:58:42,395 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+21:58:42,404 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+21:59:34,566 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+21:59:34,567 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+21:59:34,575 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+22:00:28,222 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+22:00:28,223 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+22:00:28,235 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+22:01:03,856 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+22:01:03,857 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+22:01:03,868 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+22:03:59,350 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+22:03:59,351 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+22:03:59,360 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+22:12:06,418 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+22:12:06,419 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+22:12:06,428 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+22:13:11,773 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando usuario: fdsfds
+22:13:12,604 (AWT-EventQueue-0) ERROR [uniandes.isis2304.epsAndes.persistencia.PersistenciaEps] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO TRABAJAN ( id, email, nombre, numero_id, rol, tipo_identificacion) values (?, ?, ?, ?, ?, ?)".
+ORA-00904: "TIPO_IDENTIFICACION": identificador no válido
+
+22:13:12,621 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando usuario: null
+22:13:26,964 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+22:13:26,965 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+22:13:26,974 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+22:13:54,181 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando usuario: gfdgyt
+22:13:54,533 (AWT-EventQueue-0) ERROR [uniandes.isis2304.epsAndes.persistencia.PersistenciaEps] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO TRABAJAN ( id, email, nombre, numero_id, rol, tipo_identificacion) values (?, ?, ?, ?, ?, ?)".
+ORA-00904: "TIPO_IDENTIFICACION": identificador no válido
+
+22:13:54,880 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando usuario: null
+22:19:02,566 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+22:19:02,567 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+22:19:02,575 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+22:19:31,023 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando usuario: fadsffkl
+22:19:32,133 (AWT-EventQueue-0) ERROR [uniandes.isis2304.epsAndes.persistencia.PersistenciaEps] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO TRABAJAN ( id, email, nombre, numero_id, rol, tipo_identificacion) values (?, ?, ?, ?, ?, ?)".
+ORA-00904: "TIPO_IDENTIFICACION": identificador no válido
+
+22:19:32,222 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando usuario: null
+22:19:47,545 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando usuario: axsacs
+22:19:47,625 (AWT-EventQueue-0) ERROR [uniandes.isis2304.epsAndes.persistencia.PersistenciaEps] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO TRABAJAN ( id, email, nombre, numero_id, rol, tipo_identificacion) values (?, ?, ?, ?, ?, ?)".
+ORA-00904: "TIPO_IDENTIFICACION": identificador no válido
+
+22:19:47,782 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando usuario: null
+22:21:02,836 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando usuario: ksajcnkl
+22:21:02,889 (AWT-EventQueue-0) ERROR [uniandes.isis2304.epsAndes.persistencia.PersistenciaEps] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO TRABAJAN ( id, email, nombre, numero_id, rol, tipo_identificacion) values (?, ?, ?, ?, ?, ?)".
+ORA-00904: "TIPO_IDENTIFICACION": identificador no válido
+
+22:21:02,919 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando usuario: null
+22:27:23,831 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+22:27:23,833 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+22:27:23,843 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+22:27:51,682 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando usuario: ackladsc
+22:28:01,208 (AWT-EventQueue-0) ERROR [uniandes.isis2304.epsAndes.persistencia.PersistenciaEps] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO TRABAJAN ( id, email, nombre, numero_id, rol, tipo_identificacion) values (?, ?, ?, ?, ?, ?)".
+ORA-00904: "TIPO_IDENTIFICACION": identificador no válido
+
+22:28:01,455 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando usuario: null
+22:28:17,005 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando usuario: pjremv
+22:28:17,533 (AWT-EventQueue-0) ERROR [uniandes.isis2304.epsAndes.persistencia.PersistenciaEps] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO TRABAJAN ( id, email, nombre, numero_id, rol, tipo_identificacion) values (?, ?, ?, ?, ?, ?)".
+ORA-00904: "TIPO_IDENTIFICACION": identificador no válido
+
+22:28:18,197 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando usuario: null
+22:32:31,092 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+22:32:31,094 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+22:32:31,103 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+22:32:57,863 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando usuario: muimjn
+22:33:01,338 (AWT-EventQueue-0) ERROR [uniandes.isis2304.epsAndes.persistencia.PersistenciaEps] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO TRABAJAN ( id, email, nombre, numero_id, rol, tipo_identificacion) values (?, ?, ?, ?, ?, ?)".
+ORA-00904: "TIPO_IDENTIFICACION": identificador no válido
+
+22:33:01,433 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando usuario: null
+22:35:54,741 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+22:35:54,742 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+22:35:54,757 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+22:36:30,779 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando Administrador: vfdv
+22:36:36,953 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando Administrador: uniandes.isis2304.epsAndes.negocio.Usuario@ade2da
+22:54:53,424 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+22:54:53,426 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+22:54:53,438 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+22:55:54,312 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+22:55:54,314 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+22:55:54,326 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+22:59:53,927 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+22:59:53,928 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+22:59:53,940 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+23:03:07,865 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+23:03:07,866 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+23:03:07,876 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+23:03:23,833 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando rol: Enfermero
+23:03:24,298 (AWT-EventQueue-0) ERROR [uniandes.isis2304.epsAndes.persistencia.PersistenciaEps] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO ROL ( id, nombre2) values (?, ?)".
+ORA-02290: restricción de control (ISIS2304C161920.CK_ROL) violada
+
+23:03:24,334 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando rol: null
+23:09:51,666 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+23:09:51,667 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+23:09:51,678 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+23:11:30,669 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+23:11:30,671 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+23:11:30,681 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+23:12:38,185 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando rol: Enfermero
+23:12:39,160 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando rol: uniandes.isis2304.epsAndes.negocio.Rol@1a0f640
+23:24:32,837 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+23:24:32,838 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+23:24:32,848 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+23:24:52,694 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando afiliado: dvas
+23:24:53,153 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando afiliado: uniandes.isis2304.epsAndes.negocio.Afiliado@af4a75
+23:44:38,994 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+23:44:38,996 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+23:44:39,008 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+23:45:28,849 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando Gerente: gfds
+23:45:29,716 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando Gerente: uniandes.isis2304.epsAndes.negocio.Usuario@1a7245b
+23:59:47,897 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+23:59:47,899 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+23:59:47,911 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:01:06,236 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+00:01:06,238 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+00:01:06,252 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:01:42,493 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando recepcionista: nnhnh
+00:01:49,658 (AWT-EventQueue-0) ERROR [uniandes.isis2304.epsAndes.persistencia.PersistenciaEps] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO RECEPCIONISTA ( id, id_ips, numero_id) values (?, ?, ?)".
+ORA-02291: restricción de integridad (ISIS2304C161920.FK_IPS_RECEPCIONISTA) violada - clave principal no encontrada
+
+00:01:49,756 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando recepcionista: null
+00:05:53,005 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+00:05:53,006 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+00:05:53,018 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:06:10,159 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando recepcionista: gdf
+00:06:10,583 (AWT-EventQueue-0) ERROR [uniandes.isis2304.epsAndes.persistencia.PersistenciaEps] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO RECEPCIONISTA ( id, id_ips, numero_id) values (?, ?, ?)".
+ORA-02291: restricción de integridad (ISIS2304C161920.FK_IPS_RECEPCIONISTA) violada - clave principal no encontrada
+
+00:06:10,623 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando recepcionista: null
+00:08:13,743 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando recepcionista: nff
+00:08:14,341 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando recepcionista: uniandes.isis2304.epsAndes.negocio.Recepcionista@6cca71
+00:23:10,724 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+00:23:10,725 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+00:23:10,736 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:24:59,921 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+00:24:59,922 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+00:24:59,935 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:25:31,154 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando ips: gfvg
+00:26:28,657 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+00:26:28,659 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+00:26:28,677 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:27:08,697 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando ips: hgfh
+00:27:28,630 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando ips: uniandes.isis2304.epsAndes.negocio.Ips@ceadc5
+00:47:10,491 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+00:47:10,495 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+00:47:10,521 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:49:54,054 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+00:49:54,057 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+00:49:54,079 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:50:40,939 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+00:50:40,943 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+00:50:40,960 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:51:17,712 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando Medico: vgvds
+00:51:22,151 (AWT-EventQueue-0) ERROR [uniandes.isis2304.epsAndes.persistencia.PersistenciaEps] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO MEDICO ( id, especialidad, numero_registro, numero_id) values (?, ?)".
+ORA-00947: no hay suficientes valores
+
+00:51:23,400 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando Medico: null
+00:53:24,722 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+00:53:24,724 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+00:53:24,740 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:54:05,441 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando Medico: bgfgg
+00:54:12,582 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando Medico: uniandes.isis2304.epsAndes.negocio.Medico@1c1e3e
+01:15:04,824 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+01:15:04,827 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+01:15:04,844 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+01:16:07,608 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+01:16:07,611 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+01:16:07,629 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+01:17:45,932 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+01:17:45,935 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+01:17:45,957 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+01:23:38,940 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando servicio a ips: Examen Orina
+01:24:33,310 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+01:24:33,312 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+01:24:33,329 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+01:26:01,323 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando servicio a ips: Examen Orina

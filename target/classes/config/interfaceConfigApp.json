@@ -1,5 +1,5 @@
 {
-	"title": "Aplicación transaccional de Parranderos Uniandes",
+	"title": "Aplicación transaccional de EpsAndes Uniandes",
 	"frameH": 600,
 	"frameW": 800,
 	"bannerPath": "./src/main/resources/config/LOGO.png",
@@ -10,7 +10,11 @@
 			[
 				{
 					"label": "Administrador",
-					"event": "registarAdministrador"
+					"event": "registrarAdministrador"
+				},
+				{
+					"label": "Medico",
+					"event": "registrarMedico"
 				},
 				{
 					"label": "Afiliado",
@@ -23,13 +27,19 @@
 				{
 					"label": "Recepcionista",
 					"event": "registrarRecepcionista"
+				}
+				
+			]
+		},
+		{ "menuTitle": "Servicios Ips",
+		  "options":
+			[
+				{
+					"label": "Registrar ips",
+					"event": "registrarIps"
 				},
 				{
-					"label": "Ips",
-					"event": "registarIps"
-				},
-				{
-					"label": "Servicio de salud",
+					"label": "Registrar servicio de salud",
 					"event": "registrarServicioSalud"
 				}
 			]
@@ -62,6 +72,10 @@
 		{ "menuTitle": "Registrar Servicio",
 		  "options":
 			[
+				{
+					"label": "Registrar rol",
+					"event": "registrarRol"
+				},
 				{
 					"label": "Registrar orden",
 					"event": "mostrarPresentacionGeneral"

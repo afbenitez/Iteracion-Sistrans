@@ -1,0 +1,201 @@
+ /**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * Universidad	de	los	Andes	(Bogotá	- Colombia)
+ * Departamento	de	Ingeniería	de	Sistemas	y	Computación
+ * Licenciado	bajo	el	esquema	Academic Free License versión 2.1
+ * 		
+ * Curso: isis2304 - Sistemas Transaccionales
+ * Proyecto: Parranderos Uniandes
+ * @version 1.0
+ * @author Germán Bravo
+ * Julio de 2018
+ * 
+ * Revisado por: Claudia Jiménez, Christian Ariza
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
+
+package uniandes.isis2304.epsAndes.negocio;
+
+import java.sql.Timestamp;
+import java.util.LinkedList;
+import java.util.List;
+
+import javax.jdo.PersistenceManager;
+import javax.jdo.Transaction;
+
+import org.apache.log4j.Logger;
+import com.google.gson.JsonObject;
+
+import uniandes.isis2304.epsAndes.persistencia.PersistenciaEps;
+
+
+/**
+ * Clase principal del negocio
+ * Sarisface todos los requerimientos funcionales del negocio
+
+ */
+public class EpsAndes 
+{
+	/* ****************************************************************
+	 * 			Constantes
+	 *****************************************************************/
+	/**
+	 * Logger para escribir la traza de la ejecución
+	 */
+	private static Logger log = Logger.getLogger(EpsAndes.class.getName());
+	
+	/* ****************************************************************
+	 * 			Atributos
+	 *****************************************************************/
+	/**
+	 * El manejador de persistencia
+	 */
+	private PersistenciaEps pp;
+	
+	/* ****************************************************************
+	 * 			Métodos
+	 *****************************************************************/
+	/**
+	 * El constructor por defecto
+	 */
+	public EpsAndes ()
+	{
+		pp = PersistenciaEps.getInstance ();
+	}
+	
+	/**
+	 * El constructor qye recibe los nombres de las tablas en tableConfig
+	 * @param tableConfig - Objeto Json con los nombres de las tablas y de la unidad de persistencia
+	 */
+	public EpsAndes (JsonObject tableConfig)
+	{
+		pp = PersistenciaEps.getInstance (tableConfig);
+	}
+	
+	/**
+	 * Cierra la conexión con la base de datos (Unidad de persistencia)
+	 */
+	public void cerrarUnidadPersistencia ()
+	{
+		pp.cerrarUnidadPersistencia ();
+	}
+	
+	/* ****************************************************************
+	 * 			Métodos para manejar los TIPOS DE BEBIDA
+	 *****************************************************************/
+
+	public Rol adicionarRolesDeUsuario (long id, String nombre)
+	{
+        log.info ("Adicionando rol: " + nombre);
+        Rol rol = pp.adicionarRolesDeUsuario(id, nombre);	
+        log.info ("Adicionando rol: " + rol);
+        return rol;
+	}
+	
+	public Usuario adicionarAdministrador(long id, String email,  String nombre, long cedula, int rol , String tipoId)
+	{
+        log.info ("Adicionando Administrador: " + nombre);
+        Usuario usuario = pp.adicionarAdministrador(id, email, nombre, cedula, rol, tipoId);
+        log.info ("Adicionando Administrador: " + usuario);
+        return usuario;
+	}
+	
+	public Usuario adicionarGerente(long id, String email,  String nombre, long cedula, int rol , String tipoId)
+	{
+        log.info ("Adicionando Gerente: " + nombre);
+        Usuario usuario = pp.adicionarGerente(id, email, nombre, cedula, rol, tipoId);
+        log.info ("Adicionando Gerente: " + usuario);
+        return usuario;
+	}
+	
+	public Recepcionista adicionarRecepcionista(long id, String email,  String nombre, long cedula, int rol , String tipoId, String ips)
+	{
+        log.info ("Adicionando recepcionista: " + nombre);
+        Recepcionista recepcionista = pp.adicionarRecepcionista(id, email, nombre, cedula, rol, tipoId, ips);
+        log.info ("Adicionando recepcionista: " + recepcionista);
+        return recepcionista;
+	}
+	
+	public Ips adicionarIps (long id,  String nombre, String tipo, String ubicacion)
+	{
+        log.info ("Adicionando ips: " + nombre);
+        Ips ips = pp.adicionarIps(id, nombre, tipo, ubicacion);
+        log.info ("Adicionando ips: " + ips);
+        return ips;
+	}
+	
+	public Medico adicionarMedico (long id, String email,  String nombre, long cedula, int rol , String tipoId, String especialidad, String numeroRegistro)
+	{
+        log.info ("Adicionando Medico: " + nombre);
+        Medico medico = pp.adicionarMedico(id, email, nombre, cedula, rol, tipoId, especialidad, numeroRegistro);
+        log.info ("Adicionando Medico: " + medico);
+        return medico;
+	}
+	
+	public Afiliado adicionarAfiliado(long id, String email,  String nombre, long cedula, int rol , String tipoId, String fecha)
+	{
+        log.info ("Adicionando afiliado: " + nombre);
+        Afiliado afiliado = pp.adicionarAfiliado(id, email, nombre, cedula, rol, tipoId, fecha);
+        log.info ("Adicionando afiliado: " + afiliado);
+        return afiliado;
+	}
+	
+	public Prestan adicionarServicioDeSalud( int dia, int horario, String idServicio, String idIps, long capacidad, long capacidadMax ,int estado) 
+	{
+        log.info ("Adicionando servicio a ips: " + idServicio);
+        Prestan servicioDeSalud = pp.adicionarServicioDeSalud( dia, horario, idServicio, idIps, capacidad, capacidadMax, estado);
+        log.info ("Adicionando servicio a ips: " + servicioDeSalud);
+        return servicioDeSalud;
+	} 
+	
+	public RecetaMedica adicionarRecetaMedica(long id, String  fecha, long idMedico , long idUsuario, String idServicio, String medicamentos) 
+	{
+		log.info ("Adicionando orden medica: " + idServicio);
+		RecetaMedica recetaMedica = pp.adicionarRecetaMedica(id, fecha, idMedico, idUsuario, idServicio, medicamentos);
+        log.info ("Adicionando idServicio: " + recetaMedica);
+        return recetaMedica;
+	}
+	
+	public void registrarPrestacion(long id,  long idRecepcionista, long idServicio, long idPaciente)
+	{
+		log.info ("Registrando prestacion de servicio: " + idServicio);
+        pp.registrarPrestacion(id, idRecepcionista, idServicio, idPaciente);
+        log.info ("Registrando prestacion de servicio: " + idServicio);
+       
+	}
+	public boolean existeAdministrador(long id)
+	{
+		return pp.darAdministradorPorId(id) != null ?true:false;
+	}
+	
+	public boolean existeRol(long id)
+	{
+		return pp.darRolPorId(id) != null ?true:false;
+	}
+	
+	public boolean existeAfiliado(long id)
+	{
+		return pp.darAfiliadoPorId(id) != null ?true:false;
+	}
+
+	public boolean existeGerente(long id)
+	{
+		return pp.darGerentePorId(id) != null ?true:false;
+	}
+	
+	public boolean existeRecepcionista(long id)
+	{
+		return pp.darRecepcionistaPorId(id) != null ?true:false;
+	}
+	
+	public boolean existeIps(String nombre)
+	{
+		return pp.darIpsPorNombre(nombre) != null ?true:false;
+	}
+	
+	public boolean existeMedico(long id)
+	{
+		return pp.darMedicoPorId(id) != null ?true:false;
+	}
+	
+}
+
