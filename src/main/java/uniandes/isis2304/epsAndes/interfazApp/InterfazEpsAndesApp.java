@@ -587,7 +587,7 @@ public class InterfazEpsAndesApp extends JFrame implements ActionListener
 	{
 		try 
 		{
-			if(dia != 0 && idServicio != null && idIps != null && horario!= 0 && capacidad != 0 && capacidadMax != 0)
+			if(dia > 0 && dia <=7 && idServicio != null && idIps != null && horario> 0 && horario <= 20 && capacidad != 0 && capacidadMax != 0 && capacidad <= capacidadMax && (estado ==0 && estado == 1))
 			{
 
 				Prestan tb = eps.adicionarServicioDeSalud( dia, horario, idServicio, idIps, capacidad, capacidadMax, estado);
@@ -668,7 +668,7 @@ public class InterfazEpsAndesApp extends JFrame implements ActionListener
 	{
 		try 
 		{
-			if(id != 0 && idServicio != null && estado != null && idReceta!= 0 && idUsuario != 0  && fecha != null && horario != 0 && idRecepcionista != 0)
+			if(id != 0 && idServicio != null && estado != null && idReceta!= 0 && idUsuario != 0  && fecha != null && horario > 0 && horario<=20 && idRecepcionista != 0)
 			{
 
 				Cita tb = eps.adicionarCita(id, idReceta, idUsuario, idRecepcionista, idServicio, estado, fecha, horario);
