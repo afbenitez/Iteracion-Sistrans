@@ -110,7 +110,7 @@ class SQLAdministradorDatos
 	 */
 	public AdministradorDatos darAdministradorPorId (PersistenceManager pm, long cedula) 
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaRol() + " WHERE numero_id = ?");
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaAdministradorDatos() + " WHERE numero_id = ?");
 		q.setResultClass(AdministradorDatos.class);
 		q.setParameters(cedula);
 		return (AdministradorDatos) q.executeUnique();

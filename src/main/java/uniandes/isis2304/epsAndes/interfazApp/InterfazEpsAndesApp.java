@@ -48,12 +48,14 @@ import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 import com.sun.prism.RectShadowGraphics;
 
+import uniandes.isis2304.epsAndes.negocio.Cita;
 import uniandes.isis2304.epsAndes.negocio.EpsAndes;
 import uniandes.isis2304.epsAndes.negocio.Gerente;
 import uniandes.isis2304.epsAndes.negocio.Ips;
 import uniandes.isis2304.epsAndes.negocio.Medico;
 import uniandes.isis2304.epsAndes.negocio.Prestan;
 import uniandes.isis2304.epsAndes.negocio.Recepcionista;
+import uniandes.isis2304.epsAndes.negocio.RecetaMedica;
 import uniandes.isis2304.epsAndes.negocio.Rol;
 import uniandes.isis2304.epsAndes.negocio.Usuario;
 import uniandes.isis2304.epsAndes.negocio.VOAdministrador;
@@ -585,7 +587,7 @@ public class InterfazEpsAndesApp extends JFrame implements ActionListener
 	{
 		try 
 		{
-			if(dia != 0 && idServicio != null && idIps != null && horario!= 0 && capacidad != 0 && capacidadMax != 0 && estado != 0)
+			if(dia != 0 && idServicio != null && idIps != null && horario!= 0 && capacidad != 0 && capacidadMax != 0)
 			{
 
 				Prestan tb = eps.adicionarServicioDeSalud( dia, horario, idServicio, idIps, capacidad, capacidadMax, estado);
@@ -595,7 +597,7 @@ public class InterfazEpsAndesApp extends JFrame implements ActionListener
 					throw new Exception ("No se pudo crear servicio para la ips: " + idIps);
 
 				}
-				String resultado = "En registrarServioPrestadoDatos\n\n";
+				String resultado = "En registrarServicioPrestadoDatos\n\n";
 				resultado += "Servicio agregado exitosamente: " + tb;
 				resultado += "\n Operación terminada";
 				panelDatos.actualizarInterfaz(resultado);
@@ -615,9 +617,126 @@ public class InterfazEpsAndesApp extends JFrame implements ActionListener
 	}
 
 
+	public void registrarOrden()
+	{
+		new PanelRegistrarOrden(this);
+	}
+	/**
+	 * Consulta en la base de datos los tipos de bebida existentes y los muestra en el panel de datos de la aplicación
+	 */
+	public void registrarOrdenDatos( long id, String  fecha, long idMedico , long idUsuario, String idServicio, String medicamentos)
+	{
+		try 
+		{
+			if(id != 0 && idServicio != null && fecha != null && idMedico!= 0 && idUsuario != 0 && idServicio != null && medicamentos != null)
+			{
 
+				RecetaMedica tb = eps.adicionarRecetaMedica(id, fecha, idMedico, idUsuario, idServicio, medicamentos);
+				if(tb == null)
+				{
 
+					throw new Exception ("No se pudo crear la orden medica: " + id);
 
+				}
+				String resultado = "En registrarOrdenDatos\n\n";
+				resultado += "Orden agregado exitosamente: " + tb;
+				resultado += "\n Operación terminada";
+				panelDatos.actualizarInterfaz(resultado);
+
+			}
+			else
+			{
+				panelDatos.actualizarInterfaz("Los datos estan incompletos");
+			}
+		} 
+		catch (Exception e) 
+		{
+			//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+
+	public void registrarCita()
+	{
+		new PanelRegistrarCita(this);
+	}
+	/**
+	 * Consulta en la base de datos los tipos de bebida existentes y los muestra en el panel de datos de la aplicación
+	 */
+	public void registrarCitaDatos(  long id, long idReceta, long idUsuario, long idRecepcionista, String idServicio, String estado, String fecha, int horario)
+	{
+		try 
+		{
+			if(id != 0 && idServicio != null && estado != null && idReceta!= 0 && idUsuario != 0  && fecha != null && horario != 0 && idRecepcionista != 0)
+			{
+
+				Cita tb = eps.adicionarCita(id, idReceta, idUsuario, idRecepcionista, idServicio, estado, fecha, horario);
+				if(tb == null)
+				{
+
+					throw new Exception ("No se pudo crear la cita: " + id);
+
+				}
+				String resultado = "En registrarCitaDatos\n\n";
+				resultado += "Cita agregada exitosamente: " + tb;
+				resultado += "\n Operación terminada";
+				panelDatos.actualizarInterfaz(resultado);
+
+			}
+			else
+			{
+				panelDatos.actualizarInterfaz("Los datos estan incompletos");
+			}
+		} 
+		catch (Exception e) 
+		{
+			//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+
+	
+	
+	public void registrarPrestacion(  )
+	{
+		try 
+		{
+			
+				String input = JOptionPane.showInputDialog(this, "Identificador de la cita ","Registrar prestacion", JOptionPane.QUESTION_MESSAGE);
+				long id = Long.parseLong(input);
+				Cita cita = eps.darCitaPorId(id);
+				
+				
+				if(cita == null)
+				{
+
+					throw new Exception ("La cita con: " + id + " no existe");
+
+				}
+				else
+				{
+					eps.registrarPrestacion(id, cita.getId_recepcionista(), cita.getId_servicio(), cita.getId_usuario());
+				}
+				String resultado = "En registrarPrestacion\n\n";
+				resultado += "Cita prestada exitosamente: " + cita;
+				resultado += "\n Operación terminada";
+				panelDatos.actualizarInterfaz(resultado);
+
+			
+			
+		} 
+		catch (Exception e) 
+		{
+			//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+
+	
+	
 	/* ****************************************************************
 	 * 			Métodos administrativos
 	 *****************************************************************/

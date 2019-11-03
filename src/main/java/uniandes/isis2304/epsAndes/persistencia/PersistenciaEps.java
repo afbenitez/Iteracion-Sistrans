@@ -477,6 +477,12 @@ public class PersistenciaEps {
 		return (Medico) sqlMedico.darMedicoPorId(pmf.getPersistenceManager(), id);
 	}
 	
+	public Cita darCitaPorId(long id)
+	{
+		return (Cita) sqlCita.darCitaPorId(pmf.getPersistenceManager(), id);
+	}
+	
+	
 	public Ips adicionarIps(long id , String nombre, String tipo, String ubicacion)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -631,7 +637,40 @@ public class PersistenciaEps {
         }
 	}
 	
-	public void registrarPrestacion(long id,  long idRecepcionista, long idServicio, long idPaciente)
+	public Cita adicionarCita(long id, long idReceta, long idUsuario, long idRecepcionista ,String  idServicio, String estado, String fecha, int horario) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+           
+            long tuplasInsertadas = sqlCita.adicionarCita(pm, id, idReceta, idUsuario, idRecepcionista, idServicio, estado, fecha, horario);
+            tx.commit();
+            
+            log.trace ("Inserción de adicionarReceta: " + idServicio + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new Cita(id, idReceta, idUsuario, idRecepcionista, idServicio, estado, fecha, horario);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	
+	
+	public void registrarPrestacion(long id,  long idRecepcionista, String idServicio, long idPaciente)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();

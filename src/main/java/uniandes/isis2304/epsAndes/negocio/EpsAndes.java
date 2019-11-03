@@ -141,9 +141,9 @@ public class EpsAndes
 	
 	public Prestan adicionarServicioDeSalud( int dia, int horario, String idServicio, String idIps, long capacidad, long capacidadMax ,int estado) 
 	{
-        log.info ("Adicionando servicio a ips: " + idServicio);
+        log.info ("Adicionando servicio a ips: " + idIps);
         Prestan servicioDeSalud = pp.adicionarServicioDeSalud( dia, horario, idServicio, idIps, capacidad, capacidadMax, estado);
-        log.info ("Adicionando servicio a ips: " + servicioDeSalud);
+        log.info ("Adicionando servicio a ips: " + idIps);
         return servicioDeSalud;
 	} 
 	
@@ -151,11 +151,19 @@ public class EpsAndes
 	{
 		log.info ("Adicionando orden medica: " + idServicio);
 		RecetaMedica recetaMedica = pp.adicionarRecetaMedica(id, fecha, idMedico, idUsuario, idServicio, medicamentos);
-        log.info ("Adicionando idServicio: " + recetaMedica);
+        log.info ("Adicionando orden medica: " + recetaMedica);
         return recetaMedica;
 	}
 	
-	public void registrarPrestacion(long id,  long idRecepcionista, long idServicio, long idPaciente)
+	public Cita adicionarCita(long id, long idReceta, long idUsuario, long idRecepcionista, String idServicio, String estado, String fecha, int horario) 
+	{
+		log.info ("Adicionando cita: " + idServicio);
+		Cita cita = pp.adicionarCita(id, idReceta, idUsuario, idRecepcionista, idServicio, estado, fecha, horario);
+        log.info ("Adicionando cita: " + cita);
+        return cita;
+	}
+	
+	public void registrarPrestacion(long id,  long idRecepcionista, String idServicio, long idPaciente)
 	{
 		log.info ("Registrando prestacion de servicio: " + idServicio);
         pp.registrarPrestacion(id, idRecepcionista, idServicio, idPaciente);
@@ -195,6 +203,11 @@ public class EpsAndes
 	public boolean existeMedico(long id)
 	{
 		return pp.darMedicoPorId(id) != null ?true:false;
+	}
+	
+	public Cita darCitaPorId(long id)
+	{
+		return pp.darCitaPorId(id);
 	}
 	
 }

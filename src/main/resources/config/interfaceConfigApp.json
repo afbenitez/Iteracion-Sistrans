@@ -78,15 +78,15 @@
 				},
 				{
 					"label": "Registrar orden",
-					"event": "mostrarPresentacionGeneral"
+					"event": "registrarOrden"
 				},
 				{
 					"label": "Resgistrar cita",
-					"event": "mostrarModeloConceptual"
+					"event": "registrarCita"
 				},
 				{
 					"label": "Resgistrar prestacion",
-					"event": "mostrarEsquemaBD"
+					"event": "registrarPrestacion"
 				}
 			]
 		},

@@ -3,6 +3,9 @@ package uniandes.isis2304.epsAndes.persistencia;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+import uniandes.isis2304.epsAndes.negocio.AdministradorDatos;
+import uniandes.isis2304.epsAndes.negocio.Cita;
+
 public class SQLCita {
 
 	/* ****************************************************************
@@ -44,11 +47,19 @@ public class SQLCita {
         return (long) q.executeUnique();
 	}
 	
-	public long registrarPrestacion (PersistenceManager pm, long id,  long idRecepcionista, long idServicio, long idPaciente) 
+	public long registrarPrestacion (PersistenceManager pm, long id,  long idRecepcionista, String idServicio, long idPaciente) 
 	{
         Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaCita() + " SET estado_cita =?, id_recepcionista=? WHERE id =? AND id_servicio=? AND id_usuario=? AND estado_cita ='RESERVADA'  ");
         q.setParameters("REALIZADA", idRecepcionista, id, idServicio, idPaciente);
         
         return (long) q.executeUnique();
+	}
+	
+	public Cita darCitaPorId (PersistenceManager pm, long cedula) 
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaCita() + " WHERE numero_id = ?");
+		q.setResultClass(Cita.class);
+		q.setParameters(cedula);
+		return (Cita) q.executeUnique();
 	}
 }

@@ -234,3 +234,38 @@ ORA-00947: no hay suficientes valores
 01:24:33,312 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
 01:24:33,329 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
 01:26:01,323 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando servicio a ips: Examen Orina
+02:22:28,248 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+02:22:28,248 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+02:22:28,259 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+02:24:36,459 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+02:24:36,460 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+02:24:36,470 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+02:25:09,309 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando servicio a ips: Examen Orina
+02:27:17,016 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+02:27:17,017 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+02:27:17,027 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+02:27:55,687 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando servicio a ips: Examen Orina
+02:28:57,726 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+02:28:57,727 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+02:28:57,738 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+02:29:32,451 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando servicio a ips: Youfeed
+02:47:49,690 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+02:47:49,691 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+02:47:49,701 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+02:48:16,272 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando servicio a ips: Youfeed
+02:55:22,310 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+02:55:22,311 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+02:55:22,321 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+02:56:04,158 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando servicio a ips: Youfeed
+03:42:58,027 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+03:42:58,028 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+03:42:58,038 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+03:43:51,095 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+03:43:51,096 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+03:43:51,107 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+04:04:51,882 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+04:04:51,883 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+04:04:51,893 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+04:05:31,171 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+04:05:31,171 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+04:05:31,182 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
