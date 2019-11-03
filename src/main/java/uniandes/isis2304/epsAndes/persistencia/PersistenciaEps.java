@@ -74,6 +74,10 @@ public class PersistenciaEps {
 	
 	private SQLUsuario sqlUsuario;
 	
+	private SQLCampania sqlCampania;
+	
+	private SQLOrganizador sqlOrganizador;
+	
 	
 	
 	/* ****************************************************************
@@ -107,6 +111,9 @@ public class PersistenciaEps {
 		tablas.add ("SERVICIOTERAPIA");
 		tablas.add ("TRABAJAN");
 		tablas.add ("USUARIO");
+		tablas.add ("CAMPANIA");
+		tablas.add ("ORGANIZADORDECAMPANIA");
+		tablas.add ("RESERVADECAMPANIA");
 	
 }
 
@@ -199,6 +206,8 @@ public class PersistenciaEps {
 		sqlServicioTerapia = new SQLServicioTerapia(this);
 		sqlTrabajan = new SQLTrabajan(this);
 		sqlUsuario = new SQLUsuario(this);
+		sqlCampania = new SQLCampania(this);
+		sqlOrganizador = new SQLOrganizador(this);
 		
 		sqlUtil = new SQLUtil(this);
 	}
@@ -287,6 +296,19 @@ public class PersistenciaEps {
 	public String darTablaUsuario ()
 	{
 		return tablas.get (16);
+	}
+	
+	public String darTablaCampania ()
+	{
+		return tablas.get (17);
+	}
+	public String darTablaOrganizador ()
+	{
+		return tablas.get (18);
+	}
+	public String darTablaReservaCampania ()
+	{
+		return tablas.get (19);
 	}
 	
 	/**
