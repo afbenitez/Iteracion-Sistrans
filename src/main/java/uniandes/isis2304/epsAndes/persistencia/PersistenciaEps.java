@@ -855,7 +855,7 @@ public class PersistenciaEps {
 			{
 				Object[] objects = lista1.get(citasR);
 				//RegistrarCita
-				adicionarCita(id, idReceta, idUsuario, idRecepcionista, idServicio, estado, fecha, horario);
+				adicionarCita(((BigDecimal)objects[0]).longValue(), ((BigDecimal)objects[1]).longValue(), ((BigDecimal)objects[2]).longValue(), ((BigDecimal)objects[3]).longValue(), (String)objects[4], (String)objects[5], (String)objects[6], ((BigDecimal)objects[7]).IntValue());
 				//BorrarCita
 				sqlCita.eliminarCitaIPS(pmf.getPersistenceManager(), idServicio, (String)objects[3], ips);
 				--citasR;
