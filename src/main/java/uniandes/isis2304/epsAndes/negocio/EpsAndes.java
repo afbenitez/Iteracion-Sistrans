@@ -170,6 +170,16 @@ public class EpsAndes
 		log.info ("Registrando prestacion de servicio: " + idServicio);
 
 	}
+	
+	public OrganizadorDeCampania adicionarOrganizadorDeCampania (long id, String email,  String nombre, long cedula, int rol , String tipoId)
+	{
+		log.info ("Adicionando organizador: " + nombre);
+		OrganizadorDeCampania organizador = pp.adicionarOrganizador(id, email, nombre, cedula, rol, tipoId);
+		log.info ("Adicionando organizador: " + organizador);
+		return organizador;
+	}
+	
+	
 	public boolean existeAdministrador(long id)
 	{
 		return pp.darAdministradorPorId(id) != null ?true:false;
@@ -211,7 +221,7 @@ public class EpsAndes
 	}
 
 	//R10
-	public Campania adicionarCampania(String nombre, String fechaInicio, String fechaFin, String idOrganizador)
+	public Campania registrarCampania(String nombre, String fechaInicio, String fechaFin, String idOrganizador)
 	{
 		log.info ("Adicionando campania: " + nombre);
 		Campania campania = pp.registrarCampania(nombre, fechaInicio, fechaFin, idOrganizador);
@@ -219,14 +229,39 @@ public class EpsAndes
 		return campania;
 	}
 
+	public void registrarServCamp( String idServicio, String idCampania,String fechaInicio,String fechaFin, int capacidad, int capacidadMax)
+	{
+		log.info ("Adicionando servicio a la campania: " + idCampania);
+		pp.registrarServCamp(idServicio, idCampania, fechaInicio, fechaFin, capacidad, capacidadMax);
+		log.info ("Adicionando servicio a la campania: " + idCampania);
+	}
+	
 	//R11
-//	public Campania cancelarServiciosCampania(String nombre,String fechaFin,String fechaInicio,String idOrganizador);
-//	{
-//		log.info ("Cancelando campania: " + nombre);
-//		Campania campania = pp.registrarCampania(nombre, fechaFin, fechaInicio, idOrganizador);
-//		log.info ("Cancelando campania: " + campania);
-//		return campania;
-//	}
+	public void cancelarServicioCampania(String campania, String servicio)
+	{
+		log.info ("Cancelando campania: " + campania);
+		pp.cancelarServicioCampania(campania, servicio);
+		log.info ("Cancelando campania: " + campania);
+		
+	}
+	
+	//R12
+	public String deshabilitarServicios(String fechaIni,String fechaFin,String ips,String idServicio)
+	{
+		log.info ("Deshabilitando servicios: " + idServicio);
+		String error = pp.deshabilitarServicios(fechaIni, fechaFin, ips, idServicio);
+		log.info ("Deshabilitando servicios: " + idServicio);
+		return error;
+	}
+	
+	public void habilitarServicios(String fechaIni,String fechaFin,String ips,String idServicio)
+	{
+		log.info ("Habilitar servicios: " + idServicio);
+		pp.habilitarServicios(fechaIni, fechaFin, ips, idServicio);
+		log.info ("Habilitar servicios: " + idServicio);
+	}
+	
+	
 
 
 }
