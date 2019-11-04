@@ -1,5 +1,6 @@
 package uniandes.isis2304.epsAndes.persistencia;
 
+import java.math.BigDecimal;
 import java.util.LinkedList; 
 import java.util.List;
 
@@ -829,10 +830,10 @@ public class PersistenciaEps {
 		int capacidad = ((BigDecimal)y.get(0)[5]).intValue();
 		for (int i = 0;i<capacidad;i++)
 		{
-			Object[] objects=lista.get(i);
-			int insertadas=0;
-			int capacidadP=((BigDecimal)objects[5]).intValue();
-			int capacidadM=((BigDecimal)objects[7]).intValue();
+			Object[] objects = lista.get(i);
+			int insertadas = 0;
+			int capacidadP =((BigDecimal)objects[5]).intValue();
+			int capacidadM =((BigDecimal)objects[7]).intValue();
 
 			if(capacidad+capacidadP<=capacidadM){
 				insertadas=capacidad+capacidadP;
@@ -888,7 +889,7 @@ public class PersistenciaEps {
 			{
 				Object[] objects = lista1.get(citasR);
 				//RegistrarCita
-				adicionarCita(((BigDecimal)objects[0]).longValue(), ((BigDecimal)objects[1]).longValue(), ((BigDecimal)objects[2]).longValue(), ((BigDecimal)objects[3]).longValue(), (String)objects[4], (String)objects[5], (String)objects[6], ((BigDecimal)objects[7]).IntValue());
+				adicionarCita(((BigDecimal)objects[0]).longValue(), ((BigDecimal)objects[1]).longValue(), ((BigDecimal)objects[2]).longValue(), ((BigDecimal)objects[3]).longValue(), (String)objects[4], (String)objects[5], (String)objects[6], ((BigDecimal)objects[7]).intValue());
 				//BorrarCita
 				sqlCita.eliminarCitaIPS(pmf.getPersistenceManager(), idServicio, (String)objects[3], ips);
 				--citasR;

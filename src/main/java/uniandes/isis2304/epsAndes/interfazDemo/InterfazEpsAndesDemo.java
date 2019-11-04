@@ -486,10 +486,10 @@ public class InterfazEpsAndesDemo extends JFrame implements ActionListener{
 			String idOrganizador = "41929372";
 			
 			Campania campania = eps.registrarCampania(nombreCamp, fecha_inicial, fecha_fin, idOrganizador);
-			eps.registrarServCamp("Examen Sangre", nombreCamp, fecha_inicial, fecha_fin, 1, 10);
-			eps.registrarServCamp("Examen Orina", nombreCamp, fecha_inicial, fecha_fin, 1, 20);
-			eps.registrarServCamp("Examen Piel", nombreCamp, fecha_inicial, fecha_fin, 1, 30);
-			eps.registrarServCamp("Examen Renal", nombreCamp, fecha_inicial, fecha_fin, 1, 40);
+			eps.registrarServicioCamp("Examen Sangre", nombreCamp, fecha_inicial, fecha_fin, 1, 10);
+			eps.registrarServicioCamp("Examen Orina", nombreCamp, fecha_inicial, fecha_fin, 1, 20);
+			eps.registrarServicioCamp("Examen Piel", nombreCamp, fecha_inicial, fecha_fin, 1, 30);
+			eps.registrarServicioCamp("Examen Renal", nombreCamp, fecha_inicial, fecha_fin, 1, 40);
 			
 
 			boolean errorcampania=false;
