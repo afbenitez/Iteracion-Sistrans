@@ -8,7 +8,7 @@ import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Transaction;
-
+import javax.jdo.*;
 import org.apache.log4j.Logger;
 
 import com.google.gson.JsonArray;
@@ -22,6 +22,7 @@ import uniandes.isis2304.epsAndes.negocio.Cita;
 import uniandes.isis2304.epsAndes.negocio.Gerente;
 import uniandes.isis2304.epsAndes.negocio.Ips;
 import uniandes.isis2304.epsAndes.negocio.Medico;
+import uniandes.isis2304.epsAndes.negocio.OrganizadorDeCampania;
 import uniandes.isis2304.epsAndes.negocio.Prestan;
 import uniandes.isis2304.epsAndes.negocio.Recepcionista;
 import uniandes.isis2304.epsAndes.negocio.RecetaMedica;
@@ -723,9 +724,39 @@ public class PersistenciaEps {
         }
 	}
 	
+	public OrganizadorDeCampania adicionarOrganizador(long id , String email ,String nombre, long  cedula, int rol, String tipoId )
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+           
+            long tuplasInsertadas = sqlOrganizador.adicionarOrganizador(pm, id, email, nombre, cedula, rol, tipoId);
+            tx.commit();
+            
+            log.trace ("Inserción de afiliado: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new OrganizadorDeCampania(id, email, nombre, cedula, rol, tipoId);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
 	
 
-	//R10
+	//RF10
 	public Campania registrarCampania( String nombre, String fechaFin, String fechaInicio, String idOrganizador)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -784,18 +815,20 @@ public class PersistenciaEps {
 		}
 	}
 	
-	//R11
-	public void cancelarServicioCampania(String campania, String servicio){
+	//RF11
+	public void cancelarServicioCampania(String campania, String servicio)
+	{
 
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
 		try
 		{
-			Usuario x = sqlUsuario.darUsuarioPorNombre(pmf.getPersistenceManager(), "Campania: "+campania);
+		Usuario x = sqlUsuario.darUsuarioPorId(pmf.getPersistenceManager(), "Campania: "+campania);
 		List<Object[]> y = sqlCampania.darCampania(pmf.getPersistenceManager(), servicio, campania);
 		List<Object[]> lista = sqlPrestan.darInfoServicioEnRango(pmf.getPersistenceManager(), servicio, (String)y.get(0)[3], (String)y.get(0)[4]);
 		int capacidad=((BigDecimal)y.get(0)[5]).intValue();
-		for (int i=0;i<capacidad;i++) {
+		for (int i=0;i<capacidad;i++)
+		{
 			Object[] objects=lista.get(i);
 			int insertadas=0;
 			int capacidadP=((BigDecimal)objects[5]).intValue();
@@ -837,7 +870,7 @@ public class PersistenciaEps {
 	
 	
 	
-	//R12
+	//RF12
 	public String deshabilitarServicios(String fechaIni,String fechaFin,String ips,String idServicio)
 	{
 		String mensaje="";
@@ -868,7 +901,7 @@ public class PersistenciaEps {
 			for(int i=citasR;i>=0;i--)
 			{
 				Object[] objects=lista1.get(citasR);
-				mensaje+="Orden: "+((BigDecimal)objects[0]).intValue()+" Fecha: "+(String)objects[1]+" Afiliado: "+(String)objects[3]+"\n";
+				mensaje+="Orden: "+((BigDecimal)objects[0]).intValue()+" Fecha: "+(String)objects[5]+" Afiliado: "+((BigDecimal)objects[2]).longValue()+"\n";
 			}
 		}
 		else
@@ -877,7 +910,7 @@ public class PersistenciaEps {
 		return mensaje;
 	}
 	
-	//R13
+	//RF13
 	public void habilitarServicios(String fechaIni,String fechaFin,String ips,String idServicio)
 	{
 		sqlPrestan.actualizarHabilitacion(pmf.getPersistenceManager(), fechaIni, fechaFin, ips, idServicio, 0);
@@ -885,4 +918,65 @@ public class PersistenciaEps {
 	
 	
 	
+	//RCF6
+	public List<Object[]> analizarOpSemanaActividadAsc( String servicio,String unidad)
+	{
+		return sqlPrestan.analizarOpSemanaActividad(pmf.getPersistenceManager(), servicio, unidad, "ASC");
+	}
+
+	public List<Object[]> analizarOpSemanaActividadDesc( String servicio,String unidad)
+	{
+		return sqlPrestan.analizarOpSemanaActividad(pmf.getPersistenceManager(), servicio, unidad, "DESC");
+	}
+
+	public List<Object[]> analizarOpSemanaDemanaDesc( String servicio,String unidad)
+	{
+		return sqlPrestan.analizarOpSemanaDemanda(pmf.getPersistenceManager(), servicio, unidad, "DESC");
+	}
+
+	
+	//RCF7
+	public String darExigentes()
+	{
+		List<Object[]> exigentes=sqlCita.darExigentes(pmf.getPersistenceManager());
+		String mensaje="";
+		if(exigentes.size()<=0)
+			return "No se encontraron exigentes";
+		else {
+			mensaje="Se encontraron exigentes:\n";
+			for (Object[] objects : exigentes) {
+				mensaje+="Cédula: "+(String)objects[0]+" tipos diferentes: "+((BigDecimal)objects[1]).intValue()+" servicios: "+((BigDecimal)objects[2]).intValue()+"\n";
+			}
+		}
+		return mensaje;
+	}
+	
+	
+	//RCF8
+	public String darNoMuyDemandados()
+	{
+		String mensaje="";
+		List<String> noMuy=sqlPrestan.darNoMuyDemandados(pmf.getPersistenceManager());
+		if(noMuy.size()<=0)
+		{
+			return "No se encontraron no muy demandados";
+		}
+		else {
+			mensaje="Se encontraron servicios no muy demandados: \n";
+			for (String objects : noMuy) {
+				mensaje+="Nombre: "+ objects+"\n";
+			}
+		}
+		return mensaje;
+	}
+	
+	
+	/**
+	 * Crea y ejecuta las sentencias SQL para cada tabla de la base de datos - EL ORDEN ES IMPORTANTE .
+	 * @return Un arreglo con el nÃºmero de tuplas borradas de cada tabla.
+	 */
+	public long[] limpiarEPSAndes()
+	{
+		return sqlUtil.limpiarEpsAndes(pmf.getPersistenceManager());
+	}
 }

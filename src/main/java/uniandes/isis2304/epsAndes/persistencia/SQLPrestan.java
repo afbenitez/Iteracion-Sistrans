@@ -74,4 +74,47 @@ public class SQLPrestan {
 		q.setResultClass(Prestan.class);
 		return (List<Prestan>)q.executeList();
 	}
+	
+	public long actualizarCapacidad(PersistenceManager pm,int capacidad,String fecha,String idServicio)
+	{
+		Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaPrestan() + " SET capacidad=? WHERE dia=? AND id_servicio=?");
+		q.setParameters(capacidad,fecha,idServicio);
+		return (long) q.executeUnique();   
+	}
+	
+	public List<Object[]> analizarOpSemanaDemanda(PersistenceManager pm, String servicio,String unidad,String orden)
+	{
+		String sql="SELECT SUM(capacidadmax-capacidad) AS diferencia, to_number(to_char(TO_DATE(tp.DIA,'DD-MM-YY HH24:MI:SS'), '"+unidad+"')) semana FROM "+ pp.darTablaPrestan();
+		sql+=" tp WHERE id_servicio=?";
+		sql+=" GROUP BY to_number(to_char(TO_DATE(tp.DIA,'DD-MM-YY HH24:MI:SS'), '"+unidad+"')) ";
+		sql+="ORDER BY SUM(capacidadmax-capacidad) "+orden+" FETCH NEXT 5 ROWS ONLY";
+		Query q=pm.newQuery(SQL,sql);
+		q.setParameters(servicio);
+		return q.executeList();	
+	}
+	
+	public List<Object[]> analizarOpSemanaActividad(PersistenceManager pm, String servicio,String unidad,String orden)
+	{
+		String sql="SELECT COUNT (*) REALIZADAS,to_number(to_char(TO_DATE(tc.FECHA,'DD-MM-YY HH24:MI:SS'), '"+unidad+"')) fecha "+
+				"FROM "+pp.darTablaPrestan()+ " tc "+
+				"WHERE tc.estado=1 AND tc.id_servicio=? "+
+				"GROUP BY to_number(to_char(TO_DATE(tc.FECHA,'DD-MM-YY HH24:MI:SS'), '"+unidad+"'))" + 
+				" ORDER BY COUNT(*) " + orden +
+				" FETCH NEXT 5 ROWS ONLY";
+		Query q=pm.newQuery(SQL,sql);
+		q.setParameters(servicio);
+		return q.executeList();	
+	}
+	
+	public List<String> darNoMuyDemandados(PersistenceManager pm)
+	{
+		String sql="SELECT DISTINCT id_servicio FROM "+
+				"(SELECT id_servicio,SUM(capacidadmax-capacidad) diferencia "+
+				"FROM "+pp.darTablaPrestan()+" tp "+
+				"WHERE to_number(to_char(TO_DATE(tp.DIA,'DD-MM-YY HH24:MI:SS'), 'YY'))=to_number(to_char(CURRENT_DATE, 'YY'))-1 "+
+				"GROUP BY id_servicio,to_number(to_char(TO_DATE(tp.DIA,'DD-MM-YY HH24:MI:SS'), 'WW'))) "+
+				"WHERE diferencia<3";
+		Query q=pm.newQuery(SQL,sql);
+		return(List<String>) q.executeList();	
+	}
 }

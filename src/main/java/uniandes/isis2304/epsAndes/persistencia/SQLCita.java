@@ -80,4 +80,15 @@ public class SQLCita {
 		q.setParameters(idServicio,idAfiliado,ips);
 		q.executeUnique();  
 	}
+	
+	public List<Object[]> darExigentes (PersistenceManager pm){
+		String sql="SELECT aux.AFILIADO,aux.TIPOS,aux.SERVICIOS" + 
+				"	FROM(SELECT tc.id_usuario AFILIADO, COUNT (DISTINCT ts.tipo_servicio) TIPOS, COUNT (tc.id_servicio) SERVICIOS" + 
+				"	FROM "+pp.darTablaCita()+" tc, "+pp.darTablaServicioDeSalud()+" ts " + 
+				"	WHERE ts.nombre=tc.id_servicio AND to_number(to_char(TO_DATE(tc.FECHA,'DD-MM-YY HH24:MI:SS'), 'YY'))=to_number(to_char(CURRENT_DATE, 'YY'))-1" + 
+				"	GROUP BY tc.id_usuario,ts.tipo_servicio, tc.id_servicio)aux" + 
+				"	WHERE aux.TIPOS>2 AND aux.SERVICIOS>12";
+		Query q = pm.newQuery(SQL,sql);
+		return q.executeList();
+	}
 }
