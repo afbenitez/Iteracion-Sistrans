@@ -16,6 +16,8 @@
 package uniandes.isis2304.epsAndes.interfazApp;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;

@@ -207,6 +207,7 @@ public class InterfazEpsAndesApp extends JFrame implements ActionListener
 		setResizable( true );
 		setBackground( Color.WHITE );
 
+		
 		setTitle( titulo );
 		setSize ( ancho, alto);        
 	}
@@ -683,6 +684,8 @@ public class InterfazEpsAndesApp extends JFrame implements ActionListener
 				resultado += "\n Operación terminada";
 				panelDatos.actualizarInterfaz(resultado);
 
+				
+				
 			}
 			else
 			{

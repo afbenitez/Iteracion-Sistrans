@@ -1,5 +1,7 @@
 package uniandes.isis2304.epsAndes.persistencia;
 
+import java.util.List;
+
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
@@ -61,5 +63,21 @@ public class SQLCita {
 		q.setResultClass(Cita.class);
 		q.setParameters(id);
 		return (Cita) q.executeUnique();
+	}
+	
+	public List<Object[]> sacarCitasPorIPSServicio(PersistenceManager pm,String ips,String servicio,String fechaInicio,String fechaFin)
+	{
+		String sql="SELECT tc.id_receta, tc.fecha, tc.horario, tc.id_usuario";
+		sql+= " FROM "+pp.darTablaCita() +" tc, "+ pp.darTablaPrestan()+" tp, "+ pp.darTablaRecepcionista() +" tr WHERE tp.id_servicio=tc.id_servicio AND tp.id_servicio=? AND tp.id_ips=? AND tp.id_ips=tc.id_recepcionista AND TO_DATE(tc.FECHA,'DD-MM-YY HH24:MI:SS') BETWEEN TO_DATE(?,'DD-MM-YY HH24:MI:SS') AND TO_DATE(?,'DD-MM-YY HH24:MI:SS')";
+		Query q = pm.newQuery(SQL, sql);
+		q.setParameters(servicio,ips,fechaInicio,fechaFin);
+		return q.executeList();
+	}
+	
+	public void eliminarCitaIPS(PersistenceManager pm,String idServicio,String idAfiliado,String ips )
+	{
+		Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaCita() + " WHERE id_servicio=? AND id_usuario =? AND id_recepcionista=? ");
+		q.setParameters(idServicio,idAfiliado,ips);
+		q.executeUnique();  
 	}
 }

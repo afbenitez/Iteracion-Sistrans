@@ -307,3 +307,27 @@ ORA-02291: restricción de integridad (ISIS2304C161920.FK_SERVICIO_PRESTAN) viol
 16:00:28,969 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
 16:01:12,081 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Registrando prestacion de servicio: Examen Sangre
 16:01:14,669 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Registrando prestacion de servicio: Examen Sangre
+18:46:47,507 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+18:46:47,508 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+18:46:47,525 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+18:49:21,191 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+18:49:21,192 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+18:49:21,204 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:16:07,186 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+19:16:07,188 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+19:16:07,198 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:19:16,719 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+19:19:16,721 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+19:19:16,735 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:19:59,188 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+19:19:59,189 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+19:19:59,199 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:21:26,906 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+19:21:26,907 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+19:21:26,923 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:22:36,839 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+19:22:36,841 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+19:22:36,851 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:23:37,731 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+19:23:37,733 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+19:23:37,746 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD

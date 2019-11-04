@@ -38,10 +38,10 @@ public class SQLOrganizador {
 	 * @param identificacion la identificacion
 	 * @return EL nÃºmero de tuplas insertadas
 	 */
-	public long adicionarOrganizador (PersistenceManager pm,String identificacion) 
+	public long adicionarOrganizador (PersistenceManager pm,String id) 
 	{
-		Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaOrganizador() + " (IDENTIFICACION) values (?)");
-		q.setParameters(identificacion);
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaOrganizador() + " ( numero_id) values (?)");
+		q.setParameters(id);
 		return (long) q.executeUnique();
 	}
 }

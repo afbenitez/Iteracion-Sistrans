@@ -31,44 +31,7 @@
 				
 			]
 		},
-		{ "menuTitle": "Servicios Ips",
-		  "options":
-			[
-				{
-					"label": "Registrar ips",
-					"event": "registrarIps"
-				},
-				{
-					"label": "Registrar servicio de salud",
-					"event": "registrarServicioSalud"
-				}
-			]
-		},
-		{ "menuTitle": "Consultar",
-		  "options":
-			[
-				{
-					"label": "Cantidad de servicios mas prestados",
-					"event": "serviciosMasPrestados"
-				},
-				{
-					"label": "Servivios mas solicitados",
-					"event": "serviciosMasSolicitados"
-				},
-				{
-					"label": "Mostrar indice de uso",
-					"event": "indiceDeUso"
-				},
-				{
-					"label": "Servicios en una fecha",
-					"event": "serviciosEnUnaFecha"
-				},
-				{
-					"label": "Servicios de un usuario usuario",
-					"event": "servicioDeUsuario"
-				}
-			]
-		},		
+				
 		{ "menuTitle": "Registrar Servicio",
 		  "options":
 			[
@@ -87,6 +50,57 @@
 				{
 					"label": "Resgistrar prestacion",
 					"event": "registrarPrestacion"
+				},
+				{
+					"label": "Resgistrar campaña",
+					"event": "registrarPrestacion"
+				},
+				{
+					"label": "Resgistrar reapertura",
+					"event": "registrarPrestacion"
+				}
+			]
+		},
+		{ "menuTitle": "Consultar",
+		  "options":
+			[
+				{
+					"label": "Operacion EpsAndes",
+					"event": "analizarOperacions"
+				},
+				{
+					"label": "Afiliados Exigentes",
+					"event": "serviciosMasSolicitados"
+				},
+				{
+					"label": "Servicios con poca demanda",
+					"event": "serviciosSinDemanda"
+				}
+			]
+		},
+		{ "menuTitle": "Servicios Ips",
+		  "options":
+			[
+				{
+					"label": "Registrar ips",
+					"event": "registrarIps"
+				},
+				{
+					"label": "Registrar servicio de salud",
+					"event": "registrarServicioSalud"
+				}
+			]
+		},
+		{ "menuTitle": "Cancelacion",
+		  "options":
+			[
+				{
+					"label": "Servicios de campanaña",
+					"event": "registrarIps"
+				},
+				{
+					"label": "Servios de salud",
+					"event": "registrarServicioSalud"
 				}
 			]
 		},

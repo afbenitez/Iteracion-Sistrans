@@ -3,6 +3,8 @@ package uniandes.isis2304.epsAndes.persistencia;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+import uniandes.isis2304.epsAndes.negocio.RecetaMedica;
+
 public class SQLRecetaMedica {
 
 	/* ****************************************************************
@@ -42,5 +44,13 @@ public class SQLRecetaMedica {
         q.setParameters(id, fecha, idMedico, idUsuario, idServicio, medicamentos);
         
         return (long) q.executeUnique();
+	}
+	
+	public RecetaMedica darRecetaMedicaPorId (PersistenceManager pm, long id) 
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaRecetaMedica() + " WHERE id = ?");
+		q.setResultClass(RecetaMedica.class);
+		q.setParameters(id);
+		return (RecetaMedica) q.executeUnique();
 	}
 }

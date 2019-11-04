@@ -17,6 +17,7 @@ import com.google.gson.JsonObject;
 
 import uniandes.isis2304.epsAndes.negocio.AdministradorDatos;
 import uniandes.isis2304.epsAndes.negocio.Afiliado;
+import uniandes.isis2304.epsAndes.negocio.Campania;
 import uniandes.isis2304.epsAndes.negocio.Cita;
 import uniandes.isis2304.epsAndes.negocio.Gerente;
 import uniandes.isis2304.epsAndes.negocio.Ips;
@@ -721,6 +722,167 @@ public class PersistenciaEps {
             pm.close();
         }
 	}
+	
+	
+
+	//R10
+	public Campania registrarCampania( String nombre, String fechaFin, String fechaInicio, String idOrganizador)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin(); 
+			long id=nextval();
+			long tuplasInsertadas = sqlCampania.registrarCampania(pm, nombre, fechaFin, fechaInicio, idOrganizador);
+			tx.commit();
+
+			log.trace ("Insercion campaña: " +id + ": " + tuplasInsertadas + " tuplas insertadas");
+			return new Campania(nombre, fechaInicio, fechaFin, idOrganizador);
+		}	
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			return null;
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+		}
+	}
+	
+
+	public void registrarServCamp( String idServicio, String idCampania,String fechaInicio,String fechaFin, int capacidad, int capacidadMax)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();            
+			long tuplasInsertadas = sqlCampania.registrarServicioCampania(pm, idServicio, idCampania, fechaInicio, fechaFin, capacidad, capacidadMax);
+			tx.commit();
+
+			log.trace ("Insercion reservaCampania: " + idServicio + ": " + tuplasInsertadas + " tuplas insertadas");
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+		}
+	}
+	
+	//R11
+	public void cancelarServicioCampania(String campania, String servicio){
+
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			Usuario x = sqlUsuario.darUsuarioPorNombre(pmf.getPersistenceManager(), "Campania: "+campania);
+		List<Object[]> y = sqlCampania.darCampania(pmf.getPersistenceManager(), servicio, campania);
+		List<Object[]> lista = sqlPrestan.darInfoServicioEnRango(pmf.getPersistenceManager(), servicio, (String)y.get(0)[3], (String)y.get(0)[4]);
+		int capacidad=((BigDecimal)y.get(0)[5]).intValue();
+		for (int i=0;i<capacidad;i++) {
+			Object[] objects=lista.get(i);
+			int insertadas=0;
+			int capacidadP=((BigDecimal)objects[5]).intValue();
+			int capacidadM=((BigDecimal)objects[7]).intValue();
+
+			if(capacidad+capacidadP<=capacidadM){
+				insertadas=capacidad+capacidadP;
+				tx.begin();
+				sqlPrestan.actualizarCapacidad(pmf.getPersistenceManager(), capacidad+capacidadP,(String)objects[2],servicio);
+				tx.commit();
+			}
+			else{
+				insertadas=capacidadM-capacidadP;
+				tx.begin();
+				sqlPrestan.actualizarCapacidad(pmf.getPersistenceManager(),capacidadP+insertadas,(String)objects[2],servicio);
+				tx.commit();
+			}
+			capacidad-=insertadas;
+		}				
+		tx.begin();
+		sqlCita.eliminarCita(pmf.getPersistenceManager(), servicio, x.getNumero_Documento());
+		sqlCampania.eliminarServicioCampania(pmf.getPersistenceManager(), servicio, campania);
+		tx.commit();
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+		}
+	}
+	
+	
+	
+	//R12
+	public String deshabilitarServicios(String fechaIni,String fechaFin,String ips,String idServicio)
+	{
+		String mensaje="";
+		sqlPrestan.actualizarHabilitacion(pmf.getPersistenceManager(), fechaIni, fechaFin, ips, idServicio, 1);
+		List<Object[]> lista1 = sqlCita.sacarCitasPorIPSServicio(pmf.getPersistenceManager(), ips, idServicio, fechaIni, fechaFin);
+		List<Prestan>lista2 = sqlPrestan.darInfoServicioEnRango(pmf.getPersistenceManager(), idServicio, fechaIni, fechaFin);
+		long capacidadServicios=sqlPrestan.darCapacidadServicioEnRango(pmf.getPersistenceManager(), idServicio, fechaIni, fechaFin);
+
+		int citasR=lista1.size()-1;
+		for (int j = 0; j < lista2.size() && citasR >= 0; j++) 
+		{
+			Prestan prestan = lista2.get(j);
+			int capacidadR = (int) prestan.getCapacidad();
+			for(int i = 0; i < capacidadR; i++)
+			{
+				Object[] objects = lista1.get(citasR);
+				//RegistrarCita
+				adicionarCita(id, idReceta, idUsuario, idRecepcionista, idServicio, estado, fecha, horario);
+				//BorrarCita
+				sqlCita.eliminarCitaIPS(pmf.getPersistenceManager(), idServicio, (String)objects[3], ips);
+				--citasR;
+			}
+		}
+
+		if(lista1.size()>capacidadServicios )
+		{
+			mensaje="No se pudieron reubicar las siguientes citas \n";
+			for(int i=citasR;i>=0;i--)
+			{
+				Object[] objects=lista1.get(citasR);
+				mensaje+="Orden: "+((BigDecimal)objects[0]).intValue()+" Fecha: "+(String)objects[1]+" Afiliado: "+(String)objects[3]+"\n";
+			}
+		}
+		else
+			mensaje="Se pudieron reubicar todas las citas";
+
+		return mensaje;
+	}
+	
+	//R13
+	public void habilitarServicios(String fechaIni,String fechaFin,String ips,String idServicio)
+	{
+		sqlPrestan.actualizarHabilitacion(pmf.getPersistenceManager(), fechaIni, fechaFin, ips, idServicio, 0);
+	}
+	
 	
 	
 }

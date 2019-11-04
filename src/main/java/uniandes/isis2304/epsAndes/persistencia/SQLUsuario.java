@@ -3,6 +3,9 @@ package uniandes.isis2304.epsAndes.persistencia;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+import uniandes.isis2304.epsAndes.negocio.AdministradorDatos;
+import uniandes.isis2304.epsAndes.negocio.Usuario;
+
 public class SQLUsuario {
 
 	/* ****************************************************************
@@ -42,5 +45,12 @@ public class SQLUsuario {
         q.setParameters(id, email, nombre, cedula, rol, tipoId);
         
         return (long) q.executeUnique();
+	}
+	public Usuario darUsuarioPorId (PersistenceManager pm, long cedula) 
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaUsuario() + " WHERE numero_id = ?");
+		q.setResultClass(Usuario.class);
+		q.setParameters(cedula);
+		return (Usuario) q.executeUnique();
 	}
 }

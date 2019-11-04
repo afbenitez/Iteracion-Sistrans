@@ -1,7 +1,13 @@
 package uniandes.isis2304.epsAndes.persistencia;
 
+import java.math.BigDecimal;
+import java.util.List;
+
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
+
+import uniandes.isis2304.epsAndes.negocio.Prestan;
+import uniandes.isis2304.epsAndes.negocio.ServicioDeSalud;
 
 public class SQLPrestan {
 	
@@ -42,5 +48,30 @@ public class SQLPrestan {
         q.setParameters(dia, horario, idServicio, idIps, capacidad, capacidadMax ,estado);
         
         return (long) q.executeUnique();
+	}
+	
+	public long actualizarHabilitacion(PersistenceManager pm,String fechaInicio,String fechaFin,String ips,String idServicio,int habilitacion)
+	{
+		Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaPrestan() + " SET estado=? WHERE (TO_DATE(DIA,'DD-MM-YY HH24:MI:SS') BETWEEN TO_DATE(?,'DD-MM-YY HH24:MI:SS') AND TO_DATE(?,'DD-MM-YY HH24:MI:SS')) AND id_servicio=? AND id_ips=?");
+		q.setParameters(habilitacion,fechaInicio,fechaFin,idServicio,ips);
+		return (long) q.executeUnique();   
+	}
+	
+	public long darCapacidadServicioEnRango(PersistenceManager pm, String idServicio, String fechaInicio, String fechaFin)
+	{
+		String sql="SELECT SUM(capacidad) FROM "+pp.darTablaPrestan()+" tp  WHERE id_servicio=? AND TO_DATE(tp.DIA,'DD-MM-YY HH24:MI:SS') BETWEEN TO_DATE(?,'DD-MM-YY HH24:MI:SS') AND TO_DATE(?,'DD-MM-YY HH24:MI:SS') AND estado=0";
+		Query q=pm.newQuery(SQL,sql);
+		q.setParameters(idServicio,fechaInicio,fechaFin);
+		BigDecimal rta=(BigDecimal) q.executeUnique();
+		return rta==null?0:rta.longValue();
+	}
+
+	public List<Prestan> darInfoServicioEnRango(PersistenceManager pm, String idServicio, String fechaInicio, String fechaFin)
+	{
+		String sql="SELECT * FROM "+pp.darTablaPrestan()+" tp  WHERE id_servicio=? AND TO_DATE(tp.DIA,'DD-MM-YY HH24:MI:SS') BETWEEN TO_DATE(?,'DD-MM-YY HH24:MI:SS') AND TO_DATE(?,'DD-MM-YY HH24:MI:SS') AND estado=0";
+		Query q=pm.newQuery(SQL,sql);
+		q.setParameters(idServicio,fechaInicio,fechaFin);
+		q.setResultClass(Prestan.class);
+		return (List<Prestan>)q.executeList();
 	}
 }

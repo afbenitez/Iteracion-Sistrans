@@ -5,6 +5,8 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+import uniandes.isis2304.epsAndes.negocio.ServicioDeSalud;
+
 public class SQLServicioDeSalud {
 
 	/* ****************************************************************
@@ -46,17 +48,11 @@ public class SQLServicioDeSalud {
         return (long) q.executeUnique();
 	}
 	
-	public List<Object []> darIPSYCantidadServiciosOfrecen (PersistenceManager pm, String fechaInicio, String fechaFin)
+	public ServicioDeSalud darServicioSaludPorId (PersistenceManager pm, String identificacion) 
 	{
-	 String sql = "SELECT tp.ID_IPS, count (*) as numServicios";
-	 sql += " FROM " + pp.darTablaCita()+" tp,";
-	 sql += pp.darTablaRecepcionista()+" tr,";
-	 sql += pp.darTablaCita()+" tc";
-	 sql += " WHERE tc.ID_RECEPCIONISTA IS NOT NULL AND tc.ID_SERVICIO=tp.ID_SERVICIO AND tr.ID_IPS=tp.ID_IPS AND tc.ID_RECEPCIONISTA=tr.IDENTIFICACION";
-	 sql += " AND TO_DATE(tp.DIA,'DD-MM-YY HH24:MI:SS') BETWEEN TO_DATE(?,'DD-MM-YY HH24:MI:SS') AND TO_DATE(?,'DD-MM-YY HH24:MI:SS')";
-	 sql += " GROUP BY tp.ID_IPS";
-	 Query q = pm.newQuery(SQL, sql);
-	 q.setParameters(fechaInicio,fechaFin);
-	 return q.executeList();
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaServicioDeSalud() + " WHERE nombre = ?");
+		q.setResultClass(ServicioDeSalud.class);
+		q.setParameters(identificacion);
+		return (ServicioDeSalud) q.executeUnique();
 	}
 }
