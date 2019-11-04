@@ -209,6 +209,11 @@ public class EpsAndes
 	{
 		return pp.darCitaPorId(id);
 	}
+	
+	public PersistenciaEps darPersistencia()
+	{
+		return pp;
+	}
 
 	//R10
 	public Campania adicionarCampania(String nombre, String fechaInicio, String fechaFin, String idOrganizador)

@@ -261,8 +261,10 @@ public class InterfazParranderosDemo extends JFrame implements ActionListener
     	{
     		// Ejecución de la demo y recolección de los resultados
 			// ATENCIÓN: En una aplicación real, los datos JAMÁS están en el código
-			String nombreTipoBebida = "Vino tinto";
+    		int idRol = 1;
+			String nombreRol = "Guarda de Seguridad";
 			boolean errorTipoBebida = false;
+			
 			VOAdministrador tipoBebida = parranderos.adicionarTipoBebida (nombreTipoBebida);
 			if (tipoBebida == null)
 			{
