@@ -207,7 +207,7 @@ public class InterfazEpsAndesApp extends JFrame implements ActionListener
 		setResizable( true );
 		setBackground( Color.WHITE );
 
-		
+
 		setTitle( titulo );
 		setSize ( ancho, alto);        
 	}
@@ -287,6 +287,47 @@ public class InterfazEpsAndesApp extends JFrame implements ActionListener
 					panelDatos.actualizarInterfaz("Ya existe el rol");
 				}
 			}
+			else
+			{
+				panelDatos.actualizarInterfaz("Los datos estan incompletos");
+			}
+		} 
+		catch (Exception e) 
+		{
+			//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+
+	public void registrarOrganizador()
+	{
+		new PanelRegistrarOrganizador(this);
+	}
+	/**
+	 * Consulta en la base de datos los tipos de bebida existentes y los muestra en el panel de datos de la aplicación
+	 */
+	public void registrarOrganizadorDatos( long id, String email,  String nombre, long cedula, int rol , String tipoId)
+	{
+		try 
+		{
+			if(id != 0 && email != null && nombre != null && cedula != 0 && rol != 0 && tipoId != null)
+			{
+
+				Usuario tb = eps.adicionarOrganizadorDeCampania(id, email, nombre, cedula, rol, tipoId);
+				if(tb == null)
+				{
+
+					throw new Exception ("No se pudo crear un organizador con la cedula: " + cedula);
+
+				}
+				String resultado = "En registrarOrganizadorDatos\n\n";
+				resultado += "Organizador agregado exitosamente: " + tb;
+				resultado += "\n Operación terminada";
+				panelDatos.actualizarInterfaz(resultado);
+			}
+
+
 			else
 			{
 				panelDatos.actualizarInterfaz("Los datos estan incompletos");
@@ -684,8 +725,8 @@ public class InterfazEpsAndesApp extends JFrame implements ActionListener
 				resultado += "\n Operación terminada";
 				panelDatos.actualizarInterfaz(resultado);
 
-				
-				
+
+
 			}
 			else
 			{
@@ -700,35 +741,31 @@ public class InterfazEpsAndesApp extends JFrame implements ActionListener
 		}
 	}
 
-	
-	
-	public void registrarPrestacion(  )
+	public void registrarCampania()
+	{
+		new PanelRegistrarCampania(this);
+	}
+	/**
+	 * Consulta en la base de datos los tipos de bebida existentes y los muestra en el panel de datos de la aplicación
+	 */
+	public void registrarCampaniaDatos(String nombre, String fechaInicio, String fechaFin, String idOrganizador)
 	{
 		try 
 		{
-			
-				String input = JOptionPane.showInputDialog(this, "Identificador de la cita ","Registrar prestacion", JOptionPane.QUESTION_MESSAGE);
-				long id = Long.parseLong(input);
-				Cita cita = eps.darCitaPorId(id);
-				
-				
-				if(cita == null)
-				{
+			if(nombre != null && fechaFin != null && fechaInicio != null && idOrganizador != null)
+			{
 
-					throw new Exception ("La cita con: " + id + " no existe");
+				eps.registrarCampania(nombre, fechaInicio, fechaFin, idOrganizador);
 
-				}
-				else
-				{
-					eps.registrarPrestacion(id, cita.getId_recepcionista(), cita.getId_servicio(), cita.getId_usuario());
-				}
-				String resultado = "En registrarPrestacion\n\n";
-				resultado += "Cita prestada exitosamente: " + cita;
+				String resultado = "En registrarCampaniaDatos\n\n";
+				resultado += "Campania agregada exitosamente: " ;
 				resultado += "\n Operación terminada";
 				panelDatos.actualizarInterfaz(resultado);
-
-			
-			
+			}
+			else
+			{
+				panelDatos.actualizarInterfaz("Los datos estan incompletos");
+			}
 		} 
 		catch (Exception e) 
 		{
@@ -738,8 +775,46 @@ public class InterfazEpsAndesApp extends JFrame implements ActionListener
 		}
 	}
 
-	
-	
+
+
+	public void registrarPrestacion(  )
+	{
+		try 
+		{
+
+			String input = JOptionPane.showInputDialog(this, "Identificador de la cita ","Registrar prestacion", JOptionPane.QUESTION_MESSAGE);
+			long id = Long.parseLong(input);
+			Cita cita = eps.darCitaPorId(id);
+
+
+			if(cita == null)
+			{
+
+				throw new Exception ("La cita con: " + id + " no existe");
+
+			}
+			else
+			{
+				eps.registrarPrestacion(id, cita.getId_recepcionista(), cita.getId_servicio(), cita.getId_usuario());
+			}
+			String resultado = "En registrarPrestacion\n\n";
+			resultado += "Cita prestada exitosamente: " + cita;
+			resultado += "\n Operación terminada";
+			panelDatos.actualizarInterfaz(resultado);
+
+
+
+		} 
+		catch (Exception e) 
+		{
+			//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+
+
+
 	/* ****************************************************************
 	 * 			Métodos administrativos
 	 *****************************************************************/
@@ -793,37 +868,7 @@ public class InterfazEpsAndesApp extends JFrame implements ActionListener
 		panelDatos.actualizarInterfaz(resultado);
 	}
 
-	/**
-	 * Limpia todas las tuplas de todas las tablas de la base de datos de parranderos
-	 * Muestra en el panel de datos el número de tuplas eliminadas de cada tabla
-	 */
-	//	public void limpiarBD ()
-	//	{
-	//		try 
-	//		{
-	//			// Ejecución de la demo y recolección de los resultados
-	//			long eliminados [] = eps.limpiarParranderos();
-	//
-	//			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
-	//			String resultado = "\n\n************ Limpiando la base de datos ************ \n";
-	//			resultado += eliminados [0] + " Gustan eliminados\n";
-	//			resultado += eliminados [1] + " Sirven eliminados\n";
-	//			resultado += eliminados [2] + " Visitan eliminados\n";
-	//			resultado += eliminados [3] + " Bebidas eliminadas\n";
-	//			resultado += eliminados [4] + " Tipos de bebida eliminados\n";
-	//			resultado += eliminados [5] + " Bebedores eliminados\n";
-	//			resultado += eliminados [6] + " Bares eliminados\n";
-	//			resultado += "\nLimpieza terminada";
-	//
-	//			panelDatos.actualizarInterfaz(resultado);
-	//		} 
-	//		catch (Exception e) 
-	//		{
-	//			//			e.printStackTrace();
-	//			String resultado = generarMensajeError(e);
-	//			panelDatos.actualizarInterfaz(resultado);
-	//		}
-	//	}
+
 
 
 	/**

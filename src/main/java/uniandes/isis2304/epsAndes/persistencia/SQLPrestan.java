@@ -82,7 +82,7 @@ public class SQLPrestan {
 		return (long) q.executeUnique();   
 	}
 	
-	public List<Object[]> analizarOpSemanaDemanda(PersistenceManager pm, String servicio,String unidad,String orden)
+	public List<Object[]> analizarOperacionSemanaDemanda(PersistenceManager pm, String servicio,String unidad,String orden)
 	{
 		String sql="SELECT SUM(capacidadmax-capacidad) AS diferencia, to_number(to_char(TO_DATE(tp.DIA,'DD-MM-YY HH24:MI:SS'), '"+unidad+"')) semana FROM "+ pp.darTablaPrestan();
 		sql+=" tp WHERE id_servicio=?";
@@ -93,7 +93,7 @@ public class SQLPrestan {
 		return q.executeList();	
 	}
 	
-	public List<Object[]> analizarOpSemanaActividad(PersistenceManager pm, String servicio,String unidad,String orden)
+	public List<Object[]> analizarOperacionSemanaActividad(PersistenceManager pm, String servicio,String unidad,String orden)
 	{
 		String sql="SELECT COUNT (*) REALIZADAS,to_number(to_char(TO_DATE(tc.FECHA,'DD-MM-YY HH24:MI:SS'), '"+unidad+"')) fecha "+
 				"FROM "+pp.darTablaPrestan()+ " tc "+

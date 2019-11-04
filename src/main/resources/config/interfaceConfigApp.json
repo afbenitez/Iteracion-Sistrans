@@ -27,6 +27,10 @@
 				{
 					"label": "Recepcionista",
 					"event": "registrarRecepcionista"
+				},
+				{
+					"label": "Organizador",
+					"event": "registrarOrganizador"
 				}
 				
 			]
@@ -53,11 +57,11 @@
 				},
 				{
 					"label": "Resgistrar campaña",
-					"event": "registrarPrestacion"
+					"event": "registrarCampania"
 				},
 				{
 					"label": "Resgistrar reapertura",
-					"event": "registrarPrestacion"
+					"event": "registrarReapertura"
 				}
 			]
 		},

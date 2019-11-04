@@ -229,10 +229,10 @@ public class EpsAndes
 		return campania;
 	}
 
-	public void registrarServCamp( String idServicio, String idCampania,String fechaInicio,String fechaFin, int capacidad, int capacidadMax)
+	public void registrarServicioCamp( String idServicio, String idCampania,String fechaInicio,String fechaFin, int capacidad, int capacidadMax)
 	{
 		log.info ("Adicionando servicio a la campania: " + idCampania);
-		pp.registrarServCamp(idServicio, idCampania, fechaInicio, fechaFin, capacidad, capacidadMax);
+		pp.registrarServicioCampania(idServicio, idCampania, fechaInicio, fechaFin, capacidad, capacidadMax);
 		log.info ("Adicionando servicio a la campania: " + idCampania);
 	}
 	

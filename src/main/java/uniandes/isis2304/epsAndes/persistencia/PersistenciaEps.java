@@ -788,7 +788,7 @@ public class PersistenciaEps {
 	}
 	
 
-	public void registrarServCamp( String idServicio, String idCampania,String fechaInicio,String fechaFin, int capacidad, int capacidadMax)
+	public void registrarServicioCampania( String idServicio, String idCampania,String fechaInicio,String fechaFin, int capacidad, int capacidadMax)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -823,11 +823,11 @@ public class PersistenciaEps {
 		Transaction tx=pm.currentTransaction();
 		try
 		{
-		Usuario x = sqlUsuario.darUsuarioPorId(pmf.getPersistenceManager(), "Campania: "+campania);
+		Usuario x = sqlUsuario.darUsuarioPorId(pmf.getPersistenceManager(), Long.parseLong(campania));
 		List<Object[]> y = sqlCampania.darCampania(pmf.getPersistenceManager(), servicio, campania);
 		List<Object[]> lista = sqlPrestan.darInfoServicioEnRango(pmf.getPersistenceManager(), servicio, (String)y.get(0)[3], (String)y.get(0)[4]);
-		int capacidad=((BigDecimal)y.get(0)[5]).intValue();
-		for (int i=0;i<capacidad;i++)
+		int capacidad = ((BigDecimal)y.get(0)[5]).intValue();
+		for (int i = 0;i<capacidad;i++)
 		{
 			Object[] objects=lista.get(i);
 			int insertadas=0;
@@ -849,7 +849,7 @@ public class PersistenciaEps {
 			capacidad-=insertadas;
 		}				
 		tx.begin();
-		sqlCita.eliminarCita(pmf.getPersistenceManager(), servicio, x.getNumero_Documento());
+	
 		sqlCampania.eliminarServicioCampania(pmf.getPersistenceManager(), servicio, campania);
 		tx.commit();
 		}
@@ -919,19 +919,14 @@ public class PersistenciaEps {
 	
 	
 	//RCF6
-	public List<Object[]> analizarOpSemanaActividadAsc( String servicio,String unidad)
+	public List<Object[]> analizarOperacionSemanaActividadAsc( String servicio,String unidad)
 	{
-		return sqlPrestan.analizarOpSemanaActividad(pmf.getPersistenceManager(), servicio, unidad, "ASC");
+		return sqlPrestan.analizarOperacionSemanaActividad(pmf.getPersistenceManager(), servicio, unidad, "ASC");
 	}
 
-	public List<Object[]> analizarOpSemanaActividadDesc( String servicio,String unidad)
+	public List<Object[]> analizarOperacionSemanaDemanaDesc( String servicio,String unidad)
 	{
-		return sqlPrestan.analizarOpSemanaActividad(pmf.getPersistenceManager(), servicio, unidad, "DESC");
-	}
-
-	public List<Object[]> analizarOpSemanaDemanaDesc( String servicio,String unidad)
-	{
-		return sqlPrestan.analizarOpSemanaDemanda(pmf.getPersistenceManager(), servicio, unidad, "DESC");
+		return sqlPrestan.analizarOperacionSemanaDemanda(pmf.getPersistenceManager(), servicio, unidad, "DESC");
 	}
 
 	
