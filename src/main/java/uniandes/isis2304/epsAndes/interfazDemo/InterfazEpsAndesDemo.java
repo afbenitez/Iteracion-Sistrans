@@ -26,11 +26,14 @@ import com.google.gson.stream.JsonReader;
 
 import uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp;
 import uniandes.isis2304.epsAndes.interfazApp.PanelDatos;
+import uniandes.isis2304.epsAndes.negocio.AdministradorDatos;
 import uniandes.isis2304.epsAndes.negocio.Afiliado;
+import uniandes.isis2304.epsAndes.negocio.Campania;
 import uniandes.isis2304.epsAndes.negocio.EpsAndes;
 import uniandes.isis2304.epsAndes.negocio.Ips;
 import uniandes.isis2304.epsAndes.negocio.Recepcionista;
 import uniandes.isis2304.epsAndes.negocio.Rol;
+import uniandes.isis2304.epsAndes.negocio.Usuario;
 import uniandes.isis2304.epsAndes.negocio.VOAdministrador;
 
 public class InterfazEpsAndesDemo extends JFrame implements ActionListener{
@@ -226,9 +229,7 @@ public class InterfazEpsAndesDemo extends JFrame implements ActionListener{
 			String ubicacion = "Cll 83a #75-50";
 			String nombreEps = "EPSAndes";
 			boolean errorIps = false;
-			
-			Recepcionista recepcionista = new Recepcionista(1, "dizkonect@gov.edu.co", "Sandra Hurtado", 1000590782, 5, "CC", "Youfeed");
-			
+						
 			Ips ips = eps.adicionarIps(1, nombre, "CENTRO DIAGNOSTICO", ubicacion);
 			
 			if( ips == null)
@@ -257,72 +258,249 @@ public class InterfazEpsAndesDemo extends JFrame implements ActionListener{
 		}
 	}
 	
+	
+	public void demoAdministrador( )
+	{
+		try 
+		{
+			boolean errorAdmin = false;
+			
+			String email = "asd@asd.com";
+			String nombreAdmin = "Benito";
+			long cedula = 1;
+			int rol = 4;
+			String tipoId = "CC";
+			
+			Usuario administrador = eps.adicionarAdministrador(1, email, nombreAdmin, cedula, rol, tipoId);
+			
+			if( administrador == null)
+			{
+				errorAdmin = true; 
+			}
 
+			String resultado = "Demo de creación de Administrador\n\n";
+			resultado += "\n\n***** Generando datos de prueba ***** \n";
+			if (errorAdmin)
+			{
+				resultado += "* Exception creando Administrador !!\n";
+				resultado += "* Es probable que la Administrador ya existiera y hay restricción de UNICIDAD sobre el nombre de IPS\n";
+				resultado += "* Revise el log de EPSAndes para más detalles\n";
+			}
+			resultado += "Adicionado el Administrador con nombre: " + nombreAdmin + "\n";
+			resultado += "\n Demo terminada";
+
+			panelDatos.actualizarInterfaz(resultado);
+		} 
+		catch (Exception e) 
+		{
+			//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+	
+	public void demoAfiliado( )
+	{
+		try 
+		{
+			boolean errorAfiliado = false;
+			
+			String email = "asd@asd.com";
+			String nombreAfiliado = "Benito 2";
+			long cedula = 12;
+			int rol = 2;
+			String tipoId = "CC";
+			
+			Usuario administrador = eps.adicionarAfiliado(2, email, nombreAfiliado, cedula, rol, tipoId, "12/12/2001");
+			
+			if( administrador == null)
+			{
+				errorAfiliado = true; 
+			}
+
+			String resultado = "Demo de creación de Afiliado\n\n";
+			resultado += "\n\n***** Generando datos de prueba ***** \n";
+			if (errorAfiliado)
+			{
+				resultado += "* Exception creando Afiliado !!\n";
+				resultado += "* Es probable que la Afiliado ya existiera y hay restricción de UNICIDAD sobre el nombre de IPS\n";
+				resultado += "* Revise el log de EPSAndes para más detalles\n";
+			}
+			resultado += "Adicionado el Afiliado con nombre: " + nombreAfiliado + "\n";
+			resultado += "\n Demo terminada";
+
+			panelDatos.actualizarInterfaz(resultado);
+		} 
+		catch (Exception e) 
+		{
+			//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+	
+	public void demoMedico() 
+	{
+		try 
+		{
+			boolean errorMedico = false;
+			
+			String email = "asd@asd1.com";
+			String nombreMedico = "Benito 3";
+			long cedula = 123;
+			int rol = 1;
+			String tipoId = "CC";
+			
+			Usuario administrador = eps.adicionarMedico(1, email, nombreMedico, cedula, rol, tipoId, "GERONTOLOGIA", "1234");
+			
+			if( administrador == null)
+			{
+				errorMedico = true; 
+			}
+
+			String resultado = "Demo de creación de Medico\n\n";
+			resultado += "\n\n***** Generando datos de prueba ***** \n";
+			if (errorMedico)
+			{
+				resultado += "* Exception creando Medico !!\n";
+				resultado += "* Es probable que la Medico ya existiera y hay restricción de UNICIDAD sobre el nombre de IPS\n";
+				resultado += "* Revise el log de EPSAndes para más detalles\n";
+			}
+			resultado += "Adicionado el Medico con nombre: " + nombreMedico + "\n";
+			resultado += "\n Demo terminada";
+
+			panelDatos.actualizarInterfaz(resultado);
+		} 
+		catch (Exception e) 
+		{
+			//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+	
+	public void demoGerente() 
+	{
+		try 
+		{
+			boolean errorGerente = false;
+			
+			String email = "asd@qwe.com";
+			String nombreGerente = "Benito 4";
+			long cedula = 1234;
+			int rol = 3;
+			String tipoId = "CC";
+			
+			Usuario gerente = eps.adicionarGerente(1, email, nombreGerente, cedula, rol, tipoId);
+			
+			if( gerente == null)
+			{
+				errorGerente = true; 
+			}
+
+			String resultado = "Demo de creación de Gerente\n\n";
+			resultado += "\n\n***** Generando datos de prueba ***** \n";
+			if (errorGerente)
+			{
+				resultado += "* Exception creando Gerente !!\n";
+				resultado += "* Es probable que la Gerente ya existiera y hay restricción de UNICIDAD sobre el nombre de IPS\n";
+				resultado += "* Revise el log de EPSAndes para más detalles\n";
+			}
+			resultado += "Adicionado el Gerente con nombre: " + nombreGerente + "\n";
+			resultado += "\n Demo terminada";
+
+			panelDatos.actualizarInterfaz(resultado);
+		} 
+		catch (Exception e) 
+		{
+			//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+
+	
+	public void demoRecepcionista() 
+	{
+		try 
+		{
+			boolean errorRecepcionista = false;
+			
+			String email = "asd@qqwe.com";
+			String nombreRecepcionista = "Benito 4";
+			long cedula = 12345;
+			int rol = 5;
+			String tipoId = "CC";
+			
+			Usuario recepcionista = eps.adicionarRecepcionista(1, email, nombreRecepcionista, cedula, rol, tipoId, "Youfeed");
+			
+			if( recepcionista == null)
+			{
+				errorRecepcionista = true; 
+			}
+
+			String resultado = "Demo de creación de Recepcionista\n\n";
+			resultado += "\n\n***** Generando datos de prueba ***** \n";
+			if (errorRecepcionista)
+			{
+				resultado += "* Exception creando Recepcionista !!\n";
+				resultado += "* Es probable que la Recepcionista ya existiera y hay restricción de UNICIDAD sobre el nombre de IPS\n";
+				resultado += "* Revise el log de EPSAndes para más detalles\n";
+			}
+			resultado += "Adicionado el Recepcionista con nombre: " + nombreRecepcionista + "\n";
+			resultado += "\n Demo terminada";
+
+			panelDatos.actualizarInterfaz(resultado);
+		} 
+		catch (Exception e) 
+		{
+			//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+	
+	
+	
 	public void demoCampana( )
 	{
 		try 
 		{
-			String nombre="Campania uniAlpes";
-			String fechaFin="08-12-18 11:00:00";
-			String fechaIni="06-11-18 06:30:00";
-			String idOrganizador="93345171";
-			epsAndes.registrarOrganizadorCampania(idOrganizador, "Smits", "OrganizadorCampania", "je.hernandezr@uniandes.edu.co", "C.C");
+
+			eps.adicionarOrganizadorDeCampania(1, "dizkonect@asda.com", "Sandra Parra", 41929765, 6, "CC");
 			
 			String nombre_ips = "Sanitas";
 			eps.adicionarIps(2, nombre_ips, "CENTRO MEDICO", "Suba Rincon");
 			
-			eps.adicionarServicioDeSalud(1, 2, "Examen Sangre", nombre_ips, 1, 2, 1);
-			eps.adicionarServicioDeSalud(1, 3, "Examen Sangre", nombre_ips, 4, 5, 1);
-			eps.adicionarServicioDeSalud(2, 5, "Examen Sangre", nombre_ips, 10, 20, 1);
-			eps.adicionarServicioDeSalud(5, 10, "Examen Sangre", nombre_ips, 5, 8, 1);
-
+			eps.adicionarServicioDeSalud(1, 2, "Examen Sangre", nombre_ips, 1, 50, 1);
+			eps.adicionarServicioDeSalud(1, 3, "Examen Orina", nombre_ips, 4, 50, 1);
+			eps.adicionarServicioDeSalud(2, 5, "Examen Piel", nombre_ips, 10, 50, 1);
+			eps.adicionarServicioDeSalud(5, 10, "Examen Renal", nombre_ips, 5, 50, 1);
+			
 			Afiliado afil = eps.adicionarAfiliado(1, "ASD@AD.COM", "Benito Martinez", 41929372, 2, "CC", "12/13/2001");	
 			
 			long id = afil.getId();
+			String nombreCamp = "Colombia Humana";
+			String fecha_inicial = "12/12/2018";
+			String fecha_fin = "12/20/2018";
+			String idOrganizador = "41929372";
 			
-			for(int i=0;i<7;i++)
-			{
-				epsAndes.registrarReserva("Consultas medicas con medico general", id, "06-12-18 08:00:00", -10, "08:00:00", nombre_ips);
-			}
-			for(int i=0;i<6;i++)
-			{
-				epsAndes.registrarReserva("Consultas medicas con especialistas", id, "07-12-18 07:00:00", -10, "07:00:00", nombre_ips);
-			}
-			for(int i=0;i<3;i++)
-			{
-				epsAndes.registrarReserva("Examenes de sangre", id,"08-12-18 11:00:00", -10, "11:00:00", nombre_ips);
-			}
-			for(int i=0;i<12;i++)
-			{
-				epsAndes.registrarReserva("Radiografias", id, "08-11-18 10:00:30", -10, "10:00:30", nombre_ips);
-			}
-			for(int i=0;i<9;i++)
-			{
-				epsAndes.registrarReserva("Consultas odontologicas", id, "06-11-18 06:30:00", -10, "06:30:00", nombre_ips);
-			}
-			for(int i=0;i<10;i++)
-			{
-				epsAndes.registrarReserva("Jornadas de vacunacion", id,  "09-11-18 06:00:00", -10, "06:00:00", nombre_ips);
-			}
+			Campania campania = eps.registrarCampania(nombreCamp, fecha_inicial, fecha_fin, idOrganizador);
+			eps.registrarServCamp("Examen Sangre", nombreCamp, fecha_inicial, fecha_fin, 1, 10);
+			eps.registrarServCamp("Examen Orina", nombreCamp, fecha_inicial, fecha_fin, 1, 20);
+			eps.registrarServCamp("Examen Piel", nombreCamp, fecha_inicial, fecha_fin, 1, 30);
+			eps.registrarServCamp("Examen Renal", nombreCamp, fecha_inicial, fecha_fin, 1, 40);
 			
-			VOCampania campania=epsAndes.registrarCampania(nombre, fechaFin, fechaIni, idOrganizador);
-			epsAndes.registrarServCamp("Consultas medicas con medico general", nombre, 7, fechaIni, fechaFin);
-			epsAndes.registrarServCamp("Consultas medicas con especialistas", nombre, 6, fechaIni, fechaFin);
-			epsAndes.registrarServCamp("Examenes de sangre", nombre, 3, fechaIni, fechaFin);
-			epsAndes.registrarServCamp("Consultas odontologicas", nombre, 9, fechaIni, fechaFin);
-			epsAndes.registrarServCamp("Radiografias", nombre, 12, fechaIni, fechaFin);
-			epsAndes.registrarServCamp("Jornadas de vacunacion", nombre, 10, fechaIni, fechaFin);
 
 			boolean errorcampania=false;
+			
 			if( campania == null)
 			{
-				campania = epsAndes.darCampaniaPorNombre(nombre);
 				errorcampania = true; 
 			}
 
-			List<VOCampania> lista = epsAndes.darCampanias();
-			long eliminados = epsAndes.eliminarCampaniaPorNombre(campania.getNombre());
-			String resultado = "Demo de creación y listado de Campanias\n\n";
+			
+			String resultado = "Demo de creación Campaña\n\n";
 			resultado += "\n\n***** Generando datos de prueba ***** \n";
 			if (errorcampania)
 			{
@@ -330,11 +508,7 @@ public class InterfazEpsAndesDemo extends JFrame implements ActionListener{
 				resultado += "* Es probable que la campania ya existiera y hay restricción de UNICIDAD sobre el nombre de campania\n";
 				resultado += "* Revise el log de EPSAndes para más detalles\n";
 			}
-			resultado += "Adicionado la Campania con nombre: " + nombre + "\n";
-			resultado += "\n\n***** Ejecutando la demo ***** \n";
-			resultado +=  "\n" + listarCampania (lista);
-			resultado += "\n\n***** Limpiando la base de datos ***** \n";
-			resultado += eliminados + " Campanias eliminadas\n";
+			resultado += "Adicionado la Campania con nombre: " + nombreCamp + "\n";
 			resultado += "\n Demo terminada";
 
 			panelDatos.actualizarInterfaz(resultado);
