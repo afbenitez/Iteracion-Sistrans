@@ -1,0 +1,510 @@
+CREATE TABLE ServicioDeSalud
+(
+ID NUMBER,
+NOMBRE VARCHAR(20),
+TIPO_SERVICIO VARCHAR (25),
+CONSTRAINT ServicioDeSalud_PK PRIMARY KEY (NOMBRE));
+
+CREATE TABLE ServicioTerapia
+(
+ID NUMBER,
+NUMERO_SESIONES NUMBER,
+TIPO_TERAPIA VARCHAR(20),
+CONSTRAINT ServicioTerapia_PK PRIMARY KEY (ID));
+
+CREATE TABLE Eps 
+(ID NUMBER,
+NOMBRE VARCHAR (25),
+CONSTRAINT Eps_PK PRIMARY KEY (NOMBRE));
+
+CREATE TABLE Trabajan
+(NOMBRE_IPS VARCHAR(20),
+ID_MEDICO NUMBER,
+CONSTRAINT Trabajan_PK PRIMARY KEY (NOMBRE_IPS, ID_MEDICO)
+);
+
+CREATE TABLE Usuario
+(
+ID NUMBER,
+EMAIL VARCHAR (30),
+NOMBRE VARCHAR (30),
+NUMERO_ID NUMBER,
+ROL NUMBER,
+TIPO_IDENTIFICACION VARCHAR (2),
+CONSTRAINT Usuario_PK PRIMARY KEY (NUMERO_ID)); 
+
+CREATE TABLE Prestan
+(
+DIA NUMBER,
+HORARIO NUMBER, 
+ID_SERVICIO VARCHAR(20),
+ID_IPS VARCHAR(20), 
+CAPACIDAD NUMBER,
+CAPACIDAD_MAX NUMBER,
+ESTADO NUMBER,
+CONSTRAINT Prestan_PK PRIMARY KEY (ID_SERVICIO, ID_IPS, HORARIO, DIA)
+);
+
+CREATE TABLE Medico
+(
+ID NUMBER,
+ESPECIALIDAD VARCHAR (25),
+NUMERO_REGISTRO VARCHAR (25),
+NUMERO_ID NUMBER,
+CONSTRAINT Medico_PK PRIMARY KEY (NUMERO_ID));
+
+CREATE TABLE Afiliado
+(
+ID NUMBER,
+FECHA_NACIMIENTO VARCHAR (25),
+NUMERO_ID VARCHAR (25),
+CONSTRAINT Afiliado_PK PRIMARY KEY (NUMERO_ID));
+    
+CREATE TABLE Recepcionista
+(
+ID NUMBER,
+ID_IPS VARCHAR(30),
+NUMERO_ID VARCHAR (25),
+CONSTRAINT Recepcionista_PK PRIMARY KEY (NUMERO_ID));
+      
+CREATE TABLE Gerente
+(
+ID NUMBER,
+NUMERO_ID VARCHAR (25),
+CONSTRAINT Gerente_PK PRIMARY KEY (NUMERO_ID));
+    
+CREATE TABLE AdministradorDatos
+(
+ID NUMBER,
+NUMERO_ID VARCHAR (25),
+CONSTRAINT AdministradorDatos_PK PRIMARY KEY (NUMERO_ID));
+
+CREATE TABLE Cita
+(
+ID NUMBER,
+ID_RECETA NUMBER,
+ID_USUARIO NUMBER,
+ID_RECEPCIONISTA NUMBER,
+ID_SERVICIO VARCHAR(20),
+ESTADO_CITA VARCHAR (20),
+FECHA VARCHAR (20),
+HORARIO NUMBER,
+CONSTRAINT Cita_PK PRIMARY KEY (ID_RECETA));
+    
+CREATE TABLE RecetaMedica
+(
+ID NUMBER, 
+FECHA VARCHAR(20),
+ID_MEDICO NUMBER,
+ID_USUARIO NUMBER,
+ID_SERVICIO VARCHAR(20),
+MEDICAMENTOS VARCHAR (100),
+CONSTRAINT RecetaMedica_PK PRIMARY KEY (ID));
+
+CREATE TABLE Horario
+(ID NUMBER,
+FRANJA VARCHAR(20),
+CONSTRAINT Horario_PK PRIMARY KEY (ID)
+);
+
+CREATE TABLE Ips
+(
+ID NUMBER, 
+NOMBRE_IPS VARCHAR(30), 
+TIPO_IPS VARCHAR(30), 
+UBICACION VARCHAR(30),
+CONSTRAINT Ips_PK PRIMARY KEY (NOMBRE_IPS)
+);
+
+CREATE TABLE Rol
+(
+ID NUMBER,
+NOMBRE2 VARCHAR(20),
+CONSTRAINT "Rol_PK" PRIMARY KEY (ID)
+);
+
+CREATE TABLE Campania
+(
+NOMBRE VARCHAR(20),
+FECHA_INICIO VARCHAR(20),
+FECHA_FIN VARCHAR(20),
+ID_ORGANIZADOR VARCHAR(20),
+CONSTRAINT Campania_PK PRIMARY KEY (NOMBRE));
+
+CREATE TABLE OrganizadorDeCampania
+(
+NUMERO_ID NUMBER,
+CONSTRAINT OrganizadorDeCampania_PK PRIMARY KEY (NUMERO_ID)
+);
+
+CREATE TABLE ReservaDeCampania
+(
+ID_SERVICIO VARCHAR(20),
+ID_CAMPANIA VARCHAR(20),
+FECHA_INICIO VARCHAR(20),
+FECHA_FIN VARCHAR(20),
+CAPACIDAD NUMBER,
+CAPACIDAD_MAXIMA NUMBER,
+CONSTRAINT ReservaDeCampania_PK PRIMARY KEY (ID_SERVICIO, ID_CAMPANIA)
+);
+
+ALTER TABLE Campania
+    ADD CONSTRAINT fk_organizador_campania
+    FOREIGN KEY (id_organizador)
+    REFERENCES OrganizadorDeCampania(numero_id)
+    ENABLE;
+
+ALTER TABLE OrganizadorDeCampania
+    ADD CONSTRAINT fk_id_organizador
+    FOREIGN KEY (numero_id)
+    REFERENCES Usuario(numero_id)
+    ENABLE;
+    
+ALTER TABLE ReservaDeCampania
+    ADD CONSTRAINT fk_id_servicio
+    FOREIGN KEY (id_servicio)
+    REFERENCES ServicioDeSalud(nombre)
+    ENABLE;
+
+ALTER TABLE ReservaDeCampania
+    ADD CONSTRAINT fk_id_campania
+    FOREIGN KEY (id_campania)
+    REFERENCES Campania(nombre)
+    ENABLE;
+
+ALTER TABLE Rol
+    ADD CONSTRAINT CK_ROL
+    CHECK (NOMBRE2 IN ('Recepcionista', 'Medico', 'Afiliado', 'Gerente', 'AdministradorDatos'))
+    ENABLE;
+
+ALTER TABLE RecetaMedica
+    ADD CONSTRAINT fk_medico_receta
+    FOREIGN KEY (id_medico)
+    REFERENCES Medico(numero_id)
+    ENABLE;
+ 
+ALTER TABLE RecetaMedica
+    ADD CONSTRAINT fk_servicio_receta
+    FOREIGN KEY (id_servicio)
+    REFERENCES ServicioDeSalud(nombre)
+    ENABLE;
+
+ALTER TABLE RecetaMedica
+    ADD CONSTRAINT fk_usuario_receta
+    FOREIGN KEY (id_usuario)
+    REFERENCES Usuario(numero_id)
+    ENABLE;
+
+ALTER TABLE ServicioDeSalud
+    ADD CONSTRAINT CK_TIPO_SERVICIO
+    CHECK (TIPO_SERVICIO IN ('PROCEDIMIENTO ESPECIALIZADO', 'CONSULTA', 'TERAPIA', 'EXAMEN DIAGNOSTICO', 'HOSPITALIZACION'))
+    ENABLE;
+
+ALTER TABLE Ips
+    ADD CONSTRAINT CK_TIPO_IPS
+    CHECK (TIPO_IPS IN ('HOSPITAL','CENTRO DIAGNOSTICO', 'LABORATORIO','CENTRO MEDICO'))
+    ENABLE;
+    
+ALTER TABLE Recepcionista
+    ADD CONSTRAINT fk_ips_recepcionista
+    FOREIGN KEY (id_ips)
+    REFERENCES Ips(NOMBRE_IPS)
+    ENABLE;
+    
+ALTER TABLE Medico 
+    ADD CONSTRAINT UN_MEDICO_REGISTRO
+    UNIQUE(NUMERO_REGISTRO)
+    ENABLE;
+  
+ALTER TABLE Usuario
+    ADD CONSTRAINT CK_TIPO_ID
+    CHECK (TIPO_IDENTIFICACION IN ('CC', 'TI','RC', 'CE'))
+    ENABLE;
+    
+ALTER TABLE Usuario
+    ADD CONSTRAINT fk_rol_usuario
+    FOREIGN KEY (rol)
+    REFERENCES Rol(ID)
+    ENABLE;
+    
+ALTER TABLE Medico
+    ADD CONSTRAINT CK_ESPECIALIDAD_MEDICO
+    CHECK ( ESPECIALIDAD IN ('GERONTOLOGIA', 'ORTOPEDIA', 'ONCOLOGIA', 'INTERNA', 'CIRUGIA', 'NEUROLOGIA', 'ORTOPEDIA', 'PEDIATRIA', 'CARDIOLOGIA', 'ODONTOLOGIA', 'DERMATOLOGIA'))
+    ENABLE;
+
+ALTER TABLE Cita
+    ADD CONSTRAINT CK_CITA_ESTADO_CITA
+    CHECK(ESTADO_CITA IN ('CANCELADA', 'RESERVADA', 'REALIZADA', 'PENDIENTE'))
+    ENABLE;
+
+ALTER TABLE Cita
+    ADD CONSTRAINT fk_receta_cita
+    FOREIGN KEY (id_receta)
+    REFERENCES RecetaMedica(id)
+    ENABLE;
+
+ALTER TABLE Cita 
+    ADD CONSTRAINT fk_servicio_cita
+    FOREIGN KEY (id_servicio)
+    REFERENCES ServicioDeSalud(nombre)
+    ENABLE;
+    
+ALTER TABLE Cita
+    ADD CONSTRAINT fk_usuario_cita
+    FOREIGN KEY (id_usuario)
+    REFERENCES Usuario(numero_id)
+    ENABLE;
+
+ALTER TABLE Trabajan
+    ADD CONSTRAINT fk_medico_trabajan
+    FOREIGN KEY (id_medico)
+    REFERENCES Medico(NUMERO_ID)
+    ENABLE;
+
+ALTER TABLE Trabajan
+    ADD CONSTRAINT fk_ips_trabajan
+    FOREIGN KEY (nombre_ips)
+    REFERENCES Ips(NOMBRE_IPS)
+    ENABLE;      
+    
+ALTER TABLE Prestan
+    ADD CONSTRAINT fk_servicio_prestan
+    FOREIGN KEY (id_servicio)
+    REFERENCES ServicioDeSalud(NOMBRE)
+    ENABLE;
+
+ALTER TABLE Prestan
+    ADD CONSTRAINT fk_ips_prestan
+    FOREIGN KEY (id_ips)
+    REFERENCES Ips(nombre_ips)
+    ENABLE;
+
+insert into EPS (id, nombre) values (1, 'EPSAndes');
+
+insert into IPS (id, nombre_ips, tipo_ips, ubicacion) values (1, 'Youfeed', 'CENTRO MEDICO', '3 Northland Place');
+insert into IPS (id, nombre_ips, tipo_ips, ubicacion) values (2, 'Blogtag', 'CENTRO MEDICO', '47 Chinook Circle');
+
+insert into ROL (id, nombre2) values (1, 'Medico');
+insert into ROL (id, nombre2) values (2, 'Afiliado');
+insert into ROL (id, nombre2) values (3, 'Gerente');
+insert into ROL (id, nombre2) values (4, 'AdministradorDatos');
+insert into ROL (id, nombre2) values (5, 'Recepcionista');
+
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (1, 'nmcettrick0@g.co', 'Natka Mcettrick', '64484332207', '5', 'CE');
+insert into Recepcionista (id, id_ips, numero_id) values (1, 'Youfeed', '64484332207'); 
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (2, 'lsisey1@dot.gov', 'Lisetta Sisey', '66917099921', '5', 'CE');
+insert into Recepcionista (id, id_ips, numero_id) values (2, 'Youfeed', '66917099921');
+
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (3, 'rtinner1@pbs.org', 'Rana Tinner', '69735050357', '3', 'CE');
+insert into Gerente (id, numero_id) values (1, '69735050357');
+
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (4, 'doblein1@taobao.com', 'Doria Oblein', '83088736', '4', 'CC');
+insert into AdministradorDatos (id, numero_id) values (1, '83088736');
+
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (5, 'mantonat0@mapy.cz', 'Milena Antonat', '23099829146', '2', 'CE');
+insert into Afiliado (id, fecha_nacimiento, numero_id) values (1, '6/6/2005', '23099829146');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (6, 'rrennebach1@archive.org', 'Rabbi Rennebach', '64475376121', '2', 'CE');
+insert into Afiliado (id, fecha_nacimiento, numero_id) values (2, '7/5/2005', '64475376121');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (7, 'apomfrett2@hexun.com', 'Ash Pomfrett', '11982046470', '2', 'CC');
+insert into Afiliado (id, fecha_nacimiento, numero_id) values (3, '6/1/2009', '11982046470');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (8, 'harnatt3@purevolume.com', 'Harriot Arnatt', '93002070411', '2', 'CC');
+insert into Afiliado (id, fecha_nacimiento, numero_id) values (4, '8/8/2015', '93002070411');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (9, 'cgostick4@nyu.edu', 'Caterina Gostick', '50006683615', '2', 'CE');
+insert into Afiliado (id, fecha_nacimiento, numero_id) values (5, '1/17/2010', '50006683615');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (10, 'dbarles5@sakura.ne.jp', 'Delmar Barles', '72071392180', '2', 'CC');
+insert into Afiliado (id, fecha_nacimiento, numero_id) values (6, '3/29/2010', '72071392180');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (11, 'cfairclough6@wikipedia.org', 'Cari Fairclough', '73354046177', '2', 'CE');
+insert into Afiliado (id, fecha_nacimiento, numero_id) values (7, '8/25/2009', '73354046177');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (12, 'bharkess7@newsvine.com', 'Bettye Harkess', '30083981123', '2', 'CE');
+insert into Afiliado (id, fecha_nacimiento, numero_id) values (8, '9/15/2013', '30083981123');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (13, 'ihacaud8@aboutads.info', 'Idalina Hacaud', '36705147752', '2', 'CC');
+insert into Afiliado (id, fecha_nacimiento, numero_id) values (9, '2/17/2007', '36705147752');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (14, 'ddominico9@blinklist.com', 'Dorita Dominico', '25184506335', '2', 'TI');
+insert into Afiliado (id, fecha_nacimiento, numero_id) values (10, '6/2/2018', '25184506335');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (15, 'epentonya@skyrock.com', 'Eimile Pentony', '38497155323', '2', 'RC');
+insert into Afiliado (id, fecha_nacimiento, numero_id) values (11, '8/17/2017', '38497155323');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (16, 'jgomesb@nationalgeographic.com', 'Joel Gomes', '77086218280', '2', 'TI');
+insert into Afiliado (id, fecha_nacimiento, numero_id) values (12, '7/30/2002', '77086218280');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (17, 'rgreenliesc@domainmarket.com', 'Rudolf Greenlies', '95165030383', '2', 'CE');
+insert into Afiliado (id, fecha_nacimiento, numero_id) values (13, '1/27/2004', '95165030383');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (18, 'apetrassod@mail.ru', 'Albina Petrasso', '28104995073', '2', 'CE');
+insert into Afiliado (id, fecha_nacimiento, numero_id) values (14, '6/5/2004', '28104995073');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (19, 'droberdse@eepurl.com', 'Dottie Roberds', '09951902821', '2', 'CE');
+insert into Afiliado (id, fecha_nacimiento, numero_id) values (15, '8/12/2017', '09951902821');
+
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (20, 'ogrieston0@theglobeandmail.com', 'Ozzy Grimbaldeston', '41443956631', '1', 'CC');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (1, 'ODONTOLOGIA', '87570627754', '41443956631');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (21, 'pmallinson1@diigo.com', 'Pearla Mallinson', '57311638672', '1', 'CC');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (2, 'ODONTOLOGIA', '13558392832', '57311638672');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (22, 'ischops2@surveymonkey.com', 'Ignacius Schops', '38150882412', '1', 'CE');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (3, 'DERMATOLOGIA', '04337021900', '38150882412');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (23, 'carens3@yahoo.com', 'Cordell Arens', '11766123577', '1', 'CE');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (4, 'CARDIOLOGIA', '74787726926', '11766123577');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (24, 'rseczyk4@reuters.com', 'Robinet Seczyk', '18348656040', '1', 'CC');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (5, 'ODONTOLOGIA', '05344411185', '18348656040');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (25, 'pconyard5@rambler.ru', 'Padriac Conyard', '37157421661', '1', 'CE');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (6, 'DERMATOLOGIA', '57829840720', '37157421661');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (26, 'lhoggan6@seesaa.net', 'Lucio Hoggan', '89532099532', '1', 'CC');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (7, 'DERMATOLOGIA', '22328875444', '89532099532');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (27, 'upopescu7@zdnet.com', 'Ulrike Popescu', '89261119260', '1', 'CE');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (8, 'DERMATOLOGIA', '10084881329', '89261119260');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (28, 'smacvain8@kickstarter.com', 'Shelley Macvain', '85534874933', '1', 'CC');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (9, 'DERMATOLOGIA', '96701440165', '85534874933');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (29, 'jbruntjen9@facebook.com', 'Jonathon Bruntjen', '75610651204', '1', 'CE');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (10, 'DERMATOLOGIA', '34849406551', '75610651204');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (30, 'lpopova@hexun.com', 'Lindon Popov', '77817372256', '1', 'CC');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (11, 'DERMATOLOGIA', '01478272600', '77817372256');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (31, 'ppenasb@ocn.ne.jp', 'Patten Penas', '44206346647', '1', 'CC');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (12, 'ODONTOLOGIA', '18114150495', '44206346647');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (32, 'eyuranovevc@weebly.com', 'Ermin Yuranovev', '56110357722', '1', 'CE');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (13, 'INTERNA', '68329443935', '56110357722');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (33, 'msurmand@ning.com', 'Marcella Surman', '39877338210', '1', 'CE');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (14, 'ODONTOLOGIA', '97425194967', '39877338210');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (34, 'davramovice@hugedomains.com', 'Dannie Avramovic', '70995604094', '1', 'CE');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (15, 'DERMATOLOGIA', '39865744343', '70995604094');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (35, 'ldyasf@uiuc.edu', 'Lynnet Dyas', '62676226862', '1', 'CE');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (16, 'CARDIOLOGIA', '48127539664', '62676226862');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (36, 'uestickg@squidoo.com', 'Una Estick', '78233044499', '1', 'CE');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (17, 'ODONTOLOGIA', '52377177849', '78233044499');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (37, 'bgudgionh@yahoo.co.jp', 'Bobbie Gudgion', '53847201995', '1', 'CC');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (18, 'PEDIATRIA', '81000403285', '53847201995');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (38, 'amcdavitti@odnoklassniki.ru', 'Aeriell McDavitt', '01977247056', '1', 'CE');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (19, 'ODONTOLOGIA', '40753946960', '01977247056');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (39, 'zmessagerj@quantcast.com', 'Zebedee Messager', '13755290227', '1', 'CE');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (20, 'CARDIOLOGIA', '50381742173', '13755290227');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (40, 'ktamlettk@ameblo.jp', 'Karen Tamlett', '10028508033', '1', 'CE');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (21, 'DERMATOLOGIA', '67588444177', '10028508033');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (41, 'lszimonil@globo.com', 'Lefty Szimoni', '40636497151', '1', 'CE');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (22, 'DERMATOLOGIA', '72012788665', '40636497151');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (42, 'myitshakm@tinyurl.com', 'Melisa Yitshak', '24689805374', '1', 'CC');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (23, 'DERMATOLOGIA', '60664553215', '24689805374');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (43, 'deilhartn@ovh.net', 'Dimitri Eilhart', '77221636203', '1', 'CE');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (24, 'DERMATOLOGIA', '64572187137', '77221636203');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (44, 'etimewello@boston.com', 'Edwina Timewell', '08458342275', '1', 'CE');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (25, 'CARDIOLOGIA', '35775650026', '08458342275');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (45, 'dkennettp@t-online.de', 'Dari Kennett', '84627043696', '1', 'CC');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (26, 'DERMATOLOGIA', '76481159137', '84627043696');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (46, 'nkippenq@hud.gov', 'Neron Kippen', '03035943192', '1', 'CE');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (27, 'DERMATOLOGIA', '46265347386', '03035943192');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (47, 'cmccaigheyr@cdc.gov', 'Cymbre McCaighey', '19993293689', '1', 'CC');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (28, 'CARDIOLOGIA', '66737915524', '19993293689');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (48, 'ebenaharons@slashdot.org', 'Elle Ben-Aharon', '13262745135', '1', 'CC');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (29, 'DERMATOLOGIA', '98203406896', '13262745135');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (49, 'bsowthcotet@mail.ru', 'Bren Sowthcote', '57579755961', '1', 'CE');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (30, 'ODONTOLOGIA', '74070268849', '57579755961');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (50, 'erylesu@umich.edu', 'Editha Ryles', '32349099535', '1', 'CE');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (31, 'DERMATOLOGIA', '20940362628', '32349099535');
+
+insert into Usuario (id, email, nombre, numero_id, rol, tipo_identificacion) values (51, 'mleatwoodv@businessinsider.com', 'Moselle Leathwood', '46337048824', '1', 'CE');
+insert into Medico (id, especialidad, numero_registro, numero_id) values (32, 'ODONTOLOGIA', '23755151165', '46337048824');
+
+
+
+insert into Horario (id, franja) values (1, '8:00AM-8:30AM');
+insert into Horario (id, franja) values (2, '8:30AM-9:00AM');
+insert into Horario (id, franja) values (3, '9:00AM-9:30AM');
+insert into Horario (id, franja) values (4, '9:30AM-10:00AM');
+insert into Horario (id, franja) values (5, '10:00AM-10:30AM');
+insert into Horario (id, franja) values (6, '10:30AM-11:00AM');
+insert into Horario (id, franja) values (7, '11:00AM-11:30AM');       
+insert into Horario (id, franja) values (8, '11:30AM-12:00PM');
+insert into Horario (id, franja) values (9, '12:00AM-12:30AM');
+insert into Horario (id, franja) values (10, '12:30PM-1:00PM');
+insert into Horario (id, franja) values (11, '1:00PM-1:30PM');
+insert into Horario (id, franja) values (12, '1:30PM-2:00PM');
+insert into Horario (id, franja) values (13, '2:00PM-2:30PM');
+insert into Horario (id, franja) values (14, '2:30PM-3:00PM');
+insert into Horario (id, franja) values (15, '3:00PM-3:30PM');
+insert into Horario (id, franja) values (16, '3:30PM-4:00PM');
+insert into Horario (id, franja) values (17, '4:00PM-4:30PM');
+insert into Horario (id, franja) values (18, '4:30PM-5:00PM');
+insert into Horario (id, franja) values (19, '5:00PM-5:30PM');
+insert into Horario (id, franja) values (20, '5:30PM-6:00PM');
+
+
+DROP TABLE "ADMINISTRADORDATOS" CASCADE CONSTRAINTS;
+DROP TABLE "AFILIADO" CASCADE CONSTRAINTS;
+DROP TABLE "CITA" CASCADE CONSTRAINTS;
+DROP TABLE "EPS" CASCADE CONSTRAINTS;
+DROP TABLE "GERENTE" CASCADE CONSTRAINTS;
+DROP TABLE "IPS" CASCADE CONSTRAINTS;
+DROP TABLE "MEDICO" CASCADE CONSTRAINTS;
+DROP TABLE "RECEPCIONISTA" CASCADE CONSTRAINTS;
+DROP TABLE "RECETAMEDICA" CASCADE CONSTRAINTS;
+DROP TABLE "SERVICIODESALUD" CASCADE CONSTRAINTS;
+DROP TABLE "TRABAJAN" CASCADE CONSTRAINTS;
+DROP TABLE "USUARIO" CASCADE CONSTRAINTS;
+DROP TABLE "SERVICIOTERAPIA" CASCADE CONSTRAINTS;
+DROP TABLE "ROL" CASCADE CONSTRAINTS;
+DROP TABLE "HORARIO" CASCADE CONSTRAINTS;
+DROP TABLE "PRESTAN" CASCADE CONSTRAINTS;
+COMMMIT;
+
+delete from rol;
+delete from eps;
+delete from ips;
+delete from medico;
+delete from afiliado;
+delete from recepcionista;
+delete from gerente;
+delete from administradordatos;
+delete from serviciodesalud;
+delete from cita;
+delete from recetamedica;
+delete from trabajan;
+delete from usuario;
+delete from SERVICIOTERAPIA;
+delete from horario;
+delete from prestan;
+commit;
+        

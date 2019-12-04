@@ -363,3 +363,18 @@ ORA-00001: restricción única (ISIS2304C161920.USUARIO_PK) violada
 21:28:11,059 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
 21:28:34,753 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando campania: fdgdf
 21:28:34,979 (AWT-EventQueue-0) INFO  [uniandes.isis2304.epsAndes.negocio.EpsAndes] - Adicionando campania: uniandes.isis2304.epsAndes.negocio.Campania@5a140248
+21:37:32,901 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+21:37:32,902 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+21:37:32,913 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+21:46:49,655 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+21:46:49,656 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+21:46:49,666 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+21:47:29,349 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+21:47:29,350 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+21:47:29,361 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+21:51:49,872 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+21:51:49,873 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+21:51:49,884 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+21:53:07,568 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+21:53:07,569 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se aplica configuración indicada en el archivo de configuración
+21:53:07,580 (main) INFO  [uniandes.isis2304.epsAndes.interfazApp.InterfazEpsAndesApp] - Se encontró un archivo de configuración válido: Tablas BD

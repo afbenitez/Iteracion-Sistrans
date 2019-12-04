@@ -876,7 +876,7 @@ public class InterfazEpsAndesApp extends JFrame implements ActionListener
 	 */
 	public void mostrarModeloConceptual ()
 	{
-		mostrarArchivo ("data/Modelo Conceptual EpsAndes.pdf");
+		mostrarArchivo ("data/Starter Class Diagram.png");
 	}
 
 	/**
@@ -884,14 +884,14 @@ public class InterfazEpsAndesApp extends JFrame implements ActionListener
 	 */
 	public void mostrarModeloRelacional ()
 	{
-		mostrarArchivo ("data/Modelo Relacional EpsAndes.pdf");
+		mostrarArchivo ("data/20 Iteracion 2.docx");
 	}
 	/**
 	 * Muestra el documento de la iteracion de EpsAndes
 	 */
 	public void mostrarDocumentoIteracion ()
 	{
-		mostrarArchivo ("data/Documento iteracion.pdf");
+		mostrarArchivo ("data/20 Iteracion 2.docx");
 	}
 
 
