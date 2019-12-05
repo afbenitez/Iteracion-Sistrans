@@ -78,9 +78,9 @@ public class PersistenciaEps {
 	
 	
 	
-	/* ****************************************************************
+	/* **********************
 	 * 			Métodos del MANEJADOR DE PERSISTENCIA
-	 *****************************************************************/
+	 ***********************/
 
 	/**
 	 * Constructor privado con valores por defecto - Patrón SINGLETON

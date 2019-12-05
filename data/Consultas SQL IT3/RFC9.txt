@@ -1,0 +1,44 @@
+//RFC9 - CONSULTAR LA PRESTACIÓN DE SERVICIOS EN EPSANDES
+
+SELECT  sl.email,sl.nombre,sl.numero_id,sl.rol,sl.tipo_identificacion
+FROM (SELECT u.email,u.nombre,u.numero_id,u.rol,u.tipo_identificacion
+      FROM USUARIO u, AFILIADO a, 
+            (SELECT COUNT(DISTINCT c.id_servicio)c1, c.id_usuario 
+            FROM CITA c
+            WHERE c.id_servicio IN('Servicio 260','Servicio 379') AND c.estado_cita = 'REALIZADA' AND to_date(c.fecha,'mm/dd/yyyy') 
+            BETWEEN to_date('10/24/2010','mm/dd/yyyy') AND to_date('12/15/2016','mm/dd/yyyy') 
+            GROUP BY c.id_usuario 
+            ORDER BY c.id_usuario DESC
+            )c,
+            (SELECT COUNT(DISTINCT id_servicio)c2 
+            FROM CITA
+            WHERE id_servicio IN('Servicio 260','Servicio 379')
+            GROUP BY id_servicio
+            )cs 
+      WHERE a.numero_id=u.numero_id AND c.id_usuario=a.numero_id AND c.c1=cs.c2
+     )sl
+WHERE sl.numero_id IN  
+ (SELECT id_usuario FROM 
+    (SELECT * 
+    FROM USUARIO u, AFILIADO a,
+        (SELECT COUNT(DISTINCT s.tipo_servicio) c1,id_usuario 
+        FROM CITA c, SERVICIODESALUD s 
+        WHERE c.id_servicio=s.nombre AND s.tipo_servicio IN('HOSPITALIZACION') AND c.estado_cita = 'REALIZADA'
+        GROUP BY id_usuario 
+        ORDER BY COUNT(DISTINCT s.tipo_servicio) DESC
+        )c,
+        (SELECT SUM(COUNT(DISTINCT s.tipo_servicio))c2
+        FROM CITA c,SERVICIODESALUD s
+        WHERE c.id_servicio=s.nombre and s.tipo_servicio IN('HOSPITALIZACION') 
+        GROUP BY s.tipo_servicio
+        )cs 
+    WHERE a.numero_id=u.numero_id AND c.id_usuario=a.numero_id AND c.c1=cs.c2
+    )
+ )
+AND sl.numero_id IN
+ (SELECT id_usuario FROM 
+    (SELECT DISTINCT c.id_usuario 
+    FROM CITA c, PRESTAN p 
+    WHERE c.fecha=p.dia AND c.id_servicio=p.id_servicio AND p.id_ips IN(SELECT id_ips FROM PRESTAN)
+    )
+ );

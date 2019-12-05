@@ -1,0 +1,173 @@
+//RFC12 - CONSULTAR LOS AFILIADOS COSTOSOS
+
+
+SELECT *
+FROM 
+(
+    SELECT t1.SEMANA AS SEMANA, listagg(t1.tipo,', ')within group(order by t1.tipo) AS TiposMasUsados, t2.c1 AS CantidadTipoMasUsado
+    FROM (SELECT (COUNT(s.tipo_servicio))ca, s.tipo_servicio as tipo,to_char(to_date(c.FECHA, 'MM/DD/YYYY'), 'WW/YYYY') AS SEMANA
+          FROM CITA c, SERVICIODESALUD s
+          WHERE c.ID_SERVICIO = s.NOMBRE AND c.ESTADO_CITA = 'REALIZADA'
+          GROUP BY to_char(to_date(c.FECHA, 'MM/DD/YYYY'), 'WW/YYYY'), s.tipo_servicio
+          ORDER BY semana DESC
+          )t1,
+          
+         (SELECT MAX(ca) C1, SEMANA
+          FROM (SELECT (COUNT(s.tipo_servicio)) ca, s.tipo_servicio, to_char(to_date(c.FECHA, 'MM/DD/YYYY'), 'WW/YYYY') AS SEMANA
+                FROM CITA c, SERVICIODESALUD s
+                WHERE c.ID_SERVICIO = s.NOMBRE AND c.ESTADO_CITA = 'REALIZADA'
+                GROUP BY to_char(to_date(c.FECHA, 'MM/DD/YYYY'), 'WW/YYYY'), s.tipo_servicio
+                )
+          GROUP BY SEMANA
+          ) t2
+          
+    WHERE t1.SEMANA = t2.SEMANA
+    AND t1.ca = t2.c1 
+    GROUP BY t1.SEMANA, t2.c1
+    ORDER BY SEMANA DESC
+)t1 
+
+NATURAL INNER JOIN
+(
+    SELECT t1.SEMANA as SEMANA, LISTAGG(t1.tipo,', ') WITHIN GROUP(ORDER BY t1.tipo) AS TiposMenosUsados, t2.c1 AS CantidadTipoMenosUsado
+    FROM (SELECT (COUNT(s.tipo_servicio)) ca,s.tipo_servicio as tipo, to_char(to_date(c.FECHA, 'MM/DD/YYYY'), 'WW/YYYY') AS SEMANA
+          FROM CITA c, SERVICIODESALUD s
+          WHERE c.ID_SERVICIO = s.NOMBRE AND c.ESTADO_CITA = 'REALIZADA'
+          GROUP BY to_char(to_date(c.FECHA, 'MM/DD/YYYY'), 'WW/YYYY'), s.tipo_servicio
+          ORDER BY semana DESC
+          )t1,
+          
+         (SELECT MIN(ca) C1, SEMANA
+          FROM (SELECT (COUNT(s.tipo_servicio)) ca, s.tipo_servicio, to_char(to_date(c.FECHA, 'MM/DD/YYYY'), 'WW/YYYY') AS SEMANA
+                FROM CITA c, SERVICIODESALUD s
+                WHERE c.ID_SERVICIO = s.NOMBRE AND c.ESTADO_CITA = 'REALIZADA'
+                GROUP BY to_char(to_date(c.FECHA, 'MM/DD/YYYY'), 'WW/YYYY'), s.tipo_servicio)
+          GROUP BY SEMANA
+          )t2
+    WHERE t1.SEMANA = t2.SEMANA AND t1.ca = t2.c1 
+    GROUP BY t1.SEMANA, t2.c1
+    ORDER BY SEMANA DESC
+)t2 
+
+NATURAL INNER JOIN 
+(
+    SELECT t1.SEMANA AS SEMANA, LISTAGG(t1.NOMBRE,', ') WITHIN GROUP(ORDER BY t1.NOMBRE) AS ServiciosMasUsados, t2.c1 AS CantidadServicioMasUsado
+    FROM (SELECT (COUNT(s.tipo_servicio)) ca, s.NOMBRE as NOMBRE, to_char(to_date(c.FECHA, 'MM/DD/YYYY'), 'WW/YYYY') AS SEMANA
+          FROM CITA c, SERVICIODESALUD s
+          WHERE c.ID_SERVICIO = s.NOMBRE AND c.ESTADO_CITA = 'REALIZADA'
+          GROUP BY to_char(to_date(c.FECHA, 'MM/DD/YYYY'), 'WW/YYYY'), s.NOMBRE
+          ORDER BY semana DESC
+          ) t1,
+          
+         (SELECT MAX(ca) C1, SEMANA
+          FROM (SELECT (COUNT(s.NOMBRE)) ca, s.NOMBRE, to_char(to_date(c.FECHA, 'MM/DD/YYYY'), 'WW/YYYY') AS SEMANA
+                FROM CITA c, SERVICIODESALUD s
+                WHERE c.ID_SERVICIO = s.NOMBRE AND c.ESTADO_CITA = 'REALIZADA'
+                GROUP BY to_char(to_date(c.FECHA, 'MM/DD/YYYY'), 'WW/YYYY'), s.NOMBRE
+                )
+          GROUP BY SEMANA
+          ) t2
+    WHERE t1.SEMANA = t2.SEMANA AND t1.ca = t2.c1 group by t1.SEMANA, t2.c1
+    ORDER BY SEMANA DESC
+)
+
+NATURAL INNER JOIN 
+(
+    SELECT t1.SEMANA as SEMANA, LISTAGG(t1.NOMBRE,', ') WITHIN GROUP(ORDER BY t1.NOMBRE) AS ServiciosMenosUsados, t2.c1 AS CantidadServicioMenosUsado
+    FROM (SELECT (COUNT(s.NOMBRE)) ca,s.NOMBRE as NOMBRE, to_char(to_date(c.FECHA, 'MM/DD/YYYY'), 'WW/YYYY') AS SEMANA
+          FROM CITA c, SERVICIODESALUD s
+          WHERE c.ID_SERVICIO = s.NOMBRE AND c.ESTADO_CITA = 'REALIZADA'
+          GROUP BY to_char(to_date(c.FECHA, 'MM/DD/YYYY'), 'WW/YYYY'), s.NOMBRE
+          ORDER BY semana DESC
+          ) t1,
+          
+         (SELECT MIN(ca) C1, SEMANA
+          FROM (SELECT (COUNT(s.NOMBRE)) ca, s.NOMBRE, to_char(to_date(c.FECHA, 'MM/DD/YYYY'), 'WW/YYYY') AS SEMANA
+                FROM CITA c, SERVICIODESALUD s
+                WHERE c.ID_SERVICIO = s.NOMBRE AND c.ESTADO_CITA = 'REALIZADA'
+                GROUP BY to_char(to_date(c.FECHA, 'MM/DD/YYYY'), 'WW/YYYY'), s.NOMBRE
+                )
+          GROUP BY SEMANA
+          ) t2
+          
+    WHERE t1.SEMANA = t2.SEMANA AND t1.ca = t2.c1 
+    GROUP BY t1.SEMANA, t2.c1
+    ORDER BY SEMANA DESC
+)
+
+NATURAL INNER JOIN 
+( SELECT t1.SEMANA as SEMANA, LISTAGG(t1.ID_IPS,', ') WITHIN GROUP(ORDER BY t1.ID_IPS) AS IPSMasSolicitadas, t2.c1 AS CantidadIPSMasUsado
+  FROM    (SELECT (COUNT(s.ID_IPS)) ca, s.ID_IPS as ID_IPS, to_char(to_date(c.FECHA, 'MM/DD/YYYY'), 'WW/YYYY') AS SEMANA
+          FROM CITA c, PRESTAN s
+          WHERE c.ID_SERVICIO = s.ID_SERVICIO AND c.ESTADO_CITA = 'REALIZADA' and c.fecha=s.dia
+          GROUP BY to_char(to_date(c.FECHA, 'MM/DD/YYYY'), 'WW/YYYY'), s.ID_IPS
+          ORDER BY  semana DESC
+          ) t1,
+          
+          
+         (SELECT MAX(ca) C1, SEMANA
+          FROM (SELECT (COUNT(s.ID_IPS))ca, s.ID_IPS, to_char(to_date(c.FECHA, 'MM/DD/YYYY'), 'WW/YYYY') AS SEMANA
+                FROM CITA c,PRESTAN s
+                WHERE c.ID_SERVICIO = s.ID_SERVICIO and c.fecha=s.dia AND c.ESTADO_CITA = 'REALIZADA'
+                GROUP BY to_char(to_date(c.FECHA, 'MM/DD/YYYY'), 'WW/YYYY'), s.ID_IPS
+                )
+          GROUP BY SEMANA
+          ) t2
+          
+    WHERE t1.SEMANA = t2.SEMANA AND t1.ca = t2.c1 group by t1.SEMANA, t2.c1
+    ORDER BY SEMANA DESC
+)
+
+NATURAL INNER JOIN 
+( SELECT t1.SEMANA as SEMANA, LISTAGG(t1.ID_IPS,', ')  WITHIN GROUP(ORDER BY t1.ID_IPS) AS IPSMenosSolicitadas, t2.c1 AS CantidadIPSMenosUsado
+    FROM (SELECT (COUNT(s.ID_IPS)) ca, s.ID_IPS as ID_IPS, to_char(to_date(c.FECHA, 'MM/DD/YYYY'), 'WW/YYYY') AS SEMANA
+          FROM CITA c, PRESTAN s
+          WHERE c.ID_SERVICIO = s.ID_SERVICIO AND c.ESTADO_CITA = 'REALIZADA' and c.fecha=s.dia
+          GROUP BY to_char(to_date(c.FECHA, 'MM/DD/YYYY'), 'WW/YYYY'), s.ID_IPS
+          ORDER BY SEMANA DESC
+          ) t1,
+          
+         (SELECT MIN(ca) C1, SEMANA
+          FROM (SELECT (COUNT(s.ID_IPS))ca, s.ID_IPS, to_char(to_date(c.FECHA, 'MM/DD/YYYY'), 'WW/YYYY') AS SEMANA
+                FROM CITA c,PRESTAN s
+                WHERE c.ID_SERVICIO = s.ID_SERVICIO and c.fecha=s.dia AND c.ESTADO_CITA = 'REALIZADA'
+                GROUP BY to_char(to_date(c.FECHA, 'MM/DD/YYYY'), 'WW/YYYY'), s.ID_IPS
+                )
+          GROUP BY SEMANA
+         ) t2
+         
+    WHERE t1.SEMANA = t2.SEMANA AND t1.ca = t2.c1 group by t1.SEMANA, t2.c1
+    ORDER BY SEMANA DESC
+) 
+
+NATURAL INNER JOIN 
+(SELECT t1.SEMANA as SEMANA, LISTAGG(t1.ID_USUARIO,', ') WITHIN GROUP(ORDER BY t1.ID_USUARIO) AS AfiliadoMasSolicitador, t2.c1 AS AfiliadoMasUsador
+    FROM (SELECT (COUNT(c.ID_USUARIO))ca, c.ID_USUARIO as ID_USUARIO, to_char(to_date(c.FECHA, 'MM/DD/YYYY'), 'WW/YYYY') AS SEMANA
+          FROM CITA c
+          WHERE c.ESTADO_CITA = 'REALIZADA' 
+          GROUP BY to_char(to_date(c.FECHA, 'MM/DD/YYYY'), 'WW/YYYY'), c.ID_USUARIO
+          ORDER BY semana desc
+          ) t1,
+          
+         (SELECT MAX(ca) C1, SEMANA
+          FROM (SELECT (COUNT(c.ID_USUARIO)) ca, c.ID_USUARIO, to_char(to_date(c.FECHA, 'MM/DD/YYYY'), 'WW/YYYY') AS SEMANA
+                FROM CITA c
+                WHERE c.ESTADO_CITA = 'REALIZADA'
+                GROUP BY to_char(to_date(c.FECHA, 'MM/DD/YYYY'), 'WW/YYYY'), c.ID_USUARIO
+                )
+          GROUP BY SEMANA
+          ) t2
+          
+    WHERE t1.SEMANA = t2.SEMANA
+    AND t1.ca = t2.c1 group by t1.SEMANA, t2.c1
+    ORDER BY SEMANA DESC)
+    
+NATURAL INNER JOIN
+(SELECT cuenta-c1,semana AS SEMANA 
+    FROM(SELECT COUNT(DISTINCT c.ID_USUARIO) c1, to_char(to_date(c.FECHA, 'MM/DD/YYYY'), 'WW/YYYY') AS SEMANA
+        FROM CITA c
+        WHERE c.ESTADO_CITA = 'REALIZADA' 
+        GROUP BY to_char(to_date(c.FECHA, 'MM/DD/YYYY'), 'WW/YYYY')
+        ORDER BY semana DESC), (SELECT COUNT(*) AS cuenta FROM AFILIADO
+        )
+);

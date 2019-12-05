@@ -1,0 +1,181 @@
+//RFC11 - CONSULTAR FUNCIONAMIENTO
+
+SELECT *
+FROM 
+(
+    SELECT tt1.semana AS semana, LISTAGG(tt1.tipo_servicio,', ')WITHIN GROUP(ORDER BY tt1.tipo_servicio) AS TiposMasUsados, t2.c1 AS CantidadTipoMasUsado
+    FROM 
+        (SELECT (COUNT(s.tipo_servicio)) ca, s.tipo_servicio as tipo_servicio, to_char(to_date(c.FECHA, 'mm/dd/yyyy'), 'WW/YYYY') AS semana
+          FROM CITA c, SERVICIODESALUD s
+          WHERE c.id_servicio = s.nombre AND c.estado_cita = 'REALIZADA'
+          GROUP BY to_char(to_date(c.fecha, 'mm/dd/yyyy'), 'WW/YYYY'), s.tipo_servicio
+          ORDER BY semana DESC
+        )tt1,
+        
+        (SELECT MAX(ca) C1, semana
+        FROM (SELECT   ca, tipo_servicio,semana 
+             FROM (SELECT (COUNT(s.tipo_servicio)) ca, s.tipo_servicio as tipo_servicio, to_char(to_date(c.FECHA, 'mm/dd/yyyy'), 'WW/YYYY') AS semana
+                  FROM CITA c, SERVICIODESALUD s
+                  WHERE c.id_servicio = s.nombre AND c.estado_cita = 'REALIZADA'
+                  GROUP BY to_char(to_date(c.fecha, 'mm/dd/yyyy'), 'WW/YYYY'), s.tipo_servicio
+                  ORDER BY semana DESC
+                  )
+            )
+        GROUP BY semana) t2
+        
+    WHERE tt1.semana = t2.semana AND tt1.ca = t2.c1 
+    GROUP BY tt1.semana, t2.c1
+)t1
+NATURAL INNER JOIN
+(
+    SELECT tt1.semana AS semana, LISTAGG(tt1.tipo_servicio,', ')WITHIN GROUP(ORDER BY tt1.tipo_servicio) AS TiposMenosUsados, t2.c1 AS CantidadTipoMenosUsado
+    FROM  (SELECT (COUNT(s.tipo_servicio)) ca, s.tipo_servicio as tipo_servicio, to_char(to_date(c.FECHA, 'mm/dd/yyyy'), 'WW/YYYY') AS semana
+          FROM CITA c, SERVICIODESALUD s
+          WHERE c.id_servicio = s.nombre AND c.estado_cita = 'REALIZADA'
+          GROUP BY to_char(to_date(c.fecha, 'mm/dd/yyyy'), 'WW/YYYY'), s.tipo_servicio
+          ORDER BY semana DESC
+          )tt1,
+          
+         (SELECT MIN(ca) C1, semana
+          FROM (SELECT   ca, tipo_servicio,semana 
+            FROM (SELECT (COUNT(s.tipo_servicio)) ca, s.tipo_servicio as tipo_servicio, to_char(to_date(c.FECHA, 'mm/dd/yyyy'), 'WW/YYYY') AS semana
+                  FROM CITA c, SERVICIODESALUD s
+                  WHERE c.id_servicio = s.nombre AND c.estado_cita = 'REALIZADA'
+                  GROUP BY to_char(to_date(c.fecha, 'mm/dd/yyyy'), 'WW/YYYY'), s.tipo_servicio
+                  ORDER BY semana DESC
+                  )
+                )
+          GROUP BY semana
+          )t2
+          
+    WHERE tt1.semana = t2.semana AND tt1.ca = t2.c1 
+    GROUP BY tt1.semana, t2.c1
+)t2 
+
+NATURAL INNER JOIN
+(SELECT t1.semana AS semana, LISTAGG(t1.nombre,', ') WITHIN GROUP(ORDER BY t1.nombre) as ServiciosMasUsados, t2.c1 as CantidadServicioMasUsado
+FROM 
+    (SELECT (COUNT(s.tipo_servicio))ca, s.nombre as nombre, to_char(to_date(c.fecha, 'mm/dd/yyyy'), 'WW/YYYY') AS semana
+     FROM CITA c, SERVICIODESALUD s
+     WHERE c.id_servicio = s.nombre AND c.estado_cita = 'REALIZADA'
+     GROUP BY to_char(to_date(c.fecha, 'mm/dd/yyyy'), 'WW/YYYY'), s.nombre
+     )t1,
+     
+    (SELECT MAX(ca) C1, semana
+    FROM (SELECT * 
+         FROM (SELECT (COUNT(s.tipo_servicio))ca, s.nombre as nombre, to_char(to_date(c.fecha, 'mm/dd/yyyy'), 'WW/YYYY') AS semana
+               FROM CITA c, SERVICIODESALUD s
+               WHERE c.id_servicio = s.nombre AND c.estado_cita = 'REALIZADA'
+               GROUP BY to_char(to_date(c.fecha, 'mm/dd/yyyy'), 'WW/YYYY'), s.nombre
+              )
+         )
+    GROUP BY semana)t2
+    
+WHERE t1.semana = t2.semana AND t1.ca = t2.c1
+GROUP BY t1.semana, t2.c1
+)
+
+NATURAL INNER JOIN
+(SELECT t1.semana as semana, LISTAGG(t1.nombre,', ') WITHIN GROUP(ORDER BY t1.nombre) AS ServiciosMenosUsados, t2.c1 AS CantidadServicioMenosUsado
+FROM (SELECT (COUNT(s.tipo_servicio))ca, s.nombre as nombre, to_char(to_date(c.fecha, 'mm/dd/yyyy'), 'WW/YYYY') AS semana
+     FROM CITA c, SERVICIODESALUD s
+     WHERE c.id_servicio = s.nombre AND c.estado_cita = 'REALIZADA'
+     GROUP BY to_char(to_date(c.fecha, 'mm/dd/yyyy'), 'WW/YYYY'), s.nombre
+     )t1,
+         (SELECT MIN(ca) C1, semana
+          FROM (SELECT *
+                FROM (SELECT (COUNT(s.tipo_servicio))ca, s.nombre as nombre, to_char(to_date(c.fecha, 'mm/dd/yyyy'), 'WW/YYYY') AS semana
+                     FROM CITA c, SERVICIODESALUD s
+                     WHERE c.id_servicio = s.nombre AND c.estado_cita = 'REALIZADA'
+                     GROUP BY to_char(to_date(c.fecha, 'mm/dd/yyyy'), 'WW/YYYY'), s.nombre
+                    )
+                )
+          GROUP BY semana) t2
+          
+WHERE t1.semana = t2.semana AND t1.ca = t2.c1 
+GROUP BY t1.semana, t2.c1
+)
+
+NATURAL INNER JOIN 
+(SELECT ti1.semana AS semana, LISTAGG (ti1.id_ips,', ') WITHIN GROUP(ORDER BY ti1.id_ips) AS IPSMasSolicitadas, t2.c1 AS CantidadIPSMasUsado
+ FROM 
+      (SELECT (COUNT(s.id_ips))ca,s.id_ips as id_ips, to_char(to_date(c.fecha, 'mm/dd/yyyy'), 'WW/YYYY') AS semana
+       FROM CITA c, PRESTAN s
+       WHERE c.id_servicio = s.id_servicio AND c.estado_cita = 'REALIZADA' AND c.fecha=s.dia
+       GROUP BY to_char(to_date(c.fecha, 'mm/dd/yyyy'), 'WW/YYYY'), s.id_ips
+      )ti1,
+      
+      (SELECT MAX(ca) C1, semana
+      FROM ( SELECT *
+            FROM (SELECT (COUNT(s.id_ips))ca,s.id_ips as id_ips, to_char(to_date(c.fecha, 'mm/dd/yyyy'), 'WW/YYYY') AS semana
+                 FROM CITA c, PRESTAN s
+                 WHERE c.id_servicio = s.id_servicio AND c.estado_cita = 'REALIZADA' AND c.fecha=s.dia
+                 GROUP BY to_char(to_date(c.fecha, 'mm/dd/yyyy'), 'WW/YYYY'), s.id_ips
+                 )
+            )
+      GROUP BY semana
+      )t2
+      
+WHERE ti1.semana = t2.semana AND ti1.ca = t2.c1 
+group by ti1.semana, t2.c1
+)
+
+NATURAL INNER JOIN 
+(SELECT til.semana AS semana, LISTAGG(til.id_ips,', ') WITHIN GROUP(ORDER BY til.id_ips) as IPSMenosSolicitadas, t2.c1 AS CantidadIPSMenosUsado
+FROM  
+     (SELECT (COUNT(s.id_ips))ca,s.id_ips as id_ips, to_char(to_date(c.fecha, 'mm/dd/yyyy'), 'WW/YYYY') AS semana
+       FROM CITA c, PRESTAN s
+       WHERE c.id_servicio = s.id_servicio AND c.estado_cita = 'REALIZADA' AND c.fecha=s.dia
+       GROUP BY to_char(to_date(c.fecha, 'mm/dd/yyyy'), 'WW/YYYY'), s.id_ips
+      )til,
+      
+     (SELECT MIN(ca) C1, semana
+     FROM (SELECT * 
+           FROM (SELECT (COUNT(s.id_ips))ca,s.id_ips as id_ips, to_char(to_date(c.fecha, 'mm/dd/yyyy'), 'WW/YYYY') AS semana
+                FROM CITA c, PRESTAN s
+                WHERE c.id_servicio = s.id_servicio AND c.estado_cita = 'REALIZADA' AND c.fecha=s.dia
+                GROUP BY to_char(to_date(c.fecha, 'mm/dd/yyyy'), 'WW/YYYY'), s.id_ips
+                )
+          )
+     GROUP BY semana
+     )t2
+          
+WHERE til.semana = t2.semana AND til.ca = t2.c1 
+GROUP BY til.semana, t2.c1
+) 
+
+NATURAL INNER JOIN  
+(SELECT tul.semana as semana, listagg(tul.id_usuario,', ')within group(order by tul.id_usuario) AS AfiliadoMasSolicitador, t2.c1 AS AfiliadoMasUsador
+FROM 
+    (SELECT (COUNT(c.id_usuario))ca, c.id_usuario as id_usuario, to_char(to_date(c.fecha, 'mm/dd/yyyy'), 'WW/YYYY') AS semana
+    FROM CITA c
+    WHERE c.estado_cita = 'REALIZADA'
+    GROUP BY to_char(to_date(c.fecha, 'mm/dd/yyyy'), 'WW/YYYY'), c.id_usuario
+    )tul,
+    
+    (SELECT MAX(ca) C1, semana
+    FROM (SELECT * 
+         FROM (SELECT (COUNT(c.id_usuario))ca, c.id_usuario as id_usuario, to_char(to_date(c.fecha, 'mm/dd/yyyy'), 'WW/YYYY') AS semana
+              FROM CITA c
+              WHERE c.estado_cita = 'REALIZADA'
+              GROUP BY to_char(to_date(c.fecha, 'mm/dd/yyyy'), 'WW/YYYY'), c.id_usuario
+              )
+         )
+    GROUP BY semana
+    )t2
+    
+WHERE tul.semana = t2.semana AND tul.ca = t2.c1 
+GROUP BY tul.semana, t2.c1
+ORDER BY semana DESC
+) 
+
+NATURAL INNER JOIN  
+(SELECT cuenta-AfiliadosNoCitas,semana AS semana 
+FROM 
+    (SELECT COUNT(DISTINCT c.id_usuario) AfiliadosNoCitas, to_char(to_date(c.fecha, 'mm/dd/yyyy'), 'WW/YYYY') AS semana
+    FROM CITA c
+    WHERE c.estado_cita = 'REALIZADA' 
+    GROUP BY to_char(to_date(c.fecha, 'mm/dd/yyyy'), 'WW/YYYY')
+    ),
+    (SELECT COUNT(*) AS cuenta FROM AFILIADO)
+);
