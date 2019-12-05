@@ -4,11 +4,6 @@ import java.math.BigDecimal;
 import java.util.LinkedList; 
 import java.util.List;
 
-import javax.jdo.JDODataStoreException;
-import javax.jdo.JDOHelper;
-import javax.jdo.PersistenceManager;
-import javax.jdo.PersistenceManagerFactory;
-import javax.jdo.Transaction;
 import javax.jdo.*;
 import org.apache.log4j.Logger;
 
@@ -965,6 +960,80 @@ public class PersistenciaEps {
 		}
 		return mensaje;
 	}
+	
+	
+	//RFC9 - CONSULTAR LA PRESTACIÓN DE SERVICIOS EN EPSANDES
+	public String darPrestacionServicios()
+	{
+		String mensaje="";
+		List<Object[]> prestados= sqlAdministradorDatos.consultarPrestacion1(pmf.getPersistenceManager());
+		if(prestados.size()<=0)
+		{
+			return "No se encontraron n prestaciones";
+		}
+		else {
+			mensaje="Se encontraron servicios prestados: \n";
+			for (Object[] objects : prestados) {
+				mensaje+="Nombre: "+ objects+"\n";
+			}
+		}
+		return mensaje;
+	}
+	
+	//RFC10 - CONSULTAR LA PRESTACIÓN DE SERVICIOS EN EPSANDES
+	public String darPrestacionNoServicios()
+	{
+		String mensaje="";
+		List<Object[]> prestados= sqlAdministradorDatos.consultarPrestacion2(pmf.getPersistenceManager());
+		if(prestados.size()<=0)
+		{
+			return "No se encontraron n prestaciones";
+		}
+		else {
+			mensaje="Se encontraron servicios no prestados: \n";
+			for (Object[] objects : prestados) {
+				mensaje+="Nombre: "+ objects+"\n";
+			}
+		}
+		return mensaje;
+	}
+	
+	//RFC11 - CONSULTAR FUNCIONAMIENTO
+	public String darFuncionamiento()
+	{
+		String mensaje="";
+		List<Object[]> funcionamiento= sqlAdministradorDatos.consultarFuncionamiento(pmf.getPersistenceManager());
+		if(funcionamiento.size()<=0)
+		{
+			return "No se encontraron n funcionamientos";
+		}
+		else {
+			mensaje="Se encontraron servicios no funcionamientos: \n";
+			for (Object[] objects : funcionamiento) {
+				mensaje+="Nombre: "+ objects+"\n";
+			}
+		}
+		return mensaje;
+	}
+	
+	//RFC12 - CONSULTAR LOS AFILIADOS COSTOSOS
+	public String darAfiliadosCostosos()
+	{
+		String mensaje="";
+		List<Object[]> costosos= sqlAdministradorDatos.consultarAFiliadosCostosos(pmf.getPersistenceManager());
+		if(costosos.size()<=0)
+		{
+			return "No se encontraron n costosos";
+		}
+		else {
+			mensaje="Se encontraron servicios no costosos: \n";
+			for (Object[] objects : costosos) {
+				mensaje+="Nombre: "+ objects+"\n";
+			}
+		}
+		return mensaje;
+	}
+	
 	
 	
 	/**

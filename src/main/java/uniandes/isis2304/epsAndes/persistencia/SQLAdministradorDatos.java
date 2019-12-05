@@ -146,54 +146,55 @@ class SQLAdministradorDatos
 		q.setParameters(idBar, nombre, ciudad, presupuesto, sedes);
 		return (long) q.executeUnique();
 	}
-	public List<Afiliado> consultarPrestacion1(PersistenceManager pm)
+	
+	
+	public List<Object[]> consultarPrestacion1(PersistenceManager pm)
 	{
 		String sql = 
-				  "with cantidadS AS" 
-				+ "( SELECT SUM(COUNT(DISTINCT id_servicio)) c2"
-				+ "FROM CITA WHERE ID_SERVICIO IN('Consultas odontologicas','Radiografias')"
-				+ "GROUP BY id_servicio),"
-				
-				+ "cantidadXUS AS"
-				+ "(SELECT COUNT(DISTINCT c.id_servicio) c1,c.id_afiliado"  
-				+ "FROM CITA c" 
-				+ "WHERE c.ID_SERVICIO IN('Consultas odontologicas','Radiografias') AND c.cumplida = 1 AND to_date(c.fecha,'dd/mm/yyyy hh24:mi:ss') " 
-				+ "BETWEEN to_date('25/12/2000 12:00:00','dd/mm/yyyy hh24:mi:ss') AND to_date('25/12/2019 12:00:00','dd/mm/yyyy hh24:mi:ss')" 
-				+ "GROUP BY c.id_afiliado"
-				+ "ORDER BY c.id_afiliado DESC),"
-				
-				+ "selecxS AS"
-				+ "(SELECT *"
-				+ "FROM USUARIO u, AFILIADO a, cantidadXUS c,cantidadS cs" 
-				+ "WHERE a.IDENTIFICACION=u.NUMERO_DOCUMENTO AND c.id_afiliado=a.IDENTIFICACION AND c.c1=cs.c2),"
-				
-				
-				+ "cantidadT AS"
-				+ "(SELECT SUM(COUNT(DISTINCT s.tipo)) c2"
-				+ "FROM CITA c,SERVICIO s"
-				+ "WHERE c.ID_SERVICIO=s.nombre AND s.tipo IN('Consulta de control')"
-				+ "GROUP BY s.tipo2),"
-				
-				+ "cantidadXUT AS"
-				+ "(SELECT COUNT(DISTINCT s.tipo) c1,id_afiliado"
-				+ "FROM CITA c, SERVICIO s"
-				+ "WHERE c.ID_SERVICIO=s.nombre and s.tipo IN('Consulta de control') AND c.cumplida=1"
-				+ "GROUP BY id_afiliado"
-				+ "ORDER BY COUNT(DISTINCT s.tipo) DESC),"
-				
-				+ "selecxT AS"
-				+ "(SELECT *" 
-				+ "FROM USUARIO u, AFILIADO a, cantidadXUT c,cantidadT cs"
-				+ "WHERE a.IDENTIFICACION=u.NUMERO_DOCUMENTO AND c.id_afiliado=a.IDENTIFICACION AND c.c1=cs.c2),"
-				
-				+ "selectI AS"
-				+ "(SELECT DISTINCT c.id_afiliado" 
-				+ "FROM CITA c, PRESTAN p "
-				+ "WHERE c.fecha=p.dia AND c.id_servicio=p.id_servicio AND p.id_ips IN(SELECT ID_IPS FROM PRESTAN))"
-				+ "SELECT  s1.email,s1.nombre,s1.numero_documento,s1.rol,s1.tipo_documento,s1.fecha_nacimiento"
-				+ "FROM selecxS s1"
-				+ "WHERE s1.identificacion IN(SELECT id_afiliado FROM selecxT) AND s1.identificacion IN(SELECT id_afiliado FROM selectI))";
+				  "SELECT  sl.email,sl.nombre,sl.numero_id,sl.rol,sl.tipo_identificacion, sl.fecha"
+				  + "FROM (SELECT u.email,u.nombre,u.numero_id,u.rol,u.tipo_identificacion, c.fecha"
+				  + "FROM USUARIO u, AFILIADO a, "
+				  + "(SELECT COUNT(DISTINCT c.id_servicio)c1, c.id_usuario,c.fecha"
+				  + "FROM CITA c"
+				  + "WHERE c.id_servicio IN('Servicio 260','Servicio 379') AND c.estado_cita = 'REALIZADA' AND to_date(c.fecha,'mm/dd/yyyy') "
+				  + "BETWEEN to_date('10/24/2010','mm/dd/yyyy') AND to_date('12/15/2016','mm/dd/yyyy') "
+				  + "GROUP BY c.id_usuario, c.fecha "
+				  + "ORDER BY c.id_usuario DESC"
+				  + ")c,"
+				  + "(SELECT COUNT(DISTINCT id_servicio)c2"
+				  + "FROM CITA"
+				  + "WHERE id_servicio IN('Servicio 260','Servicio 379')"
+				  + "GROUP BY id_servicio"
+				  + ")cs "
+				  + "WHERE a.numero_id=u.numero_id AND c.id_usuario=a.numero_id AND c.c1=cs.c2"
+				  + ")sl"
+				  + "WHERE sl.numero_id IN"
+				  + "(SELECT id_usuario FROM"
+				  + "(SELECT *"
+				  + "FROM USUARIO u, AFILIADO a,"
+				  + "(SELECT COUNT(DISTINCT s.tipo_servicio) c1,id_usuario"
+				  + "FROM CITA c, SERVICIODESALUD s"
+				  + "WHERE c.id_servicio=s.nombre AND s.tipo_servicio IN('HOSPITALIZACION') AND c.estado_cita = 'REALIZADA'"
+				  + "GROUP BY id_usuario"
+				  + "ORDER BY COUNT(DISTINCT s.tipo_servicio) DESC"
+				  + ")c,"
+				  + "(SELECT SUM(COUNT(DISTINCT s.tipo_servicio))c2"
+				  + "FROM CITA c,SERVICIODESALUD s"
+				  + "WHERE c.id_servicio=s.nombre and s.tipo_servicio IN('HOSPITALIZACION')"
+				  + "GROUP BY s.tipo_servicio"
+				  + ")cs"
+				  + "WHERE a.numero_id=u.numero_id AND c.id_usuario=a.numero_id AND c.c1=cs.c2"
+				  + ")"
+				  + ")"
+				  + "AND sl.numero_id IN"
+				  + "(SELECT id_usuario FROM"
+				  + "(SELECT DISTINCT c.id_usuario"
+				  + "FROM CITA c, PRESTAN p "
+				  + "WHERE c.fecha=p.dia AND c.id_servicio=p.id_servicio AND p.id_ips IN(SELECT id_ips FROM PRESTAN)"
+				  + ")"
+				  + ")";
 		Query q = pm.newQuery(SQL,sql);
 		return q.executeList();
 	}
+
 }

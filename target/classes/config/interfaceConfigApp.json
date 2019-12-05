@@ -5,6 +5,28 @@
 	"bannerPath": "./src/main/resources/config/LOGO.png",
 	"menuBar":
 	[
+	{ "menuTitle": "Consultas It3",
+		  "options":
+			[
+				{
+					"label": "Prestacion",
+					"event": "registrarAdministrador"
+				},
+				{
+					"label": "No prestacion",
+					"event": "registrarMedico"
+				},
+				{
+					"label": "Funcionamiento",
+					"event": "registrarAfiliado"
+				},
+				{
+					"label": "Costosos",
+					"event": "registrarGerente"
+				}
+				
+			]
+		},
 		{ "menuTitle": "Registrar usuario",
 		  "options":
 			[
